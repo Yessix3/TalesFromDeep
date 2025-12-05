@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckfcfplaakjef"]
+
+[ext_resource type="PackedScene" uid="uid://crklklhtepyvf" path="res://entities/entity.tscn" id="1_b0kkn"]
+[ext_resource type="Script" uid="uid://cu5vr1dr4f7fi" path="res://entities/player.gd" id="2_rfe5m"]
+[ext_resource type="Texture2D" uid="uid://bjell2acpfxo2" path="res://assets/frog_fish_doodle.png" id="3_e4p34"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4p34"]
+radius = 21.0
+height = 56.0
+
+[node name="Player" instance=ExtResource("1_b0kkn")]
+script = ExtResource("2_rfe5m")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-3, 11)
+shape = SubResource("CapsuleShape2D_e4p34")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(3.8146973e-06, -9.536743e-07)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_e4p34")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+zoom = Vector2(3, 3)
+
+[node name="jump_delay" type="Timer" parent="Timers" index="0"]
+wait_time = 0.15
+one_shot = true
+
+[node name="jump_buffer" type="Timer" parent="Timers" index="1"]
+wait_time = 0.1
+one_shot = true
