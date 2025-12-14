@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://iwd7qulidku3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umreq"]
-size = Vector2(74, 13)
+size = Vector2(727, 25)
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
 
