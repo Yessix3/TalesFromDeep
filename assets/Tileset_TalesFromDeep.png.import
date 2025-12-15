@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn0wk12wm0qog"
-path="res://.godot/imported/pixil-frame-0(21).png-de6344e4abc4b864a1e4dfcf5d41e1d7.ctex"
+uid="uid://uiu0tsx6tofj"
+path="res://.godot/imported/Tileset_TalesFromDeep.png-7f2c0bdfccc2572bc4333d11a176a9f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixil-frame-0(21).png"
-dest_files=["res://.godot/imported/pixil-frame-0(21).png-de6344e4abc4b864a1e4dfcf5d41e1d7.ctex"]
+source_file="res://assets/Tileset_TalesFromDeep.png"
+dest_files=["res://.godot/imported/Tileset_TalesFromDeep.png-7f2c0bdfccc2572bc4333d11a176a9f7.ctex"]
 
 [params]
 
