@@ -6,8 +6,8 @@ extends Node2D
 @onready var win_area: Area2D = $Win
 @onready var lose_area: Area2D = $Loose
 
+enum BattleOverType { WIN, LOSE }
 
-signal fight_won(won: bool)
 
 func _ready():
 	win_area.body_entered.connect(_on_win_area_entered)
@@ -17,9 +17,11 @@ func _ready():
 
 func _on_win_area_entered(body):
 	if body.is_in_group("player"):
-		fight_won.emit(true)
+		EventManager.fight_won.emit(true)
+		EventManager.battle_over_screen_requested.emit("Victorious!", BattleOverType.WIN)
 
 
 func _on_lose_area_entered(body):
 	if body.is_in_group("player"):
-		fight_won.emit(false)
+		EventManager.fight_won.emit(false)
+		EventManager.battle_over_screen_requested.emit("Game Over!", BattleOverType.LOSE)

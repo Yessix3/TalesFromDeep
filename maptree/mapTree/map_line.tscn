@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt2m0gfa55y2f"]
+
+[ext_resource type="Texture2D" uid="uid://bjid1jfcpf4uk" path="res://maptree/TestButtons/GakiTestLine.png" id="1_nrju6"]
+
+[node name="MapLine" type="Line2D"]
+texture_repeat = 2
+texture = ExtResource("1_nrju6")
+texture_mode = 1
