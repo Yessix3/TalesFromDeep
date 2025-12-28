@@ -1,8 +1,8 @@
 class_name MapGenerator
 extends Node
 
-const X_DIST := 30              # amount of pixels between the nodes
-const Y_DIST := 25              # amount of pixels between floors
+const X_DIST := 160              # amount of pixels between the nodes
+const Y_DIST := 130              # amount of pixels between floors
 const PLACEMENT_RANDOMNESS := 5 # amount of pixels that nodes are allowed to move at their place
 const FLOORS := 15              # number of rows
 const MAP_WIDTH := 7            # number of columns
