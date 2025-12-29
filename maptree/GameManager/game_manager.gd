@@ -40,6 +40,10 @@ func _start_run() -> void:
 
 
 func _change_view(scene: PackedScene) -> void:
+	##########
+	map.hide_map()
+	map.disable_scroll()
+	##########
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
@@ -52,6 +56,9 @@ func _show_map() -> void:
 		current_view.get_child(0).queue_free()
 
 	map.show_map()
+	##########
+	map.enable_scroll()
+	########
 	map.unlock_next_rooms()
 
 func _setup_event_connections() -> void:
