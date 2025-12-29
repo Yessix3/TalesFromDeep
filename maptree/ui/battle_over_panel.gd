@@ -9,13 +9,11 @@ enum Type {WIN, LOSE}
 
 
 func _ready() -> void:
-	continue_button.pressed.connect(func (): EventManager.fight_won.emit(true))
+	continue_button.pressed.connect(func(): EventManager.fight_won.emit())
 	EventManager.battle_over_screen_requested.connect(show_screen)
 
 
 func show_screen(text: String, type: Type) -> void:
 	label.text = text
-	continue_button.visible = type == Type.WIN
 	show()
 	get_tree().paused = true
-

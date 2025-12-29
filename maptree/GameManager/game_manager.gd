@@ -13,14 +13,11 @@ const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
 ##
 
 @onready var current_view: Node = $CurrentView
-@onready var shells_ui: ShellsUI = $TopBar/BarItems/ShellsUI
 @onready var battle_button: Button = $VBoxContainer/BattleButton
 @onready var event_button: Button = $VBoxContainer/EventButton
 @onready var map_button: Button = $VBoxContainer/MapButton
 @onready var rewards_button: Button = $VBoxContainer/RewardsButton
 @onready var shop_button: Button = $VBoxContainer/ShopButton
-
-var status: RunStatus
 
 func _ready() -> void:
 	if not run_startup:
@@ -32,22 +29,17 @@ func _ready() -> void:
 			print("TODO: load previous Run")
 
 func _start_run() -> void:
-	status = RunStatus.new()
 	_setup_event_connections()
 
-	_setup_top_bar()
+	## Wenn ich Top Bar mit Münzen Mache
+	#_setup_top_bar
 	map.generate_new_map()
 	map.unlock_floor(0)
-
 
 	#return new_view #??
 
 
 func _change_view(scene: PackedScene) -> void:
-	##########
-	map.hide_map()
-	map.disable_scroll()
-	##########
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
@@ -60,9 +52,6 @@ func _show_map() -> void:
 		current_view.get_child(0).queue_free()
 
 	map.show_map()
-	##########
-	map.enable_scroll()
-	########
 	map.unlock_next_rooms()
 
 func _setup_event_connections() -> void:
@@ -77,9 +66,6 @@ func _setup_event_connections() -> void:
 	map_button.pressed.connect(_show_map)
 	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
-
-func _setup_top_bar():
-	shells_ui.run_status = status
 
 func _on_map_exited(room: Room) -> void:
 	match room.type:

@@ -26,6 +26,10 @@ var camera_edge_y: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
+
+	# deleted, because this is job of game Manager
+	#generate_new_map()
+	#unlock_floor(0)
 	
 
 func _input(event: InputEvent) -> void:
