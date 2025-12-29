@@ -145,3 +145,13 @@ func _on_map_room_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	EventManager.map_exited.emit(room)
+
+#######################
+func enable_scroll() -> void:
+	set_process_input(true)
+	camera_2d.enabled = true
+
+func disable_scroll() -> void:
+	set_process_input(false)
+	camera_2d.enabled = false
+
