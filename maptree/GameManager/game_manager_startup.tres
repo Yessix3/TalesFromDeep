@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameManagerStartUp" load_steps=2 format=3 uid="uid://cdfg7oxc7k6hu"]
+
+[ext_resource type="Script" uid="uid://bn2scm7q8mrf7" path="res://maptree/GameManager/game_manager_startup.gd" id="1_luqwd"]
+
+[resource]
+script = ExtResource("1_luqwd")
+metadata/_custom_type_script = "uid://bn2scm7q8mrf7"

@@ -41,6 +41,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
 	room.selected = true
+	selected.emit(room) ###########
 	animation_player.play("select")
 
 func _on_map_room_selected() -> void:
