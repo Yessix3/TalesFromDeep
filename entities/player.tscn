@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckfcfplaakjef"]
+
+[ext_resource type="PackedScene" uid="uid://crklklhtepyvf" path="res://entities/entity.tscn" id="1_b0kkn"]
+[ext_resource type="Script" uid="uid://cu5vr1dr4f7fi" path="res://entities/player.gd" id="2_rfe5m"]
+[ext_resource type="Texture2D" uid="uid://nwlf6331dkof" path="res://assets/Idle1.png" id="3_i623q"]
+[ext_resource type="Texture2D" uid="uid://bdj42og5olvub" path="res://assets/Attack1.png" id="3_kdgjc"]
+[ext_resource type="Texture2D" uid="uid://bx4qlnsy0i8ih" path="res://assets/Fall1.png" id="3_x08pd"]
+[ext_resource type="Texture2D" uid="uid://c3yrm4mm3y1qc" path="res://assets/Idle2.png" id="4_ef06p"]
+[ext_resource type="Texture2D" uid="uid://c300tyx4ylyw1" path="res://assets/Attack2.png" id="4_q0i8f"]
+[ext_resource type="Texture2D" uid="uid://crk3h60bolwfp" path="res://assets/Walk1.png" id="5_tjdhl"]
+[ext_resource type="Texture2D" uid="uid://1bfi0rfmjfi6" path="res://assets/Jump1.png" id="6_dchgp"]
+[ext_resource type="Texture2D" uid="uid://b5afranj31jlh" path="res://assets/Walk2.png" id="6_x08pd"]
+[ext_resource type="Texture2D" uid="uid://bufo056dn0hpx" path="res://assets/Walk3.png" id="7_dchgp"]
+[ext_resource type="Texture2D" uid="uid://crjesh62ndwol" path="res://assets/Jump2.png" id="7_kdgjc"]
+[ext_resource type="Texture2D" uid="uid://jauruijvgv20" path="res://assets/Walk4.png" id="8_kdgjc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4p34"]
+radius = 12.0
+height = 46.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0i8f"]
+animations = [{
+"frames": [{
+"duration": 1.01,
+"texture": ExtResource("4_q0i8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kdgjc")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x08pd")
+}],
+"loop": false,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i623q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ef06p")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dchgp")
+}, {
+"duration": 7.21,
+"texture": ExtResource("7_kdgjc")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tjdhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x08pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dchgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kdgjc")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdgjc"]
+radius = 16.0
+height = 66.0
+
+[node name="Player" instance=ExtResource("1_b0kkn")]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("2_rfe5m")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_e4p34")
+
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
+zoom = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+texture_filter = 1
+position = Vector2(-1.9073486e-06, -5.0000005)
+scale = Vector2(0.47447917, 0.4744792)
+sprite_frames = SubResource("SpriteFrames_q0i8f")
+animation = &"Idle"
+
+[node name="AttackHitbox" type="Area2D" parent="." index="3"]
+collision_layer = 8
+collision_mask = 12
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="AttackHitbox" index="0"]
+position = Vector2(-48, 5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kdgjc")
+disabled = true
+
+[node name="CollisionShape2D_right" type="CollisionShape2D" parent="AttackHitbox" index="1"]
+position = Vector2(48, 5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kdgjc")
+disabled = true
+
+[node name="jump_delay" type="Timer" parent="Timers" index="0"]
+wait_time = 0.15
+one_shot = true
+
+[node name="jump_buffer" type="Timer" parent="Timers" index="1"]
+wait_time = 0.1
+one_shot = true
+
+[node name="attack_delay" type="Timer" parent="Timers" index="2"]
+wait_time = 0.65
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
