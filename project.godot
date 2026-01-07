@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 EventManager="*res://maptree/event_manager.gd"
 
+[gui]
+
+theme/custom_font="uid://dksjipbrxxdil"
+
 [input]
 
 left={
