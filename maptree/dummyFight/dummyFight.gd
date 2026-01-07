@@ -4,22 +4,24 @@ extends Node2D
 @export var player: Player
 
 @onready var win_area: Area2D = $Win
-@onready var lose_area: Area2D = $Loose
+@onready var lose_area: Area2D = $Lose
 
 
-signal fight_won(won: bool)
 
 func _ready():
-	win_area.body_entered.connect(_on_win_area_entered)
-	lose_area.body_entered.connect(_on_lose_area_entered)
+	get_tree().paused = false
+	print("started")
 
 
-
-func _on_win_area_entered(body):
+func _on_win_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		fight_won.emit(true)
+		print("You won!")
+		#EventManager.fight_won.emit()
+		EventManager.battle_over_screen_requested.emit("Victorious!", BattleOverPanel.Type.WIN)
 
 
-func _on_lose_area_entered(body):
+func _on_lose_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		fight_won.emit(false)
+		print("Looser")
+		#EventManager.fight_lost.emit()
+		EventManager.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)

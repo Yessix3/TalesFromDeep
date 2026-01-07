@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://corqj2sr5dsto"]
+
+[ext_resource type="Texture2D" uid="uid://c2ge8uqvajnxe" path="res://maptree/TestButtons/GakiTestButtonFight.png" id="1_atpwa"]
+[ext_resource type="Script" uid="uid://vxy6r8bos3bl" path="res://maptree/mapTree/map_room.gd" id="1_r2g1i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2g1i"]
+
+[sub_resource type="Animation" id="Animation_lxeuo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Line2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jmmte"]
+resource_name = "highlight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_vsrdd"]
+resource_name = "select"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Line2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_map_room_selected"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgl41"]
+_data = {
+&"RESET": SubResource("Animation_lxeuo"),
+&"highlight": SubResource("Animation_jmmte"),
+&"select": SubResource("Animation_vsrdd")
+}
+
+[node name="MapRoom" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_r2g1i")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Visuals"]
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(-56, 40, -32, 56, 0, 64, 24, 56, 48, 48, 56, 24, 64, 0, 64, -16, 56, -32, 40, -48, 16, -56, 0, -56, -40, -48, -56, -32, -64, 8)
+closed = true
+width = 8.0
+default_color = Color(0.24196714, 0.6088124, 0.3227985, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_atpwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5.5, 5.5)
+shape = SubResource("CircleShape2D_r2g1i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jgl41")
+}
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
