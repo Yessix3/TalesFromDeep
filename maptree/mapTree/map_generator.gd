@@ -4,12 +4,12 @@ extends Node
 const X_DIST := 160              # amount of pixels between the nodes
 const Y_DIST := 130              # amount of pixels between floors
 const PLACEMENT_RANDOMNESS := 5 # amount of pixels that nodes are allowed to move at their place
-const FLOORS := 15              # number of rows
-const MAP_WIDTH := 7            # number of columns
-const PATHS := 6                # maximum number of paths
+const FLOORS := 10              # number of rows
+const MAP_WIDTH := 5            # number of columns
+const PATHS := 4                # maximum number of paths
 const FIGHT_ROOM_WEIGHT := 10.0 
-const SHOP_ROOM_WEIGHT := 2.5
-const EVENT_ROOM_WEIGHT := 4.0
+const SHOP_ROOM_WEIGHT := 4
+const EVENT_ROOM_WEIGHT := 6.5
 
 var random_room_type_weights = {
     Room.Type.FIGHT: 0.0,
@@ -64,7 +64,7 @@ func _get_random_starting_points() -> Array[int]:
     var y_coordinates: Array[int]
     var unique_points: int = 0
 
-    while unique_points < 2:
+    while unique_points < 3:
         unique_points = 0
         y_coordinates = []
 
@@ -147,16 +147,20 @@ func _setup_room_types() -> void:
                     _set_room_randomly(next_room)
 
 func _set_room_randomly(room_to_set: Room) -> void:
-    var consecutive_shop := true
+    var invalid := true
 
     var type_candidate: Room.Type
 
-    while consecutive_shop:
+    while invalid:
         type_candidate = _get_random_room_type_by_weights()
         var is_shop := type_candidate == Room.Type.SHOP
         var has_shop_parent := _room_has_parents_of_type(room_to_set, Room.Type.SHOP)
 
-        consecutive_shop = is_shop and has_shop_parent
+        var consecutive_shop = is_shop and has_shop_parent
+
+        var forbidden_boss_minus_2 := (room_to_set.row == FLOORS -3) and is_shop
+
+        invalid = consecutive_shop or forbidden_boss_minus_2
     
     room_to_set.type = type_candidate
 
