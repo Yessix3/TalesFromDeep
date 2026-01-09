@@ -14,11 +14,6 @@ const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
 
 @onready var current_view: Node = $CurrentView
 @onready var shells_ui: ShellsUI = $TopBar/BarItems/ShellsUI
-@onready var battle_button: Button = $VBoxContainer/BattleButton
-@onready var event_button: Button = $VBoxContainer/EventButton
-@onready var map_button: Button = $VBoxContainer/MapButton
-@onready var rewards_button: Button = $VBoxContainer/RewardsButton
-@onready var shop_button: Button = $VBoxContainer/ShopButton
 
 var status: RunStatus
 
@@ -71,12 +66,6 @@ func _setup_event_connections() -> void:
 	EventManager.event_room_exited.connect(_show_map)
 	EventManager.map_exited.connect(_on_map_exited)
 	EventManager.shop_exited.connect(_show_map)
-
-	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
-	event_button.pressed.connect(_change_view.bind(EVENT_SCENE))
-	map_button.pressed.connect(_show_map)
-	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
 
 func _setup_top_bar():
 	shells_ui.run_status = status
