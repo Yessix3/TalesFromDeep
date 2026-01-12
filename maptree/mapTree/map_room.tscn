@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://corqj2sr5dsto"]
 
 [ext_resource type="Texture2D" uid="uid://c2ge8uqvajnxe" path="res://maptree/TestButtons/GakiTestButtonFight.png" id="1_atpwa"]
-[ext_resource type="Script" uid="uid://vxy6r8bos3bl" path="res://maptree/mapTree/map_room.gd" id="1_r2g1i"]
+[ext_resource type="Script" path="res://maptree/mapTree/map_room.gd" id="1_r2g1i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r2g1i"]
 
@@ -100,6 +100,7 @@ width = 8.0
 default_color = Color(0.24196714, 0.6088124, 0.3227985, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture_filter = 1
 texture = ExtResource("1_atpwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -314,7 +314,6 @@ sources/0 = SubResource("TileSetAtlasSource_qyb5k")
 [node name="Level" instance=ExtResource("1_raxm7")]
 
 [node name="Player" parent="Main/Entities" index="0"]
-z_index = 10
 position = Vector2(72, 7)
 
 [node name="Dummy" parent="Main/Entities" index="1" instance=ExtResource("2_py88r")]
