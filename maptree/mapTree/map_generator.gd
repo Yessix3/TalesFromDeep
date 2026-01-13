@@ -4,7 +4,7 @@ extends Node
 const X_DIST := 160              # amount of pixels between the nodes
 const Y_DIST := 130              # amount of pixels between floors
 const PLACEMENT_RANDOMNESS := 5 # amount of pixels that nodes are allowed to move at their place
-const FLOORS := 10              # number of rows
+const FLOORS := 11              # number of rows
 const MAP_WIDTH := 5            # number of columns
 const PATHS := 4                # maximum number of paths
 const FIGHT_ROOM_WEIGHT := 10.0 
