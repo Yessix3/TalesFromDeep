@@ -1,0 +1,11 @@
+# Godot
+.godot/
+.import/
+.export/
+*.import
+
+# Editor
+.vscode/
+
+# OS
+.DS_Store

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca3tfouf2ebba"]
+
+[ext_resource type="Script" uid="uid://n1uuobqkh5im" path="res://maptree/ui/shells_ui.gd" id="1_6j52p"]
+[ext_resource type="Texture2D" uid="uid://didwnl4k3nq0d" path="res://maptree/TestButtons/GakiTestIconShell.png" id="1_ppqs3"]
+
+[node name="ShellsUI" type="HBoxContainer"]
+offset_right = 184.0
+offset_bottom = 80.0
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+script = ExtResource("1_6j52p")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_ppqs3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 35
+text = "99999"
+vertical_alignment = 1

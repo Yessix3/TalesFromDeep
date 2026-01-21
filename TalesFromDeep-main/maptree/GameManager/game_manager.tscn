@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://brpdfbomvvdcn"]
+
+[ext_resource type="Script" uid="uid://brnlao06xwx11" path="res://maptree/GameManager/game_manager.gd" id="1_7v3xg"]
+[ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_sq34f"]
+[ext_resource type="PackedScene" uid="uid://bx6ktlnnmxapo" path="res://maptree/mapTree/MapTree.tscn" id="3_sq34f"]
+[ext_resource type="PackedScene" uid="uid://ca3tfouf2ebba" path="res://maptree/ui/shells_ui.tscn" id="4_ff0qb"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_7v3xg")
+run_startup = ExtResource("2_sq34f")
+
+[node name="MapTree" parent="." instance=ExtResource("3_sq34f")]
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="TopBar" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Background" type="ColorRect" parent="TopBar"]
+custom_minimum_size = Vector2(36, 80)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.03529412, 0.03529412, 0.03529412, 0.34901962)
+
+[node name="BarItems" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ShellsUI" parent="TopBar/BarItems" instance=ExtResource("4_ff0qb")]
+layout_mode = 2
+
+[node name="Placeholder" type="Control" parent="TopBar/BarItems"]
+layout_mode = 2
+size_flags_horizontal = 3

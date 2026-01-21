@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://ce4jjmnj880vt"]
+
+[ext_resource type="FontFile" uid="uid://y567gfu4e353" path="res://maptree/ui/font/Algeria-mZ9.ttf" id="1_lbc5w"]
+
+[resource]
+base_font = ExtResource("1_lbc5w")

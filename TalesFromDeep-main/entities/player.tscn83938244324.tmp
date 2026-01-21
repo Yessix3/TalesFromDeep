@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckfcfplaakjef"]
+
+[ext_resource type="PackedScene" uid="uid://crklklhtepyvf" path="res://entities/entity.tscn" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://bl0pfgg7vt6r6" path="res://icon.svg" id="2_e4p34"]
+[ext_resource type="Script" uid="uid://cu5vr1dr4f7fi" path="res://entities/player.gd" id="2_rfe5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfe5m"]
+size = Vector2(26, 26)
+
+[node name="Player" instance=ExtResource("1_b0kkn")]
+script = ExtResource("2_rfe5m")
+speed = null
+acceleration = null
+friction = null
+jump_height = null
+gravity = null
+terminal_velocity = null
+wall_cling_velocity = null
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_rfe5m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_e4p34")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+zoom = Vector2(3, 3)
+
+[node name="jump_delay" type="Timer" parent="Timers" index="0"]
+wait_time = 0.15
+one_shot = true
+
+[node name="jump_buffer" type="Timer" parent="Timers" index="1"]
+wait_time = 0.1
+one_shot = true
