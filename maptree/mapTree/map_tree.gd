@@ -6,7 +6,7 @@ const MAP_ROOM = preload("res://maptree/mapTree/map_room.tscn")
 const MAP_LINE = preload("res://maptree/mapTree/map_line.tscn")
 
 ###############
-const CAMERA_MARGIN_TOP := 450.0
+const CAMERA_MARGIN_TOP := 480.0
 const CAMERA_MARGIN_BOTTOM := -80.0
 ##########
 

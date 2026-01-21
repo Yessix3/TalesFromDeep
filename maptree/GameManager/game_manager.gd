@@ -2,7 +2,7 @@ class_name GameManager
 extends Node
 
 const BATTLE_SCENE := preload("res://maptree/dummyFight/dummyFight.tscn")
-const BATTLE_REWARD_SCENE := preload("res://maptree/rewardSzene/reward_dummy.tscn")
+const BATTLE_REWARD_SCENE := preload("res://maptree/rewardSzene/battle_reward.tscn")
 const EVENT_SCENE := preload("res://maptree/dummyEvent/event_dummy.tscn")
 #const MAP_SCENE := preload("res://maptree/mapTree/mapDummy.tscn")
 const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
@@ -14,11 +14,6 @@ const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
 
 @onready var current_view: Node = $CurrentView
 @onready var shells_ui: ShellsUI = $TopBar/BarItems/ShellsUI
-@onready var battle_button: Button = $VBoxContainer/BattleButton
-@onready var event_button: Button = $VBoxContainer/EventButton
-@onready var map_button: Button = $VBoxContainer/MapButton
-@onready var rewards_button: Button = $VBoxContainer/RewardsButton
-@onready var shop_button: Button = $VBoxContainer/ShopButton
 
 var status: RunStatus
 
@@ -40,10 +35,8 @@ func _start_run() -> void:
 	map.unlock_floor(0)
 
 
-	#return new_view #??
 
-
-func _change_view(scene: PackedScene) -> void:
+func _change_view(scene: PackedScene) -> Node:
 	##########
 	map.hide_map()
 	map.disable_scroll()
@@ -54,6 +47,8 @@ func _change_view(scene: PackedScene) -> void:
 	get_tree().paused = false
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
+
+	return new_view 
 
 func _show_map() -> void:
 	if current_view.get_child_count() > 0:
@@ -66,20 +61,21 @@ func _show_map() -> void:
 	map.unlock_next_rooms()
 
 func _setup_event_connections() -> void:
-	EventManager.fight_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
+	EventManager.fight_won.connect(_on_battle_won)
 	EventManager.battle_reward_exited.connect(_show_map)
 	EventManager.event_room_exited.connect(_show_map)
 	EventManager.map_exited.connect(_on_map_exited)
 	EventManager.shop_exited.connect(_show_map)
 
-	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
-	event_button.pressed.connect(_change_view.bind(EVENT_SCENE))
-	map_button.pressed.connect(_show_map)
-	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
-
 func _setup_top_bar():
 	shells_ui.run_status = status
+
+func _on_battle_won() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	reward_scene.run_status = status
+
+	# temporary
+	reward_scene.add_shells_reward(77)
 
 func _on_map_exited(room: Room) -> void:
 	match room.type:

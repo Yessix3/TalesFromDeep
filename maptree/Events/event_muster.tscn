@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://67lmi3g1dnr3"]
+
+[ext_resource type="FontFile" uid="uid://bkwyiy5jwrbfr" path="res://maptree/ui/font/Skynight.otf" id="1_5ube4"]
+[ext_resource type="PackedScene" uid="uid://0xlyb4l263wf" path="res://maptree/Events/event_option_button.tscn" id="2_xbnql"]
+
+[sub_resource type="Gradient" id="Gradient_sx0wx"]
+colors = PackedColorArray(0.18039216, 0.16470589, 0.5686275, 1, 0.15294118, 0.15294118, 0.15294118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5ube4"]
+gradient = SubResource("Gradient_sx0wx")
+
+[node name="EventMuster" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_5ube4")
+
+[node name="EventTitle" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 25.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "Seeteufel"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="StoryContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 551.0
+offset_bottom = 573.0
+
+[node name="MarginContainer" type="MarginContainer" parent="StoryContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StoryContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StoryContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 253)
+layout_mode = 2
+
+[node name="Situation" type="Label" parent="StoryContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5ube4")
+theme_override_font_sizes/font_size = 30
+text = "Du findest diese Nachricht und 
+fragst dich jetzt was du tun sollst?"
+
+[node name="OptionsContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 601.0
+offset_top = 150.0
+offset_right = 1102.0
+offset_bottom = 573.0
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Options" type="VBoxContainer" parent="OptionsContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Option A" parent="OptionsContainer/MarginContainer/Options" instance=ExtResource("2_xbnql")]
+layout_mode = 2
+button_text = "Option A"
+
+[node name="Option B" parent="OptionsContainer/MarginContainer/Options" instance=ExtResource("2_xbnql")]
+layout_mode = 2
+button_text = "Option B"
+
+[node name="Option C" parent="OptionsContainer/MarginContainer/Options" instance=ExtResource("2_xbnql")]
+layout_mode = 2
+button_text = "Option C"
