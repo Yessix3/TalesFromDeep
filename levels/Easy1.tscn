@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://c7ms5aa0ltk6j"]
+[gd_scene load_steps=14 format=4 uid="uid://c7ms5aa0ltk6j"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_er5ea"]
 [ext_resource type="PackedScene" uid="uid://cpf4j16mopmyq" path="res://entities/dummy.tscn" id="2_n0o0k"]
-[ext_resource type="Texture2D" uid="uid://c0guif0vltio0" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_gwbck"]
-[ext_resource type="Texture2D" uid="uid://dnrep8fs5n565" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_dmwvp"]
-[ext_resource type="PackedScene" uid="uid://bhyfxs8klc6ja" path="res://move_gup.tscn" id="5_0ys71"]
-[ext_resource type="PackedScene" uid="uid://8jlttrh2p2m2" path="res://move_side_gpf.tscn" id="6_v3ypu"]
+[ext_resource type="Texture2D" uid="uid://rw1viu4y54fm" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_gwbck"]
+[ext_resource type="Texture2D" uid="uid://ddkf1k4pkmvj2" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_dmwvp"]
+[ext_resource type="PackedScene" uid="uid://bhyfxs8klc6ja" path="res://levels/Level_Elements/move_gup.tscn" id="5_0ys71"]
+[ext_resource type="PackedScene" uid="uid://8jlttrh2p2m2" path="res://levels/Level_Elements/move_side_gpf.tscn" id="6_v3ypu"]
+[ext_resource type="PackedScene" uid="uid://c5kk2phxygmtg" path="res://entities/SeeIgel.tscn" id="7_n0o0k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1dg4"]
 texture = ExtResource("3_gwbck")
@@ -348,6 +349,10 @@ position = Vector2(823, 97)
 
 [node name="MovingPF" parent="." index="4" instance=ExtResource("6_v3ypu")]
 position = Vector2(54, -59)
+
+[node name="Enemy_SeeIgel" parent="." index="5" instance=ExtResource("7_n0o0k")]
+z_index = 9
+position = Vector2(548, 124)
 
 [connection signal="player_hit" from="Main/Entities/Player" to="Main/Entities/Dummy" method="_on_player_player_hit"]
 [connection signal="knockback" from="Main/Entities/Dummy" to="Main/Entities/Player" method="_on_dummy_knockback"]
