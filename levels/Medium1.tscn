@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=4 uid="uid://bn58l7oqd5u77"]
 
-[ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_58vug"]
-[ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Tileset_TalesFromDeep.png" id="2_pwt4q"]
+[ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_24v6k"]
+[ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2dq0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xkyh"]
-texture = ExtResource("2_pwt4q")
+texture = ExtResource("2_2dq0o")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -176,7 +176,7 @@ texture = ExtResource("2_pwt4q")
 sources/0 = SubResource("TileSetAtlasSource_6xkyh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwt4q"]
-texture = ExtResource("2_pwt4q")
+texture = ExtResource("2_2dq0o")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -347,7 +347,7 @@ texture = ExtResource("2_pwt4q")
 [sub_resource type="TileSet" id="TileSet_6xkyh"]
 sources/0 = SubResource("TileSetAtlasSource_pwt4q")
 
-[node name="Level" instance=ExtResource("1_58vug")]
+[node name="Level" instance=ExtResource("1_24v6k")]
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2
@@ -360,3 +360,10 @@ tile_set = SubResource("TileSet_8cf2o")
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="3"]
 tile_map_data = PackedByteArray("AAAZAPL/AAAKAAgAAAAZAPP/AAAKAAkAAAAZAPT/AAAKAAoAAAAZAPX/AAAKAAsAAAAaAPL/AAALAAgAAAAaAPP/AAALAAkAAAAaAPT/AAALAAoAAAAaAPX/AAALAAsAAAAgAPf/AAAKAAgAABAfAPf/AAALAAgAABAgAPj/AAAKAAkAABAfAPj/AAALAAkAABAgAPn/AAAKAAoAABAfAPn/AAALAAoAABAgAPr/AAAKAAsAABAfAPr/AAALAAsAABD9//L/AAAKAAgAABD8//L/AAALAAgAABD9//P/AAAKAAkAABD8//P/AAALAAkAABD9//T/AAAKAAoAABD8//T/AAALAAoAABD9//X/AAAKAAsAABD8//X/AAALAAsAABALAPL/AAALAAgAAAAKAPL/AAAKAAgAAAALAPP/AAALAAkAAAAKAPP/AAAKAAkAAAALAPT/AAALAAoAAAAKAPT/AAAKAAoAAAALAPX/AAALAAsAAAAKAPX/AAAKAAsAAAARAAIAAAALAAgAAAAQAAIAAAAKAAgAAAARAAMAAAALAAkAAAAQAAMAAAAKAAkAAAARAAQAAAALAAoAAAAQAAQAAAAKAAoAAAARAAUAAAALAAsAAAAQAAUAAAAKAAsAAAAYAAIAAAAMAAgAABAYAAMAAAAMAAkAABAJAAYAAAAMAAgAABAJAAcAAAAMAAkAABAKAAYAAAAMAAgAABAKAAcAAAAMAAkAABALAAYAAAAMAAgAABALAAcAAAAMAAkAABAhAPf/AAAMAAgAAAAhAPj/AAAMAAkAAAAYAPL/AAAMAAgAAAAYAPP/AAAMAAkAAAASAPL/AAAMAAgAABASAPP/AAAMAAkAABAMAPL/AAAMAAgAABAMAPP/AAAMAAkAABAJAPL/AAAMAAgAAAAJAPP/AAAMAAkAAAADAPL/AAAMAAgAABADAPP/AAAMAAkAABD+//L/AAAMAAgAABD+//P/AAAMAAkAABAoAP3/AAAMAAgAABAoAP7/AAAMAAkAABAqAP3/AAAKAAgAAAAqAP7/AAAKAAkAAAAqAP//AAAKAAoAAAAqAAAAAAAKAAsAAAArAP3/AAALAAgAAAArAP7/AAALAAkAAAArAP//AAALAAoAAAArAAAAAAALAAsAAAAtAP3/AAAMAAgAABAtAP7/AAAMAAkAABA=")
 tile_set = SubResource("TileSet_6xkyh")
+
+[node name="Difficulty" type="Label" parent="." index="4"]
+offset_left = -45.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = -41.0
+text = "medium_level"
