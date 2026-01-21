@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgeyr4ucgfci6"]
+
+[ext_resource type="Script" uid="uid://dqnkebsmsf2gn" path="res://maptree/dummyFight/dummyFight.gd" id="1_61lv5"]
+[ext_resource type="PackedScene" uid="uid://b75rvwtqh6mxq" path="res://maptree/dummyFight/player/player.tscn" id="2_w5n7a"]
+[ext_resource type="Script" uid="uid://cac771n0njmga" path="res://maptree/dummyFight/player/player.gd" id="3_odsyg"]
+[ext_resource type="Script" uid="uid://bk6v4sqqrtswy" path="res://maptree/dummyFight/player/human_controller.gd" id="4_d3okt"]
+[ext_resource type="PackedScene" uid="uid://dbfdpc8qc0q85" path="res://maptree/ui/battle_over_panel.tscn" id="5_sbawq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80nbo"]
+
+[sub_resource type="Gradient" id="Gradient_80nbo"]
+offsets = PackedFloat32Array(0.99333334, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2o6t"]
+gradient = SubResource("Gradient_80nbo")
+width = 1152
+height = 40
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
+size = Vector2(1152, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isg3q"]
+size = Vector2(300, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(20, 648)
+
+[node name="DummyFight" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_61lv5")
+player = NodePath("Player")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+
+[node name="Plattform" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_80nbo")
+constant_linear_velocity = Vector2(20, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plattform"]
+position = Vector2(572, 600)
+texture = SubResource("GradientTexture2D_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plattform"]
+position = Vector2(576, 600)
+shape = SubResource("RectangleShape2D_feb5d")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="Win" type="Area2D" parent="."]
+position = Vector2(1002, 324)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+shape = SubResource("RectangleShape2D_isg3q")
+debug_color = Color(0.27058825, 0.7529412, 0.38039216, 0.6862745)
+
+[node name="Lose" type="Area2D" parent="."]
+position = Vector2(150, 324)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lose"]
+shape = SubResource("RectangleShape2D_isg3q")
+debug_color = Color(0.98951465, 0.43120593, 0.52763873, 0.6862745)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_w5n7a")]
+position = Vector2(-25, 30)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("3_odsyg")
+
+[node name="HumanController" type="Node" parent="Player"]
+script = ExtResource("4_d3okt")
+metadata/_custom_type_script = "uid://bk6v4sqqrtswy"
+
+[node name="WinLable" type="Label" parent="."]
+offset_left = 950.0
+offset_right = 983.0
+offset_bottom = 23.0
+scale = Vector2(3, 3)
+text = "WIN"
+
+[node name="LooseLabel" type="Label" parent="."]
+offset_left = 75.0
+offset_right = 127.0
+offset_bottom = 23.0
+scale = Vector2(3, 3)
+text = "LOSE"
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1162, 324)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("5_sbawq")]
+visible = false
+
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
+[connection signal="body_entered" from="Lose" to="." method="_on_lose_body_entered"]

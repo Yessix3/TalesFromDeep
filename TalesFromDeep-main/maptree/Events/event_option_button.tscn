@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://0xlyb4l263wf"]
+
+[ext_resource type="Script" uid="uid://cn2gjkl84oct8" path="res://maptree/Events/event_option_button.gd" id="1_w0x6u"]
+
+[node name="EventOptionButton" type="Button"]
+custom_minimum_size = Vector2(451, 107)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_w0x6u")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="OptionText" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,262 @@
+extends CharacterBody2D
+
+@export var friction := 800
+@export var gravity := 400
+@onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
+@onready var animated_sprite = $AnimatedSprite2D
+var face_right = false
+var is_attacking = false
+var terminal_velocity = 600
+var current_decision := "idle"
+var last_decision := "wait"
+@export var phase := 2
+
+func _ready():
+	print(player)
+	
+
+func _process(delta):
+	apply_gravity(delta)
+	apply_friction(delta)
+	if current_decision == "idle":
+		face_player()
+		if phase == 1:
+			make_decisionP1()
+		else:
+			make_decisionP2()
+		attack(current_decision)
+	move_and_slide()
+	
+	
+
+func apply_gravity(delta):
+	velocity.y += gravity*delta
+	velocity.y = min(velocity.y, terminal_velocity)
+
+func apply_friction(delta):
+	if is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
+func face_player():
+	if player.global_position.x > global_position.x:
+		face_right = true
+	else:
+		face_right = false
+	print(face_right)
+	animated_sprite.flip_h = not face_right
+
+
+func make_decisionP1():
+	current_decision = "acting"
+	var random = randf()
+	if player.global_position.y < global_position.y-60:
+		if last_decision == "roar":
+			last_decision = "ground_poke"
+			current_decision = "ground_poke"
+		else: 
+			if random < 0.2:
+				last_decision = "ground_poke"
+				current_decision = "ground_poke"
+			else:
+				if abs(player.global_position.x - global_position.x) < 120:
+					last_decision = "roar"
+					current_decision = "roar"
+				else:
+					last_decision = "dash"
+					current_decision = "dash"
+	else:
+		if abs(player.global_position.x - global_position.x) < 130:
+			if random < 0.3 or last_decision == "dash":
+				last_decision = "melee"
+				current_decision = "melee"
+			else:
+				last_decision = "dash"
+				current_decision = "dash" 
+		else:
+			last_decision = "dash"
+			current_decision = "dash" 
+
+
+func make_decisionP2():
+	current_decision = "acting"
+	var random = randf()
+	if player.global_position.y < global_position.y-60:
+		last_decision = "dragoon"
+		current_decision = "dragoon"
+	else:
+		if random < 0.5:
+			last_decision = "leap"
+			current_decision = "leap"
+		else:
+			last_decision = "throw"
+			current_decision = "throw"
+
+
+
+
+
+func attack(move):
+	print(move)
+	if move == "dash":
+		dashP1()
+	if move == "melee":
+		meleeP1()
+	if move == "ground_poke":
+		ground_pokeP1()
+	if move == "roar":
+		roarP1()
+	if move == "dragoon":
+		dragoonP2()
+	if move == "leap":
+		leapP2()
+	if move == "throw":
+		throwP2()
+
+
+
+
+
+
+
+func dashP1():
+	animated_sprite.play("Dash_Windup")
+
+func meleeP1():
+	animated_sprite.play("Melee_Windup")
+
+func ground_pokeP1():
+	animated_sprite.play("Ground_Poke_Windup")
+
+func roarP1():
+	animated_sprite.play("Roar_Windup")
+
+func dragoonP2():
+	animated_sprite.play("Dragoon_Windup")
+
+func leapP2():
+	animated_sprite.play("Leap_Windup")
+
+func throwP2():
+	animated_sprite.play("Throw_Windup")
+
+
+
+
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == "Dash_Recovery":
+		animated_sprite.play("Idle_P1")
+		current_decision = "idle"
+	if animated_sprite.animation == "Dash_Attack":
+		animated_sprite.play("Dash_Recovery")
+		$AttackP1Dash/AttackRight.disabled = true
+		$AttackP1Dash/AttackLeft.disabled = true
+	if animated_sprite.animation == "Dash_Windup":
+		animated_sprite.play("Dash_Attack")
+		dash_to_player(1)
+		if face_right:
+			$AttackP1Dash/AttackRight.disabled = false
+		else:
+			$AttackP1Dash/AttackLeft.disabled = false
+	
+	if animated_sprite.animation == "Melee_Recovery":
+		animated_sprite.play("Idle_P1")
+		current_decision = "idle"
+	if animated_sprite.animation == "Melee_Attack":
+		animated_sprite.play("Melee_Recovery")
+		$AttackP1Melee/AttackRight.disabled = true
+		$AttackP1Melee/AttackLeft.disabled = true
+	if animated_sprite.animation == "Melee_Windup":
+		animated_sprite.play("Melee_Attack")
+		if face_right:
+			$AttackP1Melee/AttackRight.disabled = false
+		else:
+			$AttackP1Melee/AttackLeft.disabled = false
+	
+	if animated_sprite.animation == "Roar_Recovery":
+		animated_sprite.play("Idle_P1")
+		current_decision = "idle"
+	if animated_sprite.animation == "Roar_Attack":
+		animated_sprite.play("Roar_Recovery")
+		$AttackP1Roar/Attack.disabled = true
+	if animated_sprite.animation == "Roar_Windup":
+		animated_sprite.play("Roar_Attack")
+		$AttackP1Roar/Attack.disabled = false
+	
+	if animated_sprite.animation == "Ground_Poke_Recovery":
+		animated_sprite.play("Idle_P1")
+		current_decision = "idle"
+	if animated_sprite.animation == "Ground_Poke_Attack":
+		animated_sprite.play("Ground_Poke_Recovery")
+	if animated_sprite.animation == "Ground_Poke_Windup":
+		animated_sprite.play("Ground_Poke_Attack")
+	
+	if animated_sprite.animation == "Dragoon_Recovery":
+		animated_sprite.play("Idle_P2")
+		current_decision = "idle"
+	if animated_sprite.animation == "Dragoon_Attack2":
+		animated_sprite.play("Dragoon_Recovery")
+		$AttackP2Dragoon/Attack.disabled = true
+	if animated_sprite.animation == "Dragoon_Attack1":
+		animated_sprite.play("Dragoon_Attack2")
+		$AttackP2Dragoon/Attack.disabled = false
+	if animated_sprite.animation == "Dragoon_Windup":
+		animated_sprite.play("Dragoon_Attack1")
+		teleport_to_player_x()
+		
+	
+	if animated_sprite.animation == "Leap_Recovery":
+		animated_sprite.play("Idle_P2")
+		current_decision = "idle"
+	if animated_sprite.animation == "Leap_Attack2":
+		animated_sprite.play("Leap_Recovery")
+		$CollisionShape2D.disabled = false
+		$AttackP2Leap/AttackRight.disabled = true
+		$AttackP2Leap/AttackLeft.disabled = true
+	if animated_sprite.animation == "Leap_Attack1":
+		animated_sprite.play("Leap_Attack2")
+		if face_right:
+			$AttackP2Leap/AttackRight.disabled = false
+		else:
+			$AttackP2Leap/AttackLeft.disabled = false
+	if animated_sprite.animation == "Leap_Windup":
+		animated_sprite.play("Leap_Attack1")
+		leap_to_player()
+		
+		
+	
+	if animated_sprite.animation == "Throw_Recovery":
+		animated_sprite.play("Idle_P2")
+		current_decision = "idle"
+	if animated_sprite.animation == "Throw_Attack":
+		animated_sprite.play("Throw_Recovery")
+	if animated_sprite.animation == "Throw_Windup":
+		animated_sprite.play("Throw_Attack")
+
+
+
+
+
+func teleport_to_player_x():
+	global_position.x = player.global_position.x
+
+
+func leap_to_player():
+	velocity.y = -200
+	$CollisionShape2D.disabled = true
+	$Timers/JumpTimer.start()
+
+
+func dash_to_player(x):
+	var distance = abs(player.global_position.x - global_position.x)
+	if face_right:
+		velocity.x = (400 + distance*1.1)*x
+	else:
+		velocity.x = -(400 + distance*1.1)*x
+	
+
+
+
+func _on_jump_timer_timeout():
+	dash_to_player(0.5)
