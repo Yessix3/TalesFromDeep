@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5kk2phxygmtg"]
+
+[ext_resource type="Script" uid="uid://c1w3n145n30cc" path="res://entities/see_igel.gd" id="1_ks5ou"]
+[ext_resource type="Texture2D" uid="uid://bue7dl3yaoy2k" path="res://assets/SeeIgel/Igel_Attack1.png" id="1_whbht"]
+[ext_resource type="Texture2D" uid="uid://ccncgnge5n2oc" path="res://assets/SeeIgel/Igel_Attack2.png" id="2_jxm8o"]
+[ext_resource type="Texture2D" uid="uid://b5mkw0m0isc36" path="res://assets/SeeIgel/Igel_Attack3.png" id="3_8evq4"]
+[ext_resource type="Texture2D" uid="uid://cev4o1l0710ev" path="res://assets/SeeIgel/Igel_Attack4.png" id="4_iuqdp"]
+[ext_resource type="Texture2D" uid="uid://bdmi3q8xymc4h" path="res://assets/SeeIgel/Igel_Attack5.png" id="5_bsrqs"]
+[ext_resource type="Texture2D" uid="uid://osgmsetwibl7" path="res://assets/SeeIgel/Igel_Attack6.png" id="6_y35bn"]
+[ext_resource type="Texture2D" uid="uid://3qogw7h542jf" path="res://assets/SeeIgel/Igel_Attack7.png" id="7_2s1bu"]
+[ext_resource type="Texture2D" uid="uid://dgf5hgjpy3ag3" path="res://assets/SeeIgel/Igel_Attack8.png" id="8_8ddul"]
+[ext_resource type="Texture2D" uid="uid://0ypiht7y2kxu" path="res://assets/SeeIgel/Igel_Attack9.png" id="9_0xabl"]
+[ext_resource type="Texture2D" uid="uid://5n1h65pks1el" path="res://assets/SeeIgel/Igel_Attack10.png" id="10_4l0ul"]
+[ext_resource type="Texture2D" uid="uid://8mtpx41ecw1h" path="res://assets/SeeIgel/Igel_Attack11.png" id="11_w6yj6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_whbht"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vb5x8"]
+animations = [{
+"frames": [{
+"duration": 4.11,
+"texture": ExtResource("1_whbht")
+}, {
+"duration": 1.41,
+"texture": ExtResource("2_jxm8o")
+}, {
+"duration": 1.51,
+"texture": ExtResource("3_8evq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iuqdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bsrqs")
+}, {
+"duration": 2.81,
+"texture": ExtResource("6_y35bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2s1bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2s1bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8ddul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0xabl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4l0ul")
+}, {
+"duration": 0.91,
+"texture": ExtResource("11_w6yj6")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.01,
+"texture": ExtResource("1_whbht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jxm8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8evq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iuqdp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="Enemy_SeeIgel" type="CharacterBody2D"]
+script = ExtResource("1_ks5ou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_whbht")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 0)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_vb5x8")
+animation = &"idle"

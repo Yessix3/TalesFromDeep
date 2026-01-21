@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dsbbkayb322gq"]
+[gd_scene load_steps=10 format=4 uid="uid://dsbbkayb322gq"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_tb1rl"]
 [ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_ylp3l"]
-[ext_resource type="PackedScene" uid="uid://b5g1cwg25gf1h" path="res://move_gUP_Down.tscn" id="3_kdus6"]
-[ext_resource type="PackedScene" uid="uid://8jlttrh2p2m2" path="res://move_side_gpf.tscn" id="4_q8no5"]
+[ext_resource type="PackedScene" uid="uid://b5g1cwg25gf1h" path="res://levels/Level_Elements/move_gUP_Down.tscn" id="3_kdus6"]
+[ext_resource type="PackedScene" uid="uid://8jlttrh2p2m2" path="res://levels/Level_Elements/move_side_gpf.tscn" id="4_q8no5"]
+[ext_resource type="PackedScene" uid="uid://c5kk2phxygmtg" path="res://entities/SeeIgel.tscn" id="5_35jwa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixs1f"]
 texture = ExtResource("2_ylp3l")
@@ -378,3 +379,7 @@ position = Vector2(200, 263)
 [node name="MovingPF" parent="." index="6" instance=ExtResource("4_q8no5")]
 z_index = 7
 position = Vector2(-356, -54)
+
+[node name="Enemy_SeeIgel" parent="." index="7" instance=ExtResource("5_35jwa")]
+z_index = 9
+position = Vector2(859, -228)
