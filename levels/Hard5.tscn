@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_eddnx"]
 [ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_01i5m"]
-[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://move_side_bpf.tscn" id="3_8ebu1"]
-[ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://move_bUP_Down.tscn" id="4_tcurt"]
+[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="3_8ebu1"]
+[ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://levels/Level_Elements/move_bUP_Down.tscn" id="4_tcurt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyeqj"]
 texture = ExtResource("2_01i5m")

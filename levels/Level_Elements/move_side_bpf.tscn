@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dflpuapgvyhgj"]
+[gd_scene load_steps=6 format=3 uid="uid://rahgsikn4ddi"]
 
-[ext_resource type="Texture2D" uid="uid://b4u2vclpadeup" path="res://assets/BrownPF.png" id="1_upisc"]
+[ext_resource type="Texture2D" uid="uid://bjskxdldipmmd" path="res://assets/Level_Sprites/BluePF (2).png" id="1_aqao0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17lpd"]
 size = Vector2(83, 4)
@@ -43,14 +43,13 @@ _data = {
 &"RESET": SubResource("Animation_17lpd")
 }
 
-[node name="Move_side" type="Node2D"]
+[node name="MovingPF" type="Node2D"]
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
-position = Vector2(155, -43)
-scale = Vector2(1.328125, 1)
-texture = ExtResource("1_upisc")
+position = Vector2(0, 1)
+texture = ExtResource("1_aqao0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(28.5, -35)
