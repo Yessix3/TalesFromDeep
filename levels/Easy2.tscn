@@ -1,7 +1,11 @@
 [gd_scene load_steps=8 format=4 uid="uid://bstf0vbpk6si6"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_xmgyg"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2m3h2"]
+=======
+[ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2m3h2"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="3_yhc15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpgdq"]
@@ -369,7 +373,7 @@ offset_left = -39.0
 offset_top = -60.0
 offset_right = 54.0
 offset_bottom = -38.0
-text = "Easy_Level"
+text = "Easy_Level_2"
 
 [node name="MovingPF" parent="." index="5" instance=ExtResource("3_yhc15")]
 z_index = 6

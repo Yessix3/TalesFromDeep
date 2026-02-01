@@ -342,7 +342,7 @@ offset_left = 32.0
 offset_top = -56.0
 offset_right = 125.0
 offset_bottom = -34.0
-text = "easy_level"
+text = "easy_level_1"
 
 [node name="move_up" parent="." index="3" instance=ExtResource("5_0ys71")]
 position = Vector2(823, 97)
@@ -352,7 +352,11 @@ position = Vector2(54, -59)
 
 [node name="Enemy_SeeIgel" parent="." index="5" instance=ExtResource("7_n0o0k")]
 z_index = 9
+<<<<<<< Updated upstream
 position = Vector2(552, 123)
+=======
+position = Vector2(545, 124)
+>>>>>>> Stashed changes
 
 [connection signal="player_hit" from="Main/Entities/Player" to="Main/Entities/Dummy" method="_on_player_player_hit"]
 [connection signal="knockback" from="Main/Entities/Dummy" to="Main/Entities/Player" method="_on_dummy_knockback"]

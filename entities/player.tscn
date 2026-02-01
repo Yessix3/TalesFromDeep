@@ -83,7 +83,7 @@ animations = [{
 radius = 16.0
 height = 66.0
 
-[node name="Player" instance=ExtResource("1_b0kkn")]
+[node name="Player" groups=["player"] instance=ExtResource("1_b0kkn")]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("2_rfe5m")
@@ -93,7 +93,7 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_e4p34")
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 texture_filter = 1
