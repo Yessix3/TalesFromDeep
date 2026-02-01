@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5kk2phxygmtg"]
+[gd_scene load_steps=18 format=3 uid="uid://c5kk2phxygmtg"]
 
 [ext_resource type="Script" uid="uid://c1w3n145n30cc" path="res://entities/see_igel.gd" id="1_ks5ou"]
 [ext_resource type="Texture2D" uid="uid://bue7dl3yaoy2k" path="res://assets/SeeIgel/Igel_Attack1.png" id="1_whbht"]
@@ -76,7 +76,19 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ks5ou"]
+radius = 34.0
+height = 98.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ownv4"]
+radius = 108.01852
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2e356"]
+radius = 1.5373654
+
 [node name="Enemy_SeeIgel" type="CharacterBody2D"]
+collision_layer = 12
+collision_mask = 2
 script = ExtResource("1_ks5ou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -88,4 +100,87 @@ shape = SubResource("CapsuleShape2D_whbht")
 position = Vector2(-3, 0)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_vb5x8")
-animation = &"idle"
+animation = &"attack"
+frame = 10
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="SpikeHitbox" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeHitbox"]
+position = Vector2(-3, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ks5ou")
+
+[node name="Detection_Area" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area"]
+position = Vector2(-1, -8)
+shape = SubResource("CircleShape2D_ownv4")
+
+[node name="SpikeTips" type="Node2D" parent="."]
+
+[node name="Spike1" type="Marker2D" parent="SpikeTips"]
+position = Vector2(-45, 7)
+
+[node name="TipArea" type="Area2D" parent="SpikeTips/Spike1"]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTips/Spike1/TipArea"]
+position = Vector2(12.999998, -3)
+rotation = 1.3613569
+shape = SubResource("CapsuleShape2D_2e356")
+
+[node name="Spike2" type="Marker2D" parent="SpikeTips"]
+position = Vector2(-43, -35)
+
+[node name="TipArea" type="Area2D" parent="SpikeTips/Spike2"]
+position = Vector2(0, 1)
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTips/Spike2/TipArea"]
+position = Vector2(10, 9)
+rotation = 2.3387413
+shape = SubResource("CapsuleShape2D_2e356")
+
+[node name="Spike3" type="Marker2D" parent="SpikeTips"]
+position = Vector2(-1, -46)
+
+[node name="TipArea" type="Area2D" parent="SpikeTips/Spike3"]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTips/Spike3/TipArea"]
+position = Vector2(-1, 14)
+rotation = 3.1939526
+shape = SubResource("CapsuleShape2D_2e356")
+
+[node name="Spike4" type="Marker2D" parent="SpikeTips"]
+position = Vector2(43, -29)
+
+[node name="TipArea" type="Area2D" parent="SpikeTips/Spike4"]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTips/Spike4/TipArea"]
+position = Vector2(-12, 8)
+rotation = 4.1538835
+shape = SubResource("CapsuleShape2D_2e356")
+
+[node name="Spike5" type="Marker2D" parent="SpikeTips"]
+position = Vector2(44, 0)
+
+[node name="TipArea" type="Area2D" parent="SpikeTips/Spike5"]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeTips/Spike5/TipArea"]
+position = Vector2(-14, -2.9802322e-08)
+rotation = 4.660029
+shape = SubResource("CapsuleShape2D_2e356")
