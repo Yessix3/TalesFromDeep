@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://dsyc5tyicq61g"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_7fuw1"]
-[ext_resource type="Script" uid="uid://cgqt8li85v5dk" path="res://levels/hard_1.gd" id="2_k8mh7"]
+[ext_resource type="Script" uid="uid://cgqt8li85v5dk" path="res://levels/Level_Skripts/hard_1.gd" id="2_k8mh7"]
 [ext_resource type="PackedScene" uid="uid://cpf4j16mopmyq" path="res://entities/dummy.tscn" id="2_qwv7k"]
 [ext_resource type="Texture2D" uid="uid://rw1viu4y54fm" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_k8mh7"]
 [ext_resource type="Texture2D" uid="uid://ddkf1k4pkmvj2" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_lnlp5"]
