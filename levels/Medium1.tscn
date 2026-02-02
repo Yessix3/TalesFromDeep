@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://bn58l7oqd5u77"]
+[gd_scene load_steps=9 format=4 uid="uid://bn58l7oqd5u77"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_24v6k"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2dq0o"]
+[ext_resource type="Script" uid="uid://b5wfck42jdeby" path="res://levels/medium_1.gd" id="2_fyxib"]
 [ext_resource type="PackedScene" uid="uid://c5kk2phxygmtg" path="res://entities/SeeIgel.tscn" id="2_rfcon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xkyh"]
@@ -349,6 +350,7 @@ texture = ExtResource("2_2dq0o")
 sources/0 = SubResource("TileSetAtlasSource_pwt4q")
 
 [node name="Level" instance=ExtResource("1_24v6k")]
+script = ExtResource("2_fyxib")
 
 [node name="Enemy_SeeIgel" parent="Main/Entities" index="1" instance=ExtResource("2_rfcon")]
 z_index = 9

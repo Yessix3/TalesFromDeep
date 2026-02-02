@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://bsfwc4daurfwu"]
+[gd_scene load_steps=11 format=4 uid="uid://bsfwc4daurfwu"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_skacx"]
-[ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_13o05"]
-[ext_resource type="PackedScene" uid="uid://bhyfxs8klc6ja" path="res://move_gup.tscn" id="3_jkf6o"]
+[ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_13o05"]
+[ext_resource type="Script" uid="uid://dawxim74swhsd" path="res://levels/medium_3.gd" id="2_dwd87"]
+[ext_resource type="PackedScene" uid="uid://bhyfxs8klc6ja" path="res://levels/Level_Elements/move_gup.tscn" id="3_jkf6o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkf6o"]
 texture = ExtResource("2_13o05")
@@ -521,6 +522,7 @@ texture = ExtResource("2_13o05")
 sources/0 = SubResource("TileSetAtlasSource_7jxxx")
 
 [node name="Level" instance=ExtResource("1_skacx")]
+script = ExtResource("2_dwd87")
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 3

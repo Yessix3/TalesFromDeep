@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=4 uid="uid://b48ir0f3r3ctr"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_3aogq"]
-[ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_5ql86"]
-[ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://move_bUP_Down.tscn" id="3_dr0gp"]
-[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://move_side_bpf.tscn" id="4_gpdw7"]
+[ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_5ql86"]
+[ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://levels/Level_Elements/move_bUP_Down.tscn" id="3_dr0gp"]
+[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="4_gpdw7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hydfx"]
 texture = ExtResource("2_5ql86")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dsyc5tyicq61g"]
+[gd_scene load_steps=11 format=4 uid="uid://dsyc5tyicq61g"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_7fuw1"]
+[ext_resource type="Script" uid="uid://cgqt8li85v5dk" path="res://levels/hard_1.gd" id="2_k8mh7"]
 [ext_resource type="PackedScene" uid="uid://cpf4j16mopmyq" path="res://entities/dummy.tscn" id="2_qwv7k"]
-[ext_resource type="Texture2D" uid="uid://c0guif0vltio0" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_k8mh7"]
-[ext_resource type="Texture2D" uid="uid://dnrep8fs5n565" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_lnlp5"]
-[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://move_side_bpf.tscn" id="5_0p4p8"]
+[ext_resource type="Texture2D" uid="uid://rw1viu4y54fm" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_k8mh7"]
+[ext_resource type="Texture2D" uid="uid://ddkf1k4pkmvj2" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_lnlp5"]
+[ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="5_0p4p8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpie4"]
 texture = ExtResource("3_k8mh7")
@@ -207,6 +208,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1xfnq")
 
 [node name="Level" instance=ExtResource("1_7fuw1")]
+script = ExtResource("2_k8mh7")
 
 [node name="Dummy" parent="Main/Entities" index="1" instance=ExtResource("2_qwv7k")]
 z_index = 10
