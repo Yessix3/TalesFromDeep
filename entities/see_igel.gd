@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var detection_area: Area2D = $Detection_Area
 @onready var spike_area: Area2D = $SpikeHitbox
 @onready var collision_shape: CollisionShape2D = $SpikeHitbox/CollisionShape2D
+@onready var attack_cooldown: Timer = $AttackCooldown
 
 var hitbox_shape: CapsuleShape2D = null
 var player_in_range := false
@@ -59,6 +60,7 @@ func _process(delta):
             if tip_area:
                 tip_area.monitoring = (sprite.frame == SPIKE_FRAME)
 
+
 func attack():
     if sprite.animation != "attack":
         sprite.play("attack")
@@ -79,7 +81,7 @@ func _on_detection_exited(body: Node):
 func _on_tip_hit(body: Node):
     if body.is_in_group("player"):
         print("TOOK DAMAGE")
-        #body.take_damage(1)  # <-- deine eigene Damage-Funktion
+        #body.take_damage(1)  # <--  Damage-Funktion noch erstellen und hier einfügen
 
 func update_hitbox():
     if spike_tips.size() == 0 or hitbox_shape == null:
