@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://3daunrdyachn"]
+[gd_scene load_steps=8 format=4 uid="uid://3daunrdyachn"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_ibub5"]
-[ext_resource type="Texture2D" uid="uid://uiu0tsx6tofj" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_4cin3"]
+[ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_4cin3"]
+[ext_resource type="PackedScene" uid="uid://c5kk2phxygmtg" path="res://entities/SeeIgel.tscn" id="2_edx6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipvgf"]
 texture = ExtResource("2_4cin3")
@@ -354,6 +355,10 @@ texture = ExtResource("2_4cin3")
 sources/0 = SubResource("TileSetAtlasSource_gadkw")
 
 [node name="Level" instance=ExtResource("1_ibub5")]
+
+[node name="Enemy_SeeIgel" parent="Main/Entities" index="1" instance=ExtResource("2_edx6h")]
+z_index = 9
+position = Vector2(700, 15)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

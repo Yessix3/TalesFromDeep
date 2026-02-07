@@ -88,10 +88,11 @@ radius = 1.5373654
 
 [node name="Enemy_SeeIgel" type="CharacterBody2D"]
 collision_layer = 12
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_ks5ou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_whbht")
@@ -106,6 +107,7 @@ frame = 10
 [node name="AttackCooldown" type="Timer" parent="."]
 
 [node name="SpikeHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 12
 collision_mask = 2
 
@@ -115,6 +117,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ks5ou")
 
 [node name="Detection_Area" type="Area2D" parent="."]
+visible = false
 collision_layer = 12
 collision_mask = 2
 
