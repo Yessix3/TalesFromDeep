@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://c4b7l4duc3537"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_3qc4m"]
+[ext_resource type="Resource" uid="uid://bx0oyn2rx4t68" path="res://maptree/Event/Results/event_03/event_03_results_02.tres" id="1_gtqwh"]
+
+[resource]
+script = ExtResource("1_3qc4m")
+id = "event_03_opt2"
+text = "Search below for fallen eggs."
+result = ExtResource("1_gtqwh")
+metadata/_custom_type_script = "uid://xshuay8engbm"

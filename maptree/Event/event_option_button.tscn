@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://0xlyb4l263wf"]
 
-[ext_resource type="Script" uid="uid://cn2gjkl84oct8" path="res://maptree/Events/event_option_button.gd" id="1_w0x6u"]
+[ext_resource type="Script" uid="uid://cn2gjkl84oct8" path="res://maptree/Event/event_option_button.gd" id="1_w0x6u"]
 
 [node name="EventOptionButton" type="Button"]
-custom_minimum_size = Vector2(451, 107)
+custom_minimum_size = Vector2(451, 90)
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_w0x6u")
@@ -23,7 +23,7 @@ theme_override_constants/margin_bottom = 20
 [node name="OptionText" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "Text"
 horizontal_alignment = 1
 vertical_alignment = 3

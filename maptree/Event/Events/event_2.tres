@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://cnshu6spo52jw"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_ic85w"]
+[ext_resource type="Resource" uid="uid://dmms4ait6tgug" path="res://maptree/Event/OptionButtons/event_02/event_02_option_01.tres" id="2_sejv5"]
+[ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_wylp7"]
+[ext_resource type="Resource" uid="uid://58tdyemjl7jw" path="res://maptree/Event/OptionButtons/event_02/event_02_option_02.tres" id="3_rbgbv"]
+[ext_resource type="Resource" uid="uid://b1s8i6uag7kwi" path="res://maptree/Event/OptionButtons/event_02/event_02_option_03.tres" id="4_8pony"]
+
+[resource]
+script = ExtResource("2_wylp7")
+event_id = "event_02"
+title = "Shrine of the Three-Finned Barracudon"
+message = "You discover a broken shrine dedicated to the ancient god Barracudon the Three-Finned. The water vibrates with restrained power."
+options = Array[ExtResource("1_ic85w")]([ExtResource("2_sejv5"), ExtResource("3_rbgbv"), ExtResource("4_8pony")])
+metadata/_custom_type_script = "uid://c8jm80k1iiieg"

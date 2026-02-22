@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://b1ipdrayrk43p"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_m8hn3"]
+
+[resource]
+script = ExtResource("1_m8hn3")
+result_id = "event_02_res02"
+text = "Gain 30–50 shells."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

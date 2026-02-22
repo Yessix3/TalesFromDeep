@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=3 format=3 uid="uid://0glew6kw725x"]
+
+[ext_resource type="Texture2D" uid="uid://dg7hl6uj4k38e" path="res://maptree/MapIcons/Shop2.png" id="1_hvb2k"]
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="2_mfqc8"]
+
+[resource]
+script = ExtResource("2_mfqc8")
+result_id = "event_01_res1"
+text = "+25% player damage. All enemies deal +15% damage for the rest of the run."
+icons = Array[Texture2D]([ExtResource("1_hvb2k")])
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

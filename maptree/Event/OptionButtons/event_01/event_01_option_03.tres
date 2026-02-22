@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://cnioe4x2ufu5i"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_14uwb"]
+[ext_resource type="Resource" uid="uid://bvct5r8uqk02t" path="res://maptree/Event/Results/event_01/event_01_res3.tres" id="1_gkd46"]
+
+[resource]
+script = ExtResource("1_14uwb")
+id = "event_01_opt3"
+text = "“I want tides of shells.”"
+result = ExtResource("1_gkd46")
+metadata/_custom_type_script = "uid://xshuay8engbm"

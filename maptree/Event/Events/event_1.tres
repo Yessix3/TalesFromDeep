@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://dvmgbpasr83lh"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_y0vfq"]
+[ext_resource type="Resource" uid="uid://b14u2o4rqrgji" path="res://maptree/Event/OptionButtons/event_01/event_01_option_01.tres" id="2_pneir"]
+[ext_resource type="Resource" uid="uid://cw2nejql42rt8" path="res://maptree/Event/OptionButtons/event_01/event_01_option_02.tres" id="3_oknf0"]
+[ext_resource type="Resource" uid="uid://cnioe4x2ufu5i" path="res://maptree/Event/OptionButtons/event_01/event_01_option_03.tres" id="4_wa1sf"]
+[ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="5_8tt03"]
+
+[resource]
+script = ExtResource("5_8tt03")
+event_id = "event_01"
+title = "The Pact of the Brine Devil"
+message = "In a dim trench, a horned Brine Devil coils around a coral pillar. His lantern-glow eyes study you.
+“I trade in certainty,” he gurgles. “Strength, survival, wealth. But balance must be kept.”"
+options = Array[ExtResource("1_y0vfq")]([ExtResource("2_pneir"), ExtResource("3_oknf0"), ExtResource("4_wa1sf")])
+metadata/_custom_type_script = "uid://c8jm80k1iiieg"

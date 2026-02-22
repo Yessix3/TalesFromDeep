@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://cswqqi5klkq0q"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_6cnfw"]
+[ext_resource type="Resource" uid="uid://74tp0f1clgjy" path="res://maptree/Event/Results/event_03/event_03_results_03.tres" id="1_d75xx"]
+
+[resource]
+script = ExtResource("1_6cnfw")
+id = "event_03_opt3"
+text = "Scare them off."
+result = ExtResource("1_d75xx")
+metadata/_custom_type_script = "uid://xshuay8engbm"

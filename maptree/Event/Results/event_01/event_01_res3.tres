@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://bvct5r8uqk02t"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_l65d2"]
+
+[resource]
+script = ExtResource("1_l65d2")
+result_id = "event_01_res3"
+text = "Gain +50% shells from combat. All future combat nodes spawn +1 additional enemy."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"
