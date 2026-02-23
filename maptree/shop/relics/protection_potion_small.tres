@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://jbtb6hl8rkeb"]
+
+[ext_resource type="Script" uid="uid://b3itd36620i50" path="res://maptree/shop/relict_data.gd" id="1_2qxic"]
+[ext_resource type="Texture2D" uid="uid://cg1pm6wg3rott" path="res://maptree/TestButtons/Small_Protection_Potion.png" id="1_ejfuf"]
+
+[resource]
+script = ExtResource("1_2qxic")
+id = "protection_potion_small"
+display_name = "Small Protection Potion"
+description = "Schwächt die Angriffe in einem Kampf um 20% ab."
+icon = ExtResource("1_ejfuf")
+cost_shells = 50
+type = 1
+subtype = 2
+power = 0.2
+metadata/_custom_type_script = "uid://b3itd36620i50"

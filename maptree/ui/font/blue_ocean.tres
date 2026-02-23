@@ -1,6 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://l37e6kk6iuy0"]
 
-[ext_resource type="FontFile" uid="uid://deyho4ws2d11c" path="res://maptree/ui/font/BLUE OCEAN.ttf" id="1_52bn2"]
+[ext_resource type="FontVariation" uid="uid://dksjipbrxxdil" path="res://maptree/ui/font/kleader.tres" id="1_52bn2"]
 
 [resource]
 base_font = ExtResource("1_52bn2")

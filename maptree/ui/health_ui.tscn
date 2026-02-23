@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc10rwmljvay5"]
+
+[ext_resource type="Texture2D" uid="uid://ccv4mjcslrhvy" path="res://maptree/TestButtons/Heart.png" id="1_140fc"]
+[ext_resource type="Script" uid="uid://y3xvlov80phe" path="res://maptree/ui/health_ui.gd" id="1_s4err"]
+
+[node name="HealthUI" type="HBoxContainer"]
+offset_right = 196.0
+offset_bottom = 80.0
+script = ExtResource("1_s4err")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_140fc")
+expand_mode = 3
+
+[node name="CurrentHealth" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "10.0"
+
+[node name="ForwardSlash" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "/"
+
+[node name="MaxHealth" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "10.0"

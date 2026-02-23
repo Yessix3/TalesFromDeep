@@ -1,11 +1,14 @@
-[gd_scene load_steps=61 format=3 uid="uid://d13ie46ggubw3"]
+[gd_scene load_steps=64 format=3 uid="uid://d13ie46ggubw3"]
 
 [ext_resource type="PackedScene" uid="uid://crklklhtepyvf" path="res://entities/entity.tscn" id="1_o8c7a"]
 [ext_resource type="Script" uid="uid://cayb1iegc6i4y" path="res://entities/ahab_boss.gd" id="2_aptmf"]
 [ext_resource type="Texture2D" uid="uid://c5g8oixbu1xim" path="res://assets/AhabSprites/Ahab_P1_idle.png" id="2_q6xbd"]
 [ext_resource type="Texture2D" uid="uid://f2yacseslhyo" path="res://assets/AhabSprites/Ahab_P1_Dash5.png" id="3_8b47x"]
+[ext_resource type="Script" uid="uid://bo2b2iasfgql8" path="res://components/health.gd" id="3_d81yn"]
 [ext_resource type="Texture2D" uid="uid://crcvqsb1eiqrd" path="res://assets/AhabSprites/Ahab_P1_Dash6.png" id="4_itsmj"]
+[ext_resource type="Texture2D" uid="uid://cmy4er63bh1sc" path="res://assets/AhabSprites/Ahab_PChange1.png" id="4_nbmos"]
 [ext_resource type="Texture2D" uid="uid://bp52wyt0tvkoi" path="res://assets/AhabSprites/Ahab_P1_Dash7.png" id="5_bshy3"]
+[ext_resource type="Texture2D" uid="uid://b02eysll1c4b6" path="res://assets/AhabSprites/Ahab_PChange2.png" id="5_mdf63"]
 [ext_resource type="Texture2D" uid="uid://sv7tc3e4deqx" path="res://assets/AhabSprites/Ahab_P1_Dash1.png" id="6_x7pfa"]
 [ext_resource type="Texture2D" uid="uid://dktc31wm3ycen" path="res://assets/AhabSprites/Ahab_P1_Dash2.png" id="7_86ius"]
 [ext_resource type="Texture2D" uid="uid://6e5q33y6es5o" path="res://assets/AhabSprites/Ahab_P1_Dash3.png" id="8_545qc"]
@@ -56,6 +59,17 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q6xbd"]
 animations = [{
+"frames": [{
+"duration": 1.81,
+"texture": ExtResource("4_nbmos")
+}, {
+"duration": 2.51,
+"texture": ExtResource("5_mdf63")
+}],
+"loop": false,
+"name": &"Change_Phase",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_8b47x")
@@ -262,16 +276,10 @@ animations = [{
 }, {
 "duration": 0.81,
 "texture": ExtResource("12_xrs56")
-}, {
-"duration": 0.81,
-"texture": ExtResource("11_fqlv3")
-}, {
-"duration": 0.81,
-"texture": ExtResource("12_xrs56")
 }],
 "loop": false,
 "name": &"Melee_Attack",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -293,7 +301,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Melee_Windup",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -364,7 +372,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Throw_Attack",
-"speed": 8.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -390,10 +398,10 @@ animations = [{
 "duration": 1.31,
 "texture": ExtResource("51_kynxg")
 }, {
-"duration": 3.71,
+"duration": 1.81,
 "texture": ExtResource("52_cltfv")
 }, {
-"duration": 1.0,
+"duration": 0.71,
 "texture": ExtResource("53_kvcph")
 }],
 "loop": false,
@@ -426,16 +434,20 @@ height = 130.0
 [node name="Entity" instance=ExtResource("1_o8c7a")]
 z_index = 9
 collision_layer = 16
-collision_mask = 13
+collision_mask = 44
 script = ExtResource("2_aptmf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+[node name="Health" type="Node" parent="." index="0"]
+script = ExtResource("3_d81yn")
+metadata/_custom_type_script = "uid://bo2b2iasfgql8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(6, -52.000004)
 scale = Vector2(0.43859866, 0.43859866)
 sprite_frames = SubResource("SpriteFrames_q6xbd")
-animation = &"Idle_P1"
+animation = &"Throw_Attack"
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_o8c7a")
 
@@ -443,7 +455,7 @@ shape = SubResource("CapsuleShape2D_o8c7a")
 wait_time = 0.3
 one_shot = true
 
-[node name="AttackP1Dash" type="Area2D" parent="." index="3"]
+[node name="AttackP1Dash" type="Area2D" parent="." index="4"]
 collision_layer = 8
 collision_mask = 2
 
@@ -459,7 +471,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_iqimw")
 disabled = true
 
-[node name="AttackP1Melee" type="Area2D" parent="." index="4"]
+[node name="AttackP1Melee" type="Area2D" parent="." index="5"]
 collision_layer = 8
 collision_mask = 2
 
@@ -473,7 +485,7 @@ position = Vector2(-76, -6)
 shape = SubResource("CircleShape2D_iqimw")
 disabled = true
 
-[node name="AttackP1Roar" type="Area2D" parent="." index="5"]
+[node name="AttackP1Roar" type="Area2D" parent="." index="6"]
 collision_layer = 8
 collision_mask = 2
 
@@ -482,7 +494,7 @@ position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_sr0sv")
 disabled = true
 
-[node name="AttackP2Dragoon" type="Area2D" parent="." index="6"]
+[node name="AttackP2Dragoon" type="Area2D" parent="." index="7"]
 collision_layer = 8
 collision_mask = 2
 
@@ -491,7 +503,7 @@ position = Vector2(0, -90)
 shape = SubResource("CapsuleShape2D_sr0sv")
 disabled = true
 
-[node name="AttackP2Leap" type="Area2D" parent="." index="7"]
+[node name="AttackP2Leap" type="Area2D" parent="." index="8"]
 collision_layer = 8
 collision_mask = 2
 
@@ -509,3 +521,8 @@ disabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="body_entered" from="AttackP1Dash" to="." method="_on_attack_p_1_dash_body_entered"]
+[connection signal="body_entered" from="AttackP1Melee" to="." method="_on_attack_p_1_melee_body_entered"]
+[connection signal="body_entered" from="AttackP1Roar" to="." method="_on_attack_p_1_roar_body_entered"]
+[connection signal="body_entered" from="AttackP2Dragoon" to="." method="_on_attack_p_2_dragoon_body_entered"]
+[connection signal="body_entered" from="AttackP2Leap" to="." method="_on_attack_p_2_leap_body_entered"]

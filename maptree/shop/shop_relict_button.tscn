@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfd78qluchgoc"]
+
+[ext_resource type="Script" path="res://maptree/shop/shop_relict_button.gd" id="1_ph1mk"]
+[ext_resource type="Texture2D" uid="uid://ccv4mjcslrhvy" path="res://maptree/TestButtons/Heart.png" id="2_qxyrx"]
+[ext_resource type="Texture2D" uid="uid://didwnl4k3nq0d" path="res://maptree/TestButtons/GakiTestIconShell.png" id="3_71p0k"]
+[ext_resource type="FontVariation" uid="uid://l37e6kk6iuy0" path="res://maptree/ui/font/blue_ocean.tres" id="4_fhhv0"]
+
+[node name="ShopRelictButton" type="Button"]
+custom_minimum_size = Vector2(120, 140)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_ph1mk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 146.0
+
+[node name="RelictIcon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+texture = ExtResource("2_qxyrx")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Shell Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_71p0k")
+expand_mode = 2
+
+[node name="RelictCost" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fhhv0")
+theme_override_font_sizes/font_size = 16
+text = "200"
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4

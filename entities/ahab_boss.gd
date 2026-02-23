@@ -4,12 +4,25 @@ extends CharacterBody2D
 @export var gravity := 400
 @onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var spear = load("res://entities/ahab_spear.tscn")
+@onready var arm = load("res://entities/ahab_arm.tscn")
+@onready var entities := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities")
+
+
+signal enemy_hit(damage: int)
+signal health_change(value: int)
+
+
+@export var max_health = 24
+@onready var current_health = max_health
+@export var phase_change_health = 20
+
 var face_right = false
 var is_attacking = false
 var terminal_velocity = 600
 var current_decision := "idle"
 var last_decision := "wait"
-@export var phase := 2
+@export var phase := 1
 
 func _ready():
 	print(player)
@@ -49,32 +62,35 @@ func face_player():
 func make_decisionP1():
 	current_decision = "acting"
 	var random = randf()
-	if player.global_position.y < global_position.y-60:
-		if last_decision == "roar":
-			last_decision = "ground_poke"
-			current_decision = "ground_poke"
-		else: 
-			if random < 0.2:
+	if phase==1 and current_health <= phase_change_health:
+		change_phase()
+	else:
+		if player.global_position.y < global_position.y-60:
+			if last_decision == "roar":
 				last_decision = "ground_poke"
 				current_decision = "ground_poke"
-			else:
-				if abs(player.global_position.x - global_position.x) < 120:
-					last_decision = "roar"
-					current_decision = "roar"
+			else: 
+				if random < 0.2:
+					last_decision = "ground_poke"
+					current_decision = "ground_poke"
+				else:
+					if abs(player.global_position.x - global_position.x) < 120:
+						last_decision = "roar"
+						current_decision = "roar"
+					else:
+						last_decision = "dash"
+						current_decision = "dash"
+		else:
+			if abs(player.global_position.x - global_position.x) < 130:
+				if random < 0.3 or last_decision == "dash":
+					last_decision = "melee"
+					current_decision = "melee"
 				else:
 					last_decision = "dash"
-					current_decision = "dash"
-	else:
-		if abs(player.global_position.x - global_position.x) < 130:
-			if random < 0.3 or last_decision == "dash":
-				last_decision = "melee"
-				current_decision = "melee"
+					current_decision = "dash" 
 			else:
 				last_decision = "dash"
 				current_decision = "dash" 
-		else:
-			last_decision = "dash"
-			current_decision = "dash" 
 
 
 func make_decisionP2():
@@ -92,6 +108,9 @@ func make_decisionP2():
 			current_decision = "throw"
 
 
+
+func change_phase():
+	animated_sprite.play("Change_Phase")
 
 
 
@@ -145,6 +164,11 @@ func throwP2():
 
 
 func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == "Change_Phase":
+		phase = 2
+		print("works")
+		current_decision = "idle"
+	
 	if animated_sprite.animation == "Dash_Recovery":
 		animated_sprite.play("Idle_P1")
 		current_decision = "idle"
@@ -191,6 +215,7 @@ func _on_animated_sprite_2d_animation_finished():
 		animated_sprite.play("Ground_Poke_Recovery")
 	if animated_sprite.animation == "Ground_Poke_Windup":
 		animated_sprite.play("Ground_Poke_Attack")
+		spawnArm()
 	
 	if animated_sprite.animation == "Dragoon_Recovery":
 		animated_sprite.play("Idle_P2")
@@ -211,7 +236,6 @@ func _on_animated_sprite_2d_animation_finished():
 		current_decision = "idle"
 	if animated_sprite.animation == "Leap_Attack2":
 		animated_sprite.play("Leap_Recovery")
-		$CollisionShape2D.disabled = false
 		$AttackP2Leap/AttackRight.disabled = true
 		$AttackP2Leap/AttackLeft.disabled = true
 	if animated_sprite.animation == "Leap_Attack1":
@@ -233,6 +257,7 @@ func _on_animated_sprite_2d_animation_finished():
 		animated_sprite.play("Throw_Recovery")
 	if animated_sprite.animation == "Throw_Windup":
 		animated_sprite.play("Throw_Attack")
+		throwSpear()
 
 
 
@@ -244,7 +269,6 @@ func teleport_to_player_x():
 
 func leap_to_player():
 	velocity.y = -200
-	$CollisionShape2D.disabled = true
 	$Timers/JumpTimer.start()
 
 
@@ -260,3 +284,62 @@ func dash_to_player(x):
 
 func _on_jump_timer_timeout():
 	dash_to_player(0.5)
+
+
+
+func spawnArm():
+	var instance = arm.instantiate()
+	var spawn_position = player.global_position
+	instance.spawnPos = spawn_position
+	instance.on_projectile_hit.connect(Callable(self, "on_arm_hit"))
+	entities.add_child.call_deferred(instance)
+
+
+
+func throwSpear():
+	var instance = spear.instantiate()
+	if face_right:
+		instance.direction = -300
+		instance.spawnRot = -300
+	else:
+		instance.direction = 300
+		instance.spawnRot = 300
+	var spawn_position = global_position
+	spawn_position.y = spawn_position.y - 15
+	instance.spawnPos = spawn_position
+	instance.on_projectile_hit.connect(Callable(self, "on_throw_hit"))
+	entities.add_child.call_deferred(instance)
+	
+
+func on_throw_hit():
+	enemy_hit.emit(1)
+
+func on_arm_hit():
+	enemy_hit.emit(1)
+
+
+func _on_attack_p_1_dash_body_entered(body: Node2D) -> void:
+	enemy_hit.emit(1)
+
+
+func _on_attack_p_1_melee_body_entered(body: Node2D) -> void:
+	enemy_hit.emit(1)
+
+
+func _on_attack_p_1_roar_body_entered(body: Node2D) -> void:
+	enemy_hit.emit(1)
+
+
+func _on_attack_p_2_dragoon_body_entered(body: Node2D) -> void:
+	enemy_hit.emit(1)
+
+
+func _on_attack_p_2_leap_body_entered(body: Node2D) -> void:
+	enemy_hit.emit(1)
+
+
+func _on_player_hit(damage: int) -> void:
+	var health_compare: int = current_health
+	current_health = current_health - damage
+	health_change.emit(current_health - health_compare)
+	print("Boss Health: ", current_health)

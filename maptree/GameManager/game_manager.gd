@@ -5,10 +5,17 @@ const BATTLE_SCENE := preload("res://maptree/dummyFight/dummyFight.tscn")
 const BATTLE_REWARD_SCENE := preload("res://maptree/rewardSzene/battle_reward.tscn")
 const EVENT_SCENE := preload("res://maptree/Event/event_muster.tscn")
 #const MAP_SCENE := preload("res://maptree/mapTree/mapDummy.tscn")
-const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
+const SHOP_SCENE := preload("res://maptree/shop/shop.tscn")
 const RESULT_SCENE := preload("res://maptree/Event/event_result_muster.tscn")
 
 const EVENT_1_DATA:= preload("res://maptree/Event/Events/event_1.tres") as EventData
+
+const ALL_RELICS: Array[RelicData] = [
+	preload("res://maptree/shop/relics/health_potion_big.tres") as RelicData,
+	preload("res://maptree/shop/relics/health_potion_small.tres") as RelicData,
+	preload("res://maptree/shop/relics/protection_potion_big.tres") as RelicData,
+	preload("res://maptree/shop/relics/protection_potion_small.tres") as RelicData,
+]
 
 @export var run_startup: GameManagerStartUp
 ##
@@ -101,7 +108,11 @@ func _on_map_exited(room: Room) -> void:
 			else:
 				push_error("EVENT_SCENE root has no show_event(EventData).")
 		Room.Type.SHOP:
-			_change_view(SHOP_SCENE)
+			var view := _change_view(SHOP_SCENE) as Shop
+			view.run_status = status
+
+			# Test: einfach 6 Items anbieten (oder weniger)
+			view.stock = ALL_RELICS.duplicate()
 		Room.Type.BOSS:
 			_change_view(BATTLE_SCENE) #### change later
 
