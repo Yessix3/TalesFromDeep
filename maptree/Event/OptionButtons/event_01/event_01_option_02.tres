@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://cw2nejql42rt8"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_c8emm"]
+[ext_resource type="Resource" uid="uid://d2b4ma7v50dga" path="res://maptree/Event/Results/event_01/event_01_res2.tres" id="1_pbasy"]
+
+[resource]
+script = ExtResource("1_c8emm")
+id = "event_01_opt2"
+text = "“I refuse to drown in death.”"
+result = ExtResource("1_pbasy")
+metadata/_custom_type_script = "uid://xshuay8engbm"

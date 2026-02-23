@@ -15,5 +15,10 @@ signal shop_exited
 # Battle Reward-related events
 signal battle_reward_exited
 
-# Random Event room-related events
+# Event room-related events
 signal event_room_exited
+
+signal result_requested(result: EventResultData)
+
+func request_result(result: EventResultData) -> void:
+    result_requested.emit(result)

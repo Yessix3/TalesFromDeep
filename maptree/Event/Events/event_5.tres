@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://c5i62xa1n40qj"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_3voi8"]
+[ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_ippom"]
+
+[resource]
+script = ExtResource("2_ippom")
+event_id = "event_05"
+metadata/_custom_type_script = "uid://c8jm80k1iiieg"

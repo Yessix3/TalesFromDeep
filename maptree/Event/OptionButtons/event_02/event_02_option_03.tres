@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://b1s8i6uag7kwi"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_13ka3"]
+[ext_resource type="Resource" uid="uid://ccu6lqy4dm54" path="res://maptree/Event/Results/event_02/event_02_result_03.tres" id="1_owfy4"]
+
+[resource]
+script = ExtResource("1_13ka3")
+id = "event_02_res03"
+text = "Defile the shrine."
+result = ExtResource("1_owfy4")
+metadata/_custom_type_script = "uid://xshuay8engbm"

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://ua23mxa0fbpw"]
+
+[ext_resource type="Script" uid="uid://dkwq62bamy0di" path="res://ahab_spear.gd" id="1_kx57x"]
+[ext_resource type="Texture2D" uid="uid://cb5l1qaktfdqg" path="res://assets/ProjectileSprites/AhabSpear.png" id="2_ae787"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nwsod"]
+radius = 2.0
+height = 52.0
+
+[node name="AhabSpear" type="CharacterBody2D"]
+z_index = 8
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_kx57x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.5527137e-14, -12)
+rotation = -1.5707964
+scale = Vector2(0.39955932, 0.39955938)
+texture = ExtResource("2_ae787")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 13
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_nwsod")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 13
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_nwsod")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

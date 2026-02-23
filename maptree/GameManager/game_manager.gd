@@ -3,9 +3,19 @@ extends Node
 
 const BATTLE_SCENE := preload("res://maptree/dummyFight/dummyFight.tscn")
 const BATTLE_REWARD_SCENE := preload("res://maptree/rewardSzene/battle_reward.tscn")
-const EVENT_SCENE := preload("res://maptree/dummyEvent/event_dummy.tscn")
+const EVENT_SCENE := preload("res://maptree/Event/event_muster.tscn")
 #const MAP_SCENE := preload("res://maptree/mapTree/mapDummy.tscn")
-const SHOP_SCENE := preload("res://maptree/shop/shop_dummy.tscn")
+const SHOP_SCENE := preload("res://maptree/shop/shop.tscn")
+const RESULT_SCENE := preload("res://maptree/Event/event_result_muster.tscn")
+
+const EVENT_1_DATA:= preload("res://maptree/Event/Events/event_1.tres") as EventData
+
+const ALL_RELICS: Array[RelicData] = [
+	preload("res://maptree/shop/relics/health_potion_big.tres") as RelicData,
+	preload("res://maptree/shop/relics/health_potion_small.tres") as RelicData,
+	preload("res://maptree/shop/relics/protection_potion_big.tres") as RelicData,
+	preload("res://maptree/shop/relics/protection_potion_small.tres") as RelicData,
+]
 
 @export var run_startup: GameManagerStartUp
 ##
@@ -31,6 +41,9 @@ func _start_run() -> void:
 	_setup_event_connections()
 
 	_setup_top_bar()
+
+	EventPool.reset()
+
 	map.generate_new_map()
 	map.unlock_floor(0)
 
@@ -67,6 +80,8 @@ func _setup_event_connections() -> void:
 	EventManager.map_exited.connect(_on_map_exited)
 	EventManager.shop_exited.connect(_show_map)
 
+	EventManager.result_requested.connect(_on_result_requested)
+
 func _setup_top_bar():
 	shells_ui.run_status = status
 
@@ -82,8 +97,29 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.FIGHT:
 			_change_view(BATTLE_SCENE)
 		Room.Type.EVENT:
-			_change_view(EVENT_SCENE)
+			var view := _change_view(EVENT_SCENE)
+			var data := EventPool.draw_random()
+			if data == null:
+				push_error("No event left to draw.")
+				_show_map()
+				return
+			if view.has_method("show_event"):
+				view.call("show_event", data)
+			else:
+				push_error("EVENT_SCENE root has no show_event(EventData).")
 		Room.Type.SHOP:
-			_change_view(SHOP_SCENE)
+			var view := _change_view(SHOP_SCENE) as Shop
+			view.run_status = status
+
+			# Test: einfach 6 Items anbieten (oder weniger)
+			view.stock = ALL_RELICS.duplicate()
 		Room.Type.BOSS:
 			_change_view(BATTLE_SCENE) #### change later
+
+func _on_result_requested(result: EventResultData) -> void:
+	var view := _change_view(RESULT_SCENE)
+	# ResultScreen sollte eine Methode set_result haben
+	if view.has_method("set_result"):
+		view.call("set_result", result)
+	else:
+		push_error("Result view has no set_result(result).")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brpdfbomvvdcn"]
+[gd_scene load_steps=6 format=3 uid="uid://brpdfbomvvdcn"]
 
 [ext_resource type="Script" uid="uid://brnlao06xwx11" path="res://maptree/GameManager/game_manager.gd" id="1_7v3xg"]
 [ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_sq34f"]
 [ext_resource type="PackedScene" uid="uid://bx6ktlnnmxapo" path="res://maptree/mapTree/MapTree.tscn" id="3_sq34f"]
 [ext_resource type="PackedScene" uid="uid://ca3tfouf2ebba" path="res://maptree/ui/shells_ui.tscn" id="4_ff0qb"]
+[ext_resource type="PackedScene" uid="uid://dc10rwmljvay5" path="res://maptree/ui/health_ui.tscn" id="5_wh46v"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_7v3xg")
@@ -33,5 +34,18 @@ grow_horizontal = 2
 layout_mode = 2
 
 [node name="Placeholder" type="Control" parent="TopBar/BarItems"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Placeholder3" type="Control" parent="TopBar/BarItems"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthUI" parent="TopBar/BarItems" instance=ExtResource("5_wh46v")]
+layout_mode = 2
+
+[node name="Placeholder2" type="Control" parent="TopBar/BarItems"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2

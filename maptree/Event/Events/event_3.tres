@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://c5w5eh2oqoj0h"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_hpjkt"]
+[ext_resource type="Resource" uid="uid://bbnh8hk5otbx2" path="res://maptree/Event/OptionButtons/event_03/event_03_option_01.tres" id="2_783kg"]
+[ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_pwyii"]
+[ext_resource type="Resource" uid="uid://c4b7l4duc3537" path="res://maptree/Event/OptionButtons/event_03/event_03_option_02.tres" id="3_j7m7j"]
+[ext_resource type="Resource" uid="uid://cswqqi5klkq0q" path="res://maptree/Event/OptionButtons/event_03/event_03_option_03.tres" id="4_s74nc"]
+
+[resource]
+script = ExtResource("2_pwyii")
+event_id = "event_03"
+title = "The Cliffs of the Gullphins"
+message = "At a jagged reef wall nest the shrieking Gullphins (seal-bodied, gull-headed scavengers). Their nests glitter with stolen relics."
+options = Array[ExtResource("1_hpjkt")]([ExtResource("2_783kg"), ExtResource("3_j7m7j"), ExtResource("4_s74nc")])
+metadata/_custom_type_script = "uid://c8jm80k1iiieg"

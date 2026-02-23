@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://cxoun3rdt4fmr"]
+
+[ext_resource type="Texture2D" uid="uid://mutl7skxvtfv" path="res://maptree/TestButtons/Big_Health_Potion.png" id="1_xpgqk"]
+[ext_resource type="Script" uid="uid://b3itd36620i50" path="res://maptree/shop/relict_data.gd" id="2_0j4ma"]
+
+[resource]
+script = ExtResource("2_0j4ma")
+id = "health_poition_big"
+display_name = "Big Health Potion"
+description = "This Potion fills up all Hearts."
+icon = ExtResource("1_xpgqk")
+cost_shells = 100
+type = 1
+subtype = 1
+metadata/_custom_type_script = "uid://b3itd36620i50"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://b14u2o4rqrgji"]
+
+[ext_resource type="Resource" uid="uid://0glew6kw725x" path="res://maptree/Event/Results/event_01/event_01_res1.tres" id="1_babhh"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_jrtm3"]
+
+[resource]
+script = ExtResource("1_jrtm3")
+id = "event_01_opt1"
+text = "“I crave overwhelming strength.”"
+result = ExtResource("1_babhh")
+metadata/_custom_type_script = "uid://xshuay8engbm"

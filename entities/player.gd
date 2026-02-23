@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal player_hit
+signal hit(damage: int)
+signal health_change(value: int)
 
 @export_group('move')
 @export var speed: int = 200
@@ -11,6 +13,8 @@ var can_move := true
 var isAttacking := false
 var dummy_strength := 500
 
+@export var max_health: int = 100
+@export var current_health: int = 100
 
 
 @export_group('jump')
@@ -129,5 +133,16 @@ func _on_dummy_knockback() -> void:
 	velocity.y = -dummy_strength/2
 
 
+
 func _on_attack_hitbox_body_entered(_body: Node2D) -> void:
 		emit_signal("player_hit")
+		hit.emit(1)
+
+
+
+func _on_boss_enemy_hit(damage: int) -> void:
+	var health_compare: int = current_health
+	current_health = current_health - damage
+	health_change.emit(current_health - health_compare)
+	print("Player Health: ", current_health)
+	

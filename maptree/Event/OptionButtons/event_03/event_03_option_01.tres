@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bbnh8hk5otbx2"]
+
+[ext_resource type="Resource" uid="uid://ci85ihbprqaxh" path="res://maptree/Event/Results/event_03/event_03_results_01.tres" id="1_8hr34"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_ysgfj"]
+
+[resource]
+script = ExtResource("1_ysgfj")
+id = "event_03_opt1"
+text = "Sneak and plunder the nests."
+result = ExtResource("1_8hr34")
+metadata/_custom_type_script = "uid://xshuay8engbm"
