@@ -1,0 +1,146 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvd618di6h7a1"]
+
+[ext_resource type="Script" uid="uid://b1m032edmt5xo" path="res://entities/frog.gd" id="1_qcyng"]
+[ext_resource type="Texture2D" uid="uid://cucgvcseewhho" path="res://assets/Frog/FJump1.png" id="2_mq1v1"]
+[ext_resource type="Texture2D" uid="uid://bpjh5uavesh0r" path="res://assets/Frog/FQuak.png" id="3_j003u"]
+[ext_resource type="Texture2D" uid="uid://dcbgvmh3nlx0x" path="res://assets/Frog/FAttack1.png" id="4_64t07"]
+[ext_resource type="Texture2D" uid="uid://du8xxk4ced2k6" path="res://assets/Frog/FJump2.png" id="4_dkrqs"]
+[ext_resource type="Texture2D" uid="uid://bg50ayiesgfcr" path="res://assets/Frog/FJump3.png" id="5_64t07"]
+[ext_resource type="Texture2D" uid="uid://c3r15qv10e03i" path="res://assets/Frog/FAttack2.png" id="5_e7m0o"]
+[ext_resource type="Texture2D" uid="uid://e0er3eiltals" path="res://assets/Frog/FHurt.png" id="6_3mlwh"]
+[ext_resource type="Texture2D" uid="uid://slyvcxl4kbme" path="res://assets/Frog/FJump4.png" id="6_e7m0o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mlwh"]
+animations = [{
+"frames": [{
+"duration": 2.21,
+"texture": ExtResource("2_mq1v1")
+}, {
+"duration": 0.31,
+"texture": ExtResource("3_j003u")
+}, {
+"duration": 0.21,
+"texture": ExtResource("4_64t07")
+}, {
+"duration": 1.31,
+"texture": ExtResource("5_e7m0o")
+}, {
+"duration": 0.61,
+"texture": ExtResource("3_j003u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mq1v1")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3mlwh")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.91,
+"texture": ExtResource("6_3mlwh")
+}, {
+"duration": 1.01,
+"texture": ExtResource("2_mq1v1")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mq1v1")
+}, {
+"duration": 0.21,
+"texture": ExtResource("3_j003u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mq1v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dkrqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_64t07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e7m0o")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5oex"]
+radius = 47.0
+height = 110.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkrqs"]
+radius = 60.0
+height = 152.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64t07"]
+height = 176.17427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkrqs"]
+radius = 235.28706
+
+[node name="Frog" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_qcyng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3mlwh")
+animation = &"death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 76)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_k5oex")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="FrogHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogHitbox"]
+position = Vector2(0, 68)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dkrqs")
+
+[node name="FrogDealDamageArea" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogDealDamageArea"]
+position = Vector2(52, 44)
+rotation = 0.87266463
+shape = SubResource("CapsuleShape2D_64t07")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_dkrqs")
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="FrogHitbox" to="." method="_on_frog_hitbox_area_entered"]
+[connection signal="area_entered" from="FrogDealDamageArea" to="." method="_on_frog_deal_damage_area_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

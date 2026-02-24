@@ -181,7 +181,7 @@ sources/0 = SubResource("TileSetAtlasSource_hydfx")
 [node name="Level" instance=ExtResource("1_3aogq")]
 
 [node name="Frog" parent="Main/Entities" index="1" instance=ExtResource("2_dr0gp")]
-z_index = 10
+z_index = 9
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

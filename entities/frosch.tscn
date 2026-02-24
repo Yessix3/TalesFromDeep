@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1rhnhfcp5s3l"]
+[gd_scene load_steps=14 format=3 uid="uid://cgm3sdnoy03cv"]
 
-[ext_resource type="Script" uid="uid://b6phvxomoncwb" path="res://entities/frosch.gd" id="1_uv11l"]
 [ext_resource type="Texture2D" uid="uid://cucgvcseewhho" path="res://assets/Frog/FJump1.png" id="2_u8mpi"]
 [ext_resource type="Texture2D" uid="uid://du8xxk4ced2k6" path="res://assets/Frog/FJump2.png" id="3_wfs08"]
 [ext_resource type="Texture2D" uid="uid://bg50ayiesgfcr" path="res://assets/Frog/FJump3.png" id="4_wq0h2"]
@@ -9,6 +8,69 @@
 [ext_resource type="Texture2D" uid="uid://dcbgvmh3nlx0x" path="res://assets/Frog/FAttack1.png" id="7_fwrp6"]
 [ext_resource type="Texture2D" uid="uid://c3r15qv10e03i" path="res://assets/Frog/FAttack2.png" id="8_4wfp5"]
 [ext_resource type="Texture2D" uid="uid://e0er3eiltals" path="res://assets/Frog/FHurt.png" id="9_fwrp6"]
+
+[sub_resource type="GDScript" id="GDScript_wq0h2"]
+script/source = "extends CharacterBody2D
+
+
+var active := false
+signal knockback
+
+@export var gravity := 600
+@onready var player = get_tree().get_first_node_in_group('Player')
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var attacking := false
+
+
+func _process(delta):
+	if active and not attacking:
+		attacking = true
+		attackPlayer()
+	apply_gravity(delta)
+	move_and_slide()
+
+
+func apply_gravity(delta):
+	velocity.y += gravity*delta
+
+
+func attackPlayer():
+	animated_sprite.play(\"attack\")
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == \"recovery\": 
+		animated_sprite.play(\"idle\")
+		attacking = false 
+	if animated_sprite.animation == \"attack\":
+		animated_sprite.play(\"recovery\")
+		$AttackArea/AttackLeft.disabled = true
+		$AttackArea/AttackRight.disabled = true
+	if animated_sprite.animation == \"jump\":
+		animated_sprite.play(\"attack\")
+		$AttackArea/AttackLeft.disabled = false
+		$AttackArea/AttackRight.disabled = false
+
+
+func _on_attack_area_body_entered(_body: Node2D):
+	emit_signal(\"knockback\")
+
+
+func _on_vision_area_body_entered(_body: Node2D):
+	active = true
+
+
+func _on_vision_area_body_exited(_body: Node2D):
+	active = false
+
+
+func _on_player_player_hit() -> void:
+	if not $Timers/GetHitDelay.time_left :
+		if animated_sprite.animation == \"recovery\": 
+			velocity.y = -150
+		else:
+			velocity.y = -50
+		$Timers/GetHitDelay.start()"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdd5j"]
 radius = 44.493874
@@ -91,7 +153,7 @@ position = Vector2(20, 0)
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
 collision_mask = 9
-script = ExtResource("1_uv11l")
+script = SubResource("GDScript_wq0h2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.000001, 73.00001)
