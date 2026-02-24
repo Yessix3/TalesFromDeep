@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b820dl4b2espr"]
+[gd_scene load_steps=7 format=3 uid="uid://b820dl4b2espr"]
 
 [ext_resource type="Texture2D" uid="uid://bdhglg3t6jb1x" path="res://maptree/TestButtons/left_arrow.png" id="1_4xxfu"]
 [ext_resource type="Texture2D" uid="uid://b23ejktma0dax" path="res://maptree/TestButtons/left_arrow_disabled.png" id="2_gc7rb"]
+[ext_resource type="Script" uid="uid://drgfg6l0yt7rt" path="res://maptree/ui/relics_control.gd" id="3_gc7rb"]
 [ext_resource type="PackedScene" uid="uid://cvsj8b31gxwxf" path="res://maptree/ui/relic_ui.tscn" id="3_vvf2f"]
 [ext_resource type="Texture2D" uid="uid://cn0l5eacpxao4" path="res://maptree/TestButtons/right_arrow.png" id="4_sb1nl"]
 [ext_resource type="Texture2D" uid="uid://btssv3kdb5ey0" path="res://maptree/TestButtons/right_arrow_disabled.png" id="5_ug7od"]
@@ -23,12 +24,17 @@ texture_disabled = ExtResource("2_gc7rb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="RelicsControl" type="Control" parent="."]
+[node name="RelicsControl" type="Control" parent="." node_paths=PackedStringArray("left_button", "right_button")]
 clip_contents = true
 custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
+script = ExtResource("3_gc7rb")
+left_button = NodePath("../LeftArrow")
+right_button = NodePath("../RightArrow")
 
 [node name="Relics" type="HBoxContainer" parent="RelicsControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 80)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

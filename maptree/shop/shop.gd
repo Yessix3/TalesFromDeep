@@ -23,6 +23,9 @@ const RELIC_BUTTON_SCENE: PackedScene = preload("res://maptree/shop/shop_relict_
 
 func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_pressed)
+	buy_button.disabled = true
+	detail_shell_icon.visible = false
+
 	_build_list()
 	_show_details(null)
 
@@ -65,14 +68,16 @@ func _show_details(relic: RelicData) -> void:
 		detail_name.text = ""
 		detail_desc.text = ""
 		detail_cost.text = ""
+		detail_shell_icon.visible = false
 		buy_button.disabled = true
 		return
 
 	detail_icon.texture = relic.icon
 	detail_name.text = relic.display_name
 	detail_desc.text = relic.description
-	detail_cost.text = str(relic.cost_shells) + " Shells"
+	detail_cost.text = str(relic.cost_shells)
 
+	detail_shell_icon.visible = true
 	buy_button.disabled = (run_status == null) or (run_status.shells < relic.cost_shells)
 
 func _on_buy_pressed() -> void:
@@ -89,8 +94,10 @@ func _on_buy_pressed() -> void:
 	run_status.add_relic(selected_relic)
 
 	# optional: aus Shop entfernen, damit es nicht doppelt gekauft wird
-	stock.erase(selected_relic)
+	#stock.erase(selected_relic)
+	
 	selected_relic = null
+	detail_shell_icon.visible = true
 	_build_list()
 	_show_details(null)
 

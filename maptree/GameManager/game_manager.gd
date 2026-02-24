@@ -10,12 +10,6 @@ const RESULT_SCENE := preload("res://maptree/Event/event_result_muster.tscn")
 
 const EVENT_1_DATA:= preload("res://maptree/Event/Events/event_1.tres") as EventData
 
-const ALL_RELICS: Array[RelicData] = [
-	preload("res://maptree/shop/relics/health_potion_big.tres") as RelicData,
-	preload("res://maptree/shop/relics/health_potion_small.tres") as RelicData,
-	preload("res://maptree/shop/relics/protection_potion_big.tres") as RelicData,
-	preload("res://maptree/shop/relics/protection_potion_small.tres") as RelicData,
-]
 
 @export var run_startup: GameManagerStartUp
 ##
@@ -24,7 +18,10 @@ const ALL_RELICS: Array[RelicData] = [
 
 @onready var current_view: Node = $CurrentView
 @onready var shells_ui: ShellsUI = $TopBar/BarItems/ShellsUI
+@onready var relic_bar_ui: RelicBarUI = $TopBar/BarItems/RelicBarUI
+@onready var relic_desc: RelicMapDescription = $Overlays/RelicMapDescription
 
+var is_in_battle: bool = false
 var status: RunStatus
 
 func _ready() -> void:
@@ -35,6 +32,8 @@ func _ready() -> void:
 			_start_run()
 		GameManagerStartUp.Type.CONTINUED_RUN:
 			print("TODO: load previous Run")
+	relic_bar_ui.relic_ui_requested.connect(_on_relic_ui_requested)
+
 
 func _start_run() -> void:
 	status = RunStatus.new()
@@ -84,19 +83,23 @@ func _setup_event_connections() -> void:
 
 func _setup_top_bar():
 	shells_ui.run_status = status
+	relic_bar_ui.run_status = status
+
 
 func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_status = status
 
 	# temporary
-	reward_scene.add_shells_reward(77)
+	reward_scene.add_shells_reward(500)
 
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.FIGHT:
+			is_in_battle = true
 			_change_view(BATTLE_SCENE)
 		Room.Type.EVENT:
+			is_in_battle = false
 			var view := _change_view(EVENT_SCENE)
 			var data := EventPool.draw_random()
 			if data == null:
@@ -108,12 +111,13 @@ func _on_map_exited(room: Room) -> void:
 			else:
 				push_error("EVENT_SCENE root has no show_event(EventData).")
 		Room.Type.SHOP:
+			is_in_battle = false
 			var view := _change_view(SHOP_SCENE) as Shop
 			view.run_status = status
 
-			# Test: einfach 6 Items anbieten (oder weniger)
-			view.stock = ALL_RELICS.duplicate()
+			view.stock = RelicDatabase.get_all_relics().duplicate()
 		Room.Type.BOSS:
+			is_in_battle = true
 			_change_view(BATTLE_SCENE) #### change later
 
 func _on_result_requested(result: EventResultData) -> void:
@@ -123,3 +127,8 @@ func _on_result_requested(result: EventResultData) -> void:
 		view.call("set_result", result)
 	else:
 		push_error("Result view has no set_result(result).")
+
+func _on_relic_ui_requested(relic: RelicData) -> void:
+	if is_in_battle:
+		return
+	relic_desc.show_modal(status, relic)

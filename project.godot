@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 EventManager="*res://maptree/event_manager.gd"
 EventPool="*res://maptree/GameManager/event_pool.gd"
+RelicDatabase="*res://maptree/shop/relics/relic_database.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [gui]
 
