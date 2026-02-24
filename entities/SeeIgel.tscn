@@ -59,6 +59,20 @@ animations = [{
 "speed": 9.0
 }, {
 "frames": [{
+"duration": 0.31,
+"texture": ExtResource("4_iuqdp")
+}, {
+"duration": 3.01,
+"texture": ExtResource("6_y35bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8evq4")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
 "duration": 1.01,
 "texture": ExtResource("1_whbht")
 }, {
@@ -101,8 +115,9 @@ shape = SubResource("CapsuleShape2D_whbht")
 position = Vector2(-3, 0)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_vb5x8")
-animation = &"attack"
-frame = 10
+animation = &"hurt"
+frame = 2
+frame_progress = 1.0
 
 [node name="AttackCooldown" type="Timer" parent="."]
 

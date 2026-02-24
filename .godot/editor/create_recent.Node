@@ -1,12 +1,12 @@
+Timer
+Node2D
 CollisionShape2D
 Area2D
+AnimatedSprite2D
 Sprite2D
 AnimationPlayer
-AnimatedSprite2D
 CharacterBody2D
 Marker2D
-Node2D
-Timer
 TileMapLayer
 Label
 AnimatableBody2D

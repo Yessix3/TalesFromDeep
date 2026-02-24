@@ -82,7 +82,7 @@ one_shot = true
 position = Vector2(-5, 7)
 scale = Vector2(0.60208327, 0.6020833)
 sprite_frames = SubResource("SpriteFrames_klcbq")
-animation = &"Idle"
+animation = &"Recovery"
 
 [node name="AttackArea" type="Area2D" parent="." index="3"]
 collision_layer = 8

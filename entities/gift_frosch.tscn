@@ -1,14 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1rhnhfcp5s3l"]
+[gd_scene load_steps=14 format=3 uid="uid://dqyb5mcbjj74r"]
 
-[ext_resource type="Script" uid="uid://b6phvxomoncwb" path="res://entities/frosch.gd" id="1_uv11l"]
-[ext_resource type="Texture2D" uid="uid://cucgvcseewhho" path="res://assets/Frog/FJump1.png" id="2_u8mpi"]
-[ext_resource type="Texture2D" uid="uid://du8xxk4ced2k6" path="res://assets/Frog/FJump2.png" id="3_wfs08"]
-[ext_resource type="Texture2D" uid="uid://bg50ayiesgfcr" path="res://assets/Frog/FJump3.png" id="4_wq0h2"]
-[ext_resource type="Texture2D" uid="uid://slyvcxl4kbme" path="res://assets/Frog/FJump4.png" id="5_fwrp6"]
-[ext_resource type="Texture2D" uid="uid://bpjh5uavesh0r" path="res://assets/Frog/FQuak.png" id="6_wq0h2"]
-[ext_resource type="Texture2D" uid="uid://dcbgvmh3nlx0x" path="res://assets/Frog/FAttack1.png" id="7_fwrp6"]
-[ext_resource type="Texture2D" uid="uid://c3r15qv10e03i" path="res://assets/Frog/FAttack2.png" id="8_4wfp5"]
-[ext_resource type="Texture2D" uid="uid://e0er3eiltals" path="res://assets/Frog/FHurt.png" id="9_fwrp6"]
+[ext_resource type="Script" uid="uid://b6phvxomoncwb" path="res://entities/frosch.gd" id="1_4c1uq"]
+[ext_resource type="Texture2D" uid="uid://cucgvcseewhho" path="res://assets/Frog/FJump1.png" id="2_ohjip"]
+[ext_resource type="Texture2D" uid="uid://bpjh5uavesh0r" path="res://assets/Frog/FQuak.png" id="3_xk8md"]
+[ext_resource type="Texture2D" uid="uid://dcbgvmh3nlx0x" path="res://assets/Frog/FAttack1.png" id="4_eiwgd"]
+[ext_resource type="Texture2D" uid="uid://c3r15qv10e03i" path="res://assets/Frog/FAttack2.png" id="5_beuuq"]
+[ext_resource type="Texture2D" uid="uid://du8xxk4ced2k6" path="res://assets/Frog/FJump2.png" id="6_4bfmj"]
+[ext_resource type="Texture2D" uid="uid://bg50ayiesgfcr" path="res://assets/Frog/FJump3.png" id="7_28u0m"]
+[ext_resource type="Texture2D" uid="uid://slyvcxl4kbme" path="res://assets/Frog/FJump4.png" id="8_u1lsf"]
+[ext_resource type="Texture2D" uid="uid://e0er3eiltals" path="res://assets/Frog/FHurt.png" id="9_t1dhb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdd5j"]
 radius = 44.493874
@@ -22,19 +22,19 @@ height = 233.20508
 animations = [{
 "frames": [{
 "duration": 1.01,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }, {
 "duration": 1.01,
-"texture": ExtResource("6_wq0h2")
+"texture": ExtResource("3_xk8md")
 }, {
 "duration": 0.51,
-"texture": ExtResource("7_fwrp6")
+"texture": ExtResource("4_eiwgd")
 }, {
 "duration": 1.11,
-"texture": ExtResource("8_4wfp5")
+"texture": ExtResource("5_beuuq")
 }, {
 "duration": 3.01,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }],
 "loop": true,
 "name": &"attack",
@@ -42,10 +42,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 3.01,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_wq0h2")
+"texture": ExtResource("3_xk8md")
 }],
 "loop": true,
 "name": &"idle",
@@ -53,19 +53,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_wfs08")
+"texture": ExtResource("6_4bfmj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_wq0h2")
+"texture": ExtResource("7_28u0m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_fwrp6")
+"texture": ExtResource("8_u1lsf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }],
 "loop": true,
 "name": &"jump",
@@ -73,10 +73,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_u8mpi")
+"texture": ExtResource("2_ohjip")
 }, {
 "duration": 2.01,
-"texture": ExtResource("9_fwrp6")
+"texture": ExtResource("9_t1dhb")
 }],
 "loop": true,
 "name": &"recovery",
@@ -91,7 +91,7 @@ position = Vector2(20, 0)
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
 collision_mask = 9
-script = ExtResource("1_uv11l")
+script = ExtResource("1_4c1uq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.000001, 73.00001)

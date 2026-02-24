@@ -1,7 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://d13ie46ggubw3"]
+[gd_scene load_steps=61 format=3 uid="uid://b1dd3gcu6t1ol"]
 
 [ext_resource type="PackedScene" uid="uid://crklklhtepyvf" path="res://entities/entity.tscn" id="1_o8c7a"]
-[ext_resource type="Script" uid="uid://cayb1iegc6i4y" path="res://entities/ahab_boss.gd" id="2_aptmf"]
+[ext_resource type="Script" path="res://entities/ahab_boss.gd" id="2_aptmf"]
 [ext_resource type="Texture2D" uid="uid://c5g8oixbu1xim" path="res://assets/AhabSprites/Ahab_P1_idle.png" id="2_q6xbd"]
 [ext_resource type="Texture2D" uid="uid://f2yacseslhyo" path="res://assets/AhabSprites/Ahab_P1_Dash5.png" id="3_8b47x"]
 [ext_resource type="Texture2D" uid="uid://crcvqsb1eiqrd" path="res://assets/AhabSprites/Ahab_P1_Dash6.png" id="4_itsmj"]
