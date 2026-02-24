@@ -7,10 +7,11 @@
 script = ExtResource("1_2qxic")
 id = "protection_potion_small"
 display_name = "Small Protection Potion"
-description = "Schwächt die Angriffe in einem Kampf um 20% ab."
+description = "Schwächt die Angriffe in einem Kampf für 30 Sekunden um 20% ab."
 icon = ExtResource("1_ejfuf")
 cost_shells = 50
 type = 1
 subtype = 2
-power = 0.2
+power = 20
+duration_sec = 30
 metadata/_custom_type_script = "uid://b3itd36620i50"

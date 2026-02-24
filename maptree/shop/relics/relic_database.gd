@@ -5,6 +5,9 @@ const ALL_RELICS: Array[RelicData] = [
     preload("res://maptree/shop/relics/health_potion_small.tres") as RelicData,
     preload("res://maptree/shop/relics/protection_potion_big.tres") as RelicData,
     preload("res://maptree/shop/relics/protection_potion_small.tres") as RelicData,
+    preload("res://maptree/shop/relics/frog_poison.tres") as RelicData,
+    preload("res://maptree/shop/relics/extra_heart.tres") as RelicData,
+    preload("res://maptree/shop/relics/stronger_weapon.tres") as RelicData,
 ]
 
 var by_id: Dictionary = {} # Dictionary[String, RelicData]

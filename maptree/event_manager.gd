@@ -2,7 +2,7 @@ extends Node
 
 
 # Battle-related events
-signal battle_over_screen_requested(text: String, type: BattleOverPanel.Type)
+signal battle_over_closed(type: int)
 signal fight_won
 signal fight_lost
 

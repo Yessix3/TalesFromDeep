@@ -25,7 +25,7 @@ func _refresh() -> void:
 		return
 	disabled = false
 	icon_rect.texture = relic.icon
-	cost_label.text = str(relic.cost_shells) + " Shells"
+	cost_label.text = str(relic.cost_shells)
 
 func _on_pressed() -> void:
 	if relic == null:

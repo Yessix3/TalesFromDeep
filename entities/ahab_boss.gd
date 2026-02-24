@@ -2,20 +2,36 @@ extends CharacterBody2D
 
 @export var friction := 800
 @export var gravity := 400
-@onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
+
+###################################
+@export var player_path: NodePath
+@export var entities_path: NodePath
+
+@onready var player: Node2D = get_node(player_path) as Node2D
+@onready var entities: Node = get_node(entities_path)
+#########################################
+#@onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var spear = load("res://entities/ahab_spear.tscn")
 @onready var arm = load("res://entities/ahab_arm.tscn")
-@onready var entities := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities")
+#@onready var entities := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities")
 
 
 signal enemy_hit(damage: int)
 signal health_change(value: int)
+#############################
+signal enemy_died()
+
+var outgoing_damage_mult: int = 0
+
+func set_outgoing_damage_mult(v: int) -> void:
+	outgoing_damage_mult = v
+###########################################
 
 
-@export var max_health = 24
+@export var max_health = 50
 @onready var current_health = max_health
-@export var phase_change_health = 20
+@export var phase_change_health = 25
 
 var face_right = false
 var is_attacking = false
@@ -312,34 +328,43 @@ func throwSpear():
 	
 
 func on_throw_hit():
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 func on_arm_hit():
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 
 func _on_attack_p_1_dash_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 
 func _on_attack_p_1_melee_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 
 func _on_attack_p_1_roar_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 
 func _on_attack_p_2_dragoon_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 
 func _on_attack_p_2_leap_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
+##################################################################################
+func _on_player_hit(base_damage: int) -> void:
+	var final_damage := int(base_damage * ((100.0 + float(outgoing_damage_mult)) / 100.0))
+	print("[Boss] hit base=", base_damage, " mult=", outgoing_damage_mult, " final=", final_damage)
 
-func _on_player_hit(damage: int) -> void:
 	var health_compare: int = current_health
-	current_health = current_health - damage
+	current_health -= final_damage
 	health_change.emit(current_health - health_compare)
-	print("Boss Health: ", current_health)
+	print("[Boss] Health:", current_health)
+
+	var _dead := false
+	if current_health <= 0 and not _dead:
+		_dead = true
+		enemy_died.emit()
+########################################################################################

@@ -12,4 +12,5 @@ icon = ExtResource("1_k3hig")
 cost_shells = 50
 type = 1
 subtype = 1
+power = 3
 metadata/_custom_type_script = "uid://b3itd36620i50"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://d165mlevqyqnc"]
+
+[ext_resource type="Script" uid="uid://b3itd36620i50" path="res://maptree/shop/relict_data.gd" id="1_5jwpp"]
+[ext_resource type="Texture2D" uid="uid://bbnhlxb0p7i1g" path="res://maptree/TestButtons/Frog_Poison.png" id="1_sfkc7"]
+
+[resource]
+script = ExtResource("1_5jwpp")
+id = "frog_poison"
+display_name = "Frog Poison"
+description = "Trage dieses Gift auf deine Waffe auf und mache für 1 Minute 50% mehr Schaden."
+icon = ExtResource("1_sfkc7")
+cost_shells = 200
+type = 2
+subtype = 4
+power = 50
+duration_sec = 30
+metadata/_custom_type_script = "uid://b3itd36620i50"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://c2dtkrbiwtni"]
+
+[ext_resource type="Texture2D" uid="uid://b80akndj44dkc" path="res://maptree/TestButtons/Weapon.png" id="1_hqade"]
+[ext_resource type="Script" uid="uid://b3itd36620i50" path="res://maptree/shop/relict_data.gd" id="1_nlon5"]
+
+[resource]
+script = ExtResource("1_nlon5")
+id = "stronger_weapon"
+display_name = "Stone Stick"
+description = "Dieser Stab mit einem geschliffenem Stein macht dauerhaft 25% mehr Schaden."
+icon = ExtResource("1_hqade")
+cost_shells = 200
+power = 25
+metadata/_custom_type_script = "uid://b3itd36620i50"

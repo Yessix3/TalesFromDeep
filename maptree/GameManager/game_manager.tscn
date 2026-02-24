@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brpdfbomvvdcn"]
+[gd_scene load_steps=9 format=3 uid="uid://brpdfbomvvdcn"]
 
 [ext_resource type="Script" uid="uid://brnlao06xwx11" path="res://maptree/GameManager/game_manager.gd" id="1_7v3xg"]
 [ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_sq34f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dc10rwmljvay5" path="res://maptree/ui/health_ui.tscn" id="5_wh46v"]
 [ext_resource type="Script" uid="uid://db1ec6ykh1dt0" path="res://maptree/GameManager/relic_bar.gd" id="5_x7pri"]
 [ext_resource type="PackedScene" uid="uid://bepltiqu3n7q7" path="res://maptree/ui/relic_map_description.tscn" id="7_2gfxx"]
+[ext_resource type="PackedScene" uid="uid://dbfdpc8qc0q85" path="res://maptree/ui/battle_over_panel.tscn" id="8_bto88"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_7v3xg")
@@ -73,3 +74,11 @@ layout_mode = 2
 [node name="Overlays" type="CanvasLayer" parent="."]
 
 [node name="RelicMapDescription" parent="Overlays" instance=ExtResource("7_2gfxx")]
+
+[node name="BattleOverPanel" parent="Overlays" instance=ExtResource("8_bto88")]
+
+[node name="ProtectionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="."]
+one_shot = true

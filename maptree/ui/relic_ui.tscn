@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
+button_mask = 2
 script = ExtResource("1_0n7ii")
 relic = ExtResource("2_5ckj3")
 

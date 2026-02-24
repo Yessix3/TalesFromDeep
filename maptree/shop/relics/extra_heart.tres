@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RelicData" load_steps=3 format=3 uid="uid://dt5is12ithq6d"]
+
+[ext_resource type="Texture2D" uid="uid://ccv4mjcslrhvy" path="res://maptree/TestButtons/Heart.png" id="1_poaxs"]
+[ext_resource type="Script" uid="uid://b3itd36620i50" path="res://maptree/shop/relict_data.gd" id="1_x8m57"]
+
+[resource]
+script = ExtResource("1_x8m57")
+id = "extra_heart"
+display_name = "Add Heart"
+description = "Kaufe dir ein zusätzliches Leben."
+icon = ExtResource("1_poaxs")
+cost_shells = 25
+show_in_topbar = false
+type = 3
+subtype = 3
+power = 1
+metadata/_custom_type_script = "uid://b3itd36620i50"

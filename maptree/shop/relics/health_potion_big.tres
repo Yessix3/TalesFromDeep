@@ -8,6 +8,7 @@ script = ExtResource("2_0j4ma")
 id = "health_poition_big"
 display_name = "Big Health Potion"
 description = "This Potion fills up all Hearts."
+heals_full = true
 icon = ExtResource("1_xpgqk")
 cost_shells = 100
 type = 1
