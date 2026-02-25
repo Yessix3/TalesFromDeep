@@ -8,7 +8,7 @@ const FLOORS := 11              # number of rows
 const MAP_WIDTH := 5            # number of columns
 const PATHS := 4                # maximum number of paths
 const FIGHT_ROOM_WEIGHT := 10.0 
-const SHOP_ROOM_WEIGHT := 10.0 # 4.0
+const SHOP_ROOM_WEIGHT :=  4.0
 const EVENT_ROOM_WEIGHT := 6.5
 
 var random_room_type_weights = {

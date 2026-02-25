@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://cmjpvttxxnchg"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_6i4i5"]
+
+[resource]
+script = ExtResource("1_6i4i5")
+result_id = "event_10_res1"
+text = "You avoid disturbing the creature, finding restorative plants along the way. You receive 1 strong healing potion."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

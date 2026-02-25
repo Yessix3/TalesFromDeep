@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://oi5ri7kd0f31"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://oi5ri7kd0f31"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_bcgfy"]
+[ext_resource type="Resource" uid="uid://dsqg00smu4nvi" path="res://maptree/Event/OptionButtons/event_09/event_09_option_01.tres" id="2_2x2mh"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_dsxhy"]
+[ext_resource type="Resource" uid="uid://dxb6gbd6cqr7q" path="res://maptree/Event/OptionButtons/event_09/event_09_option_02.tres" id="3_voblu"]
+[ext_resource type="Resource" uid="uid://bq6kofk40uiw2" path="res://maptree/Event/OptionButtons/event_09/event_09_option_03.tres" id="4_ulrtg"]
 
 [resource]
 script = ExtResource("2_dsxhy")
 event_id = "event_09"
+title = "Cave of the Glow Jellyfish"
+message = "In a dark cave, tiny glowing jellyfish drift through the water, illuminating the path with soft, flickering light. The beauty is mesmerizing, yet the shadows seem alive."
+options = Array[ExtResource("1_bcgfy")]([ExtResource("2_2x2mh"), ExtResource("3_voblu"), ExtResource("4_ulrtg")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

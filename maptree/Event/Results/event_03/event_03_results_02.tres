@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_rt2qo")
 result_id = "event_03_res2"
-text = "Restore 30% HP."
+text = "A swarm of colorful fish circles you gently. The corals shield you from the attacker and restore your energy. You get completely healed."
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

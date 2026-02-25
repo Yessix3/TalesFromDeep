@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://knc6e2baegrk"]
+
+[ext_resource type="Resource" uid="uid://cbglxiqv5rn25" path="res://maptree/Event/Results/event_17/event_17_res_3.tres" id="1_70861"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_ukg87"]
+
+[resource]
+script = ExtResource("1_ukg87")
+id = "event_17_opt_3"
+text = "Prepare for battle "
+result = ExtResource("1_70861")
+metadata/_custom_type_script = "uid://xshuay8engbm"

@@ -11,32 +11,39 @@ const EVENT_1_DATA:= preload("res://maptree/Event/Events/event_1.tres") as Event
 
 
 @export var run_startup: GameManagerStartUp
-##
-@onready var map: MapTree = $MapTree
-##
 
+@onready var map: MapTree = $MapTree
 @onready var current_view: Node = $CurrentView
 @onready var shells_ui: ShellsUI = $TopBar/BarItems/ShellsUI
 @onready var relic_bar_ui: RelicBarUI = $TopBar/BarItems/RelicBarUI
 @onready var relic_desc: RelicMapDescription = $Overlays/RelicMapDescription
 @onready var health_ui: HealthUI = $TopBar/BarItems/HealthUI
 @onready var battle_over_panel: BattleOverPanel = $Overlays/BattleOverPanel
+@onready var menu_button: Button = $CanvasLayer/MenuButton
 
 @onready var protection_timer: Timer = $ProtectionTimer
 @onready var poison_timer: Timer = $PoisonTimer
 
+
 var is_in_battle: bool = false
+var is_boss_fight: bool = false
 var status: RunStatus
 var frog_poison_bonus: int = 0
+var save_data: SaveGame = null
+var current_battle_config: BattleConfig = null
 
 func _ready() -> void:
+	menu_button.pressed.connect(_on_menu_button_pressed)
 	if not run_startup:
 		return
 	match run_startup.type:
 		GameManagerStartUp.Type.NEW_RUN:
 			_start_run()
 		GameManagerStartUp.Type.CONTINUED_RUN:
-			print("TODO: load previous Run")
+			if SaveGame.load_data() == null:
+				_start_run()
+			else:
+				_load_run()
 	relic_bar_ui.relic_ui_requested.connect(_on_relic_ui_requested)
 	battle_over_panel.closed.connect(_on_battle_over_closed)
 
@@ -48,8 +55,8 @@ func _ready() -> void:
 func _start_run() -> void:
 	status = RunStatus.new()
 	status.died.connect(_on_player_died)
-	_setup_event_connections()
 
+	_setup_event_connections()
 	_setup_top_bar()
 
 	EventPool.reset()
@@ -57,7 +64,43 @@ func _start_run() -> void:
 	map.generate_new_map()
 	map.unlock_floor(0)
 
+	save_data = SaveGame.new()
+	_save_run(true)
 
+func _save_run(was_on_map: bool) -> void:
+	if save_data == null:
+		save_data = SaveGame.new()
+
+	save_data.run_status = status
+
+	save_data.map_data = map.map_data.duplicate(true)
+	save_data.last_room = map.last_room
+	save_data.floors_climbed = map.floors_climbed
+	save_data.was_on_map = was_on_map
+
+	save_data.event_pool_state = EventPool.export_state()
+
+	save_data.save_data()
+
+func _load_run() -> void:
+	save_data = SaveGame.load_data()
+	assert(save_data != null, "Couldn't load last save")
+
+
+	status = save_data.run_status
+	status.died.connect(_on_player_died)
+
+	_setup_event_connections()
+	_setup_top_bar()
+
+	map.load_map(save_data.map_data, save_data.floors_climbed, save_data.last_room)
+
+	if save_data.last_room != null and not save_data.was_on_map:
+		_on_map_exited(save_data.last_room)
+
+func _on_menu_button_pressed() -> void:
+	_save_run(true)
+	get_tree().change_scene_to_file("res://maptree/mapTree/main_menu.tscn")
 
 func _change_view(scene: PackedScene) -> Node:
 	##########
@@ -74,6 +117,7 @@ func _change_view(scene: PackedScene) -> Node:
 	return new_view 
 
 func _show_map() -> void:
+	menu_button.visible = true
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
@@ -82,6 +126,8 @@ func _show_map() -> void:
 	map.enable_scroll()
 	########
 	map.unlock_next_rooms()
+
+	_save_run(true)
 
 func _setup_event_connections() -> void:
 	#EventManager.battle_over_closed.connect(_on_battle_over_closed)
@@ -99,29 +145,39 @@ func _setup_top_bar():
 	health_ui.run_status = status
 
 
-func _on_battle_won() -> void:
-	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
-	reward_scene.run_status = status
-
-	# temporary
-	reward_scene.add_shells_reward(500)
+#func _on_battle_won() -> void:
+#	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+#	reward_scene.run_status = status
+#
+#	# temporary
+#	reward_scene.add_shells_reward(500)
 
 func _on_map_exited(room: Room) -> void:
+	_save_run(false)
+	menu_button.visible = false
 	match room.type:
 		Room.Type.FIGHT:
 			is_in_battle = true
+			is_boss_fight = false
 			relic_desc.set_is_in_battle(is_in_battle)
 
-			var floor_1_based := room.row + 1  # wichtig, falls row 0-basiert ist
+			var floor_1_based := room.row + 1  
 			var battle_scene := BattlePool.pick_battle_for_floor(floor_1_based)
 
 			var fight_view := _change_view(battle_scene)
+
+			var cfg := _build_battle_config(floor_1_based)
+			_push_config_to_battle(cfg)
+			current_battle_config = cfg
+
 			_bind_player_health(fight_view)
 			_bind_win_condition(fight_view)
 			_bind_enemy_control(fight_view)
 
 		Room.Type.EVENT:
 			is_in_battle = false
+			is_boss_fight = false
+
 			relic_desc.set_is_in_battle(is_in_battle)
 			var view := _change_view(EVENT_SCENE)
 			var data := EventPool.draw_random()
@@ -135,6 +191,8 @@ func _on_map_exited(room: Room) -> void:
 				push_error("EVENT_SCENE root has no show_event(EventData).")
 		Room.Type.SHOP:
 			is_in_battle = false
+			is_boss_fight = false
+
 			relic_desc.set_is_in_battle(is_in_battle)
 			var view := _change_view(SHOP_SCENE) as Shop
 			view.run_status = status
@@ -152,9 +210,16 @@ func _on_map_exited(room: Room) -> void:
 			view.stock = filtered
 		Room.Type.BOSS:
 			is_in_battle = true
+			is_boss_fight = true
 			relic_desc.set_is_in_battle(is_in_battle)
 
 			var fight_view := _change_view(BattlePool.pick_boss())
+
+			var floor_1_based := room.row + 1
+			var cfg := _build_battle_config(floor_1_based)
+			current_battle_config = cfg
+			_push_config_to_battle(cfg)
+
 			_bind_player_health(fight_view)
 			_bind_win_condition(fight_view)
 
@@ -188,6 +253,9 @@ func _bind_win_condition(_fight_view: Node) -> void:
 	if boss != null:
 		if boss.has_signal("enemy_died") and not boss.enemy_died.is_connected(_on_enemy_died):
 			boss.enemy_died.connect(_on_enemy_died)
+		if not status.outgoing_damage_mult_changed.is_connected(_on_outgoing_mult_changed):
+			status.outgoing_damage_mult_changed.connect(_on_outgoing_mult_changed)
+		_on_outgoing_mult_changed(status.outgoing_damage_mult)
 		return
 
 	# 2) Normaler Fight: win kommt von EnemyControl
@@ -251,8 +319,13 @@ func _on_battle_over_closed(type: int) -> void:
 	_clear_battle_effects()
 
 	if type == BattleOverPanel.Type.WIN:
-		_show_battle_reward()
+		if is_boss_fight:
+			SaveGame.delete_data()
+			get_tree().change_scene_to_file("res://maptree/mapTree/main_menu.tscn")
+		else:
+			_show_battle_reward()
 	else:
+		SaveGame.delete_data()
 		get_tree().change_scene_to_file("res://maptree/mapTree/main_menu.tscn")
 
 
@@ -260,7 +333,11 @@ func _show_battle_reward() -> void:
 	is_in_battle = false
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_status = status
-	reward_scene.add_shells_reward(500)
+
+	var shells := 0
+	if current_battle_config != null:
+		shells = current_battle_config.shells_reward
+	reward_scene.add_shells_reward(shells)
 
 func _on_protection_timeout() -> void:
 	print("[Protection] timeout -> reset incoming_damage_mult to 0")
@@ -312,6 +389,19 @@ func _on_relic_use_requested(relic: RelicData) -> void:
 	if relic.type == RelicData.Type.POISON:
 		_use_frog_poison(relic)
 		return
+	
+func _safe_start_timer(t: Timer, duration: float) -> void:
+	if t == null:
+		return
+	if t.is_inside_tree():
+		t.start(duration)
+	else:
+		# startet sobald der GM im Tree ist (nächster Frame)
+		call_deferred("_deferred_start_timer", t, duration)
+
+func _deferred_start_timer(t: Timer, duration: float) -> void:
+	if is_instance_valid(t) and t.is_inside_tree():
+		t.start(duration)
 
 func _use_protection_potion(relic: RelicData) -> void:
 	print("_use_protection_potion")
@@ -336,7 +426,7 @@ func _use_protection_potion(relic: RelicData) -> void:
 	status.consume_relic(relic.id, 1)
 
 	status.incoming_damage_mult = -percent
-	protection_timer.start(duration)
+	_safe_start_timer(protection_timer, duration)
 
 	print("[Protection] USED", relic.display_name, "percent=", percent, "duration=", duration)
 	print("[Protection] timer started. time_left=", protection_timer.time_left)
@@ -386,7 +476,45 @@ func _use_frog_poison(relic: RelicData) -> void:
 	# additiv erhöhen (Weapon +25 bleibt erhalten)
 	status.add_outgoing_damage_mult(percent)
 
-	poison_timer.start(duration)
+	_safe_start_timer(poison_timer, duration)
 
 	print("[FrogPoison] USED", relic.display_name, " +", percent, "% for ", duration, "s")
 	print("[FrogPoison] outgoing_damage_mult now =", status.outgoing_damage_mult, " time_left=", poison_timer.time_left)
+
+
+func _build_battle_config(floor_1_based: int) -> BattleConfig:
+	var diff := BattleDefaults.difficulty_from_floor(floor_1_based)
+	var cfg := BattleDefaults.make_default_config(diff)
+
+	# --- permanent (Run) ---
+	cfg.enemy_health_boost += status.enemy_health_boost
+	cfg.enemy_damage_boost += status.enemy_damage_boost
+	cfg.player_damage_boost += status.outgoing_damage_mult
+
+	# --- next battle (einmalig) ---
+	cfg.enemy_health_boost += status.next_enemy_health_boost
+	cfg.enemy_damage_boost += status.next_enemy_damage_boost
+	cfg.player_damage_boost += status.next_player_damage_boost
+	cfg.number_enemies_spawn += status.next_number_enemies_spawn_delta
+
+	# Variant 
+	if status.next_enemy_variant_override != -1:
+		cfg.enemy_variant = status.next_enemy_variant_override
+
+	status.clear_next_battle_modifiers()
+
+	return cfg
+
+func _push_config_to_battle(cfg: BattleConfig) -> void:
+
+	var boss := get_tree().get_first_node_in_group("boss")
+	if boss != null:
+		if boss.has_method("apply_battle_config"):
+			boss.apply_battle_config(cfg)
+		return
+
+
+	var ec := get_tree().get_first_node_in_group("enemy_control")
+	if ec != null:
+		if ec.has_method("apply_battle_config"):
+			ec.apply_battle_config(cfg)

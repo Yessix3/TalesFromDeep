@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://dc5bqi04csl08"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_d5ceu"]
+
+[resource]
+script = ExtResource("1_d5ceu")
+result_id = "event_09_res1"
+text = "The collected jellyfish exude a potent toxin you can use later. You receive 3 potions against Frog Poison."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

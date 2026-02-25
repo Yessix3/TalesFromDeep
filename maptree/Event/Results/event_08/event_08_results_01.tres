@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://ci825u2peonlf"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_shrit"]
+
+[resource]
+script = ExtResource("1_shrit")
+result_id = "event_08_res1"
+text = "The pressure is overwhelming. You recover valuable relics from the depths, but the abyss claims part of your vitality. You receive 50 Shells, but you lose maximal health amount."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://b8a1edf461kx8"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_dlejk"]
+
+[resource]
+script = ExtResource("1_dlejk")
+result_id = "event_08_res2"
+text = "Avoiding the crushing depths, you discover a small abandoned vial of protective essence. You receive a weak protection potion."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

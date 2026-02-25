@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://bstf0vbpk6si6"]
+[gd_scene load_steps=10 format=4 uid="uid://bstf0vbpk6si6"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_xmgyg"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2m3h2"]
-[ext_resource type="PackedScene" path="res://entities/enemy_control.tscn" id="2_yhc15"]
+[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="2_m3d3o"]
+[ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="2_yhc15"]
 [ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="3_yhc15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpgdq"]
@@ -355,7 +356,26 @@ sources/0 = SubResource("TileSetAtlasSource_8s3b3")
 
 [node name="Player" parent="Main/Entities" index="0" groups=["player"]]
 
+[node name="SpawnPoint" parent="Main/Entities" index="1" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(693, -144)
+
+[node name="SpawnPoint2" parent="Main/Entities" index="2" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(1054, -167)
+
+[node name="SpawnPoint3" parent="Main/Entities" index="3" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(213, -178)
+
+[node name="SpawnPoint4" parent="Main/Entities" index="4" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(367, -17)
+
+[node name="SpawnPoint5" parent="Main/Entities" index="5" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(609, -14)
+
+[node name="SpawnPoint6" parent="Main/Entities" index="6" groups=["spawnpoints"] instance=ExtResource("2_m3d3o")]
+position = Vector2(939, -18)
+
 [node name="EnemyControl" parent="Main" index="1" groups=["enemy_control"] instance=ExtResource("2_yhc15")]
+position = Vector2(10, 6)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 3

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bgghh30aagpw2"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_5h556"]
+[ext_resource type="Resource" uid="uid://bjap3enjkt30v" path="res://maptree/Event/Results/event_05/event_05_results_03.tres" id="1_jcicc"]
+
+[resource]
+script = ExtResource("1_5h556")
+id = "event_05_opt3"
+text = "Offer a trade "
+result = ExtResource("1_jcicc")
+metadata/_custom_type_script = "uid://xshuay8engbm"

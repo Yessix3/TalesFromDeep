@@ -6,16 +6,24 @@ enum Difficulty { EASY, MEDIUM, HARD }
 const EASY_POOL: Array[PackedScene] = [
 	preload("res://levels/Easy2.tscn"),
 	preload("res://levels/Easy3.tscn"),
+	preload("res://levels/Easy4.tscn"),
+	preload("res://levels/Easy5.tscn"),
 ]
 
 const MEDIUM_POOL: Array[PackedScene] = [
-	preload("res://levels/Easy2.tscn"),
-	preload("res://levels/Easy3.tscn"),
+	preload("res://levels/Medium1.tscn"),
+	preload("res://levels/Medium2.tscn"),
+	preload("res://levels/Medium3.tscn"),
+	preload("res://levels/Medium4.tscn"),
+	preload("res://levels/Medium5.tscn"),
 ]
 
 const HARD_POOL: Array[PackedScene] = [
-	preload("res://levels/Easy2.tscn"),
-	preload("res://levels/Easy3.tscn"),
+	preload("res://levels/Hard1.tscn"),
+	preload("res://levels/Hard2.tscn"),
+	preload("res://levels/Hard3.tscn"),
+	preload("res://levels/Hard4.tscn"),
+	preload("res://levels/Hard5.tscn"),
 ]
 
 const BOSS_SCENE: PackedScene = preload("res://levels/BossLevel.tscn")

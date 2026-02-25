@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://c7638ujoytjp0"]
+
+[ext_resource type="Resource" uid="uid://crr5l21nubv8p" path="res://maptree/Event/Results/event_04/event_04_results_02.tres" id="1_plewc"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_srjt8"]
+
+[resource]
+script = ExtResource("1_srjt8")
+id = "event_04_opt2"
+text = "2.Approach the squid "
+result = ExtResource("1_plewc")
+metadata/_custom_type_script = "uid://xshuay8engbm"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://dxb6gbd6cqr7q"]
+
+[ext_resource type="Resource" uid="uid://6c0xmxq8ugij" path="res://maptree/Event/Results/event_09/event_09_results_02.tres" id="1_85urc"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_7231d"]
+
+[resource]
+script = ExtResource("1_7231d")
+id = "event_09_opt2"
+text = "Gaze in awe "
+result = ExtResource("1_85urc")
+metadata/_custom_type_script = "uid://xshuay8engbm"

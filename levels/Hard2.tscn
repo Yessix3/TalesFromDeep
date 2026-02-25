@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://bw3um3tcknh0s"]
+[gd_scene load_steps=14 format=4 uid="uid://bw3um3tcknh0s"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_et48f"]
 [ext_resource type="Script" uid="uid://dshmh02ktkkab" path="res://levels/Level_Skripts/hard_2.gd" id="2_2erer"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_qxx31"]
 [ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="3_2erer"]
+[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_yrs3a"]
+[ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="4_me7m7"]
 [ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://levels/Level_Elements/move_bUP_Down.tscn" id="4_yrs3a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqepm"]
@@ -524,6 +526,37 @@ sources/0 = SubResource("TileSetAtlasSource_j0g86")
 
 [node name="Level" instance=ExtResource("1_et48f")]
 script = ExtResource("2_2erer")
+
+[node name="Entities" parent="Main" index="0" groups=["entities"]]
+
+[node name="Player" parent="Main/Entities" index="0" groups=["player"]]
+
+[node name="SpawnPoint" parent="Main/Entities" index="1" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(569, -626)
+
+[node name="SpawnPoint2" parent="Main/Entities" index="2" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(439, 61)
+
+[node name="SpawnPoint3" parent="Main/Entities" index="3" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(796, -309)
+
+[node name="SpawnPoint4" parent="Main/Entities" index="4" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(955, -52)
+
+[node name="SpawnPoint5" parent="Main/Entities" index="5" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(1167, -199)
+
+[node name="SpawnPoint6" parent="Main/Entities" index="6" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(-2, -497)
+
+[node name="SpawnPoint7" parent="Main/Entities" index="7" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(328, -493)
+
+[node name="SpawnPoint8" parent="Main/Entities" index="8" groups=["spawnpoints"] instance=ExtResource("3_yrs3a")]
+position = Vector2(531, -153)
+
+[node name="EnemyControl" parent="Main" index="1" groups=["enemy_control"] instance=ExtResource("4_me7m7")]
+position = Vector2(-48, -24)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

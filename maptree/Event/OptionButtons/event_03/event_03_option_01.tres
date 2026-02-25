@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_ysgfj")
 id = "event_03_opt1"
-text = "Sneak and plunder the nests."
+text = "Hide in the cave "
 result = ExtResource("1_8hr34")
 metadata/_custom_type_script = "uid://xshuay8engbm"

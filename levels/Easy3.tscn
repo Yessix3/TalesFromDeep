@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://3daunrdyachn"]
+[gd_scene load_steps=9 format=4 uid="uid://3daunrdyachn"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_ibub5"]
+[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="2_0feie"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_4cin3"]
-[ext_resource type="PackedScene" path="res://entities/enemy_control.tscn" id="2_edx6h"]
+[ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="2_edx6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipvgf"]
 texture = ExtResource("2_4cin3")
@@ -360,7 +361,26 @@ sources/0 = SubResource("TileSetAtlasSource_gadkw")
 
 [node name="Player" parent="Main/Entities" index="0" groups=["player"]]
 
+[node name="SpawnPoint" parent="Main/Entities" index="1" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(394, 129)
+
+[node name="SpawnPoint2" parent="Main/Entities" index="2" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(122, -150)
+
+[node name="SpawnPoint3" parent="Main/Entities" index="3" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(759, -143)
+
+[node name="SpawnPoint4" parent="Main/Entities" index="4" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(-146, -262)
+
+[node name="SpawnPoint5" parent="Main/Entities" index="5" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(727, 1)
+
+[node name="SpawnPoint6" parent="Main/Entities" index="6" groups=["spawnpoints"] instance=ExtResource("2_0feie")]
+position = Vector2(507, -68)
+
 [node name="EnemyControl" parent="Main" index="1" groups=["enemy_control"] instance=ExtResource("2_edx6h")]
+position = Vector2(-69, -33)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

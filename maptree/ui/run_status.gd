@@ -11,8 +11,21 @@ signal died()
 signal incoming_damage_mult_changed(new_value: int)
 signal outgoing_damage_mult_changed(new_value: int)
 
-var incoming_damage_mult: int = 0 : set = set_incoming_damage_mult  # z.B. -15
-var outgoing_damage_mult: int = 0 : set = set_outgoing_damage_mult  # z.B. +50
+signal enemy_health_boost_changed(v: int)
+signal enemy_damage_boost_changed(v: int)
+
+@export var incoming_damage_mult: int = 0 : set = set_incoming_damage_mult  # z.B. -15
+@export var outgoing_damage_mult: int = 0 : set = set_outgoing_damage_mult  # z.B. +50
+
+@export var enemy_health_boost: int = 0 : set = set_enemy_health_boost
+@export var enemy_damage_boost: int = 0 : set = set_enemy_damage_boost
+
+@export var next_enemy_health_boost: int = 0
+@export var next_enemy_damage_boost: int = 0
+@export var next_player_damage_boost: int = 0
+@export var next_number_enemies_spawn_delta: int = 0
+
+@export var next_enemy_variant_override: int = -1 
 
 
 const STARTING_CURRENT_HEALTH := 100
@@ -24,7 +37,7 @@ const STARTING_SHELLS := 0
 @export var curr_health := STARTING_CURRENT_HEALTH: set = set_curr_health
 @export var max_health := STARTING_MAX_HEALTH: set = set_max_health
 
-var relic_counts: Dictionary = {}
+@export var relic_counts: Dictionary = {}
 
 
 func set_shells(new_amount: int) -> void:
@@ -165,3 +178,39 @@ func add_outgoing_damage_mult(delta: int) -> void:
         return
     set_outgoing_damage_mult(outgoing_damage_mult + delta)
     print("[RunStatus] add_outgoing_damage_mult delta=", delta, " total=", outgoing_damage_mult)
+
+func set_enemy_health_boost(v: int) -> void:
+    enemy_health_boost = v
+    enemy_health_boost_changed.emit(v)
+
+func set_enemy_damage_boost(v: int) -> void:
+    enemy_damage_boost = v
+    enemy_damage_boost_changed.emit(v)
+
+func add_enemy_health_boost(delta: int) -> void:
+    set_enemy_health_boost(enemy_health_boost + delta)
+
+func add_enemy_damage_boost(delta: int) -> void:
+    set_enemy_damage_boost(enemy_damage_boost + delta)
+
+func add_next_enemy_health_boost(delta: int) -> void:
+    next_enemy_health_boost += delta
+
+func add_next_enemy_damage_boost(delta: int) -> void:
+    next_enemy_damage_boost += delta
+
+func add_next_player_damage_boost(delta: int) -> void:
+    next_player_damage_boost += delta
+
+func add_next_number_enemies_spawn(delta: int) -> void:
+    next_number_enemies_spawn_delta += delta
+
+func set_next_enemy_variant(variant: int) -> void:
+    next_enemy_variant_override = variant
+
+func clear_next_battle_modifiers() -> void:
+    next_enemy_health_boost = 0
+    next_enemy_damage_boost = 0
+    next_player_damage_boost = 0
+    next_number_enemies_spawn_delta = 0
+    next_enemy_variant_override = -1

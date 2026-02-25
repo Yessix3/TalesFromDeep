@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://c35yfhdsdbt8n"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_h02cu"]
+
+[resource]
+script = ExtResource("1_h02cu")
+result_id = "event_04_res1"
+text = "The swarm defends itself against lurking sea creatures. For a while, you remain part of it, learning their coordinated strikes. You deal more damage in the next battle."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

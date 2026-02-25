@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://de3lkm5bg61n2"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_3exsi"]
+[ext_resource type="Resource" uid="uid://ci825u2peonlf" path="res://maptree/Event/Results/event_08/event_08_results_01.tres" id="1_m532x"]
+
+[resource]
+script = ExtResource("1_3exsi")
+id = "event_08_opt1"
+text = "Descend into the trench "
+result = ExtResource("1_m532x")
+metadata/_custom_type_script = "uid://xshuay8engbm"

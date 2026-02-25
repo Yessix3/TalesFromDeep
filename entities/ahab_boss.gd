@@ -22,10 +22,23 @@ signal health_change(value: int)
 #############################
 signal enemy_died()
 
-var outgoing_damage_mult: int = 0
+var boss_health_boost: int = 1
+var boss_damage_boost: int = 1
+var player_damage_boost: int = 1
 
-func set_outgoing_damage_mult(v: int) -> void:
-	outgoing_damage_mult = v
+func apply_battle_config(cfg: BattleConfig) -> void:
+
+	boss_health_boost = cfg.enemy_health_boost
+	print("[Boss] health boost:", boss_health_boost)
+	boss_damage_boost = cfg.enemy_damage_boost
+	print("[Boss] damage boost:", boss_health_boost)
+	player_damage_boost = cfg.player_damage_boost
+	print("[Boss] player damage boost:", boss_health_boost)
+
+
+	max_health = int(max_health * ((100.0 + boss_health_boost)/100.0))
+
+
 ###########################################
 
 
@@ -355,8 +368,8 @@ func _on_attack_p_2_leap_body_entered(body: Node2D) -> void:
 
 ##################################################################################
 func _on_player_hit(base_damage: int) -> void:
-	var final_damage := int(base_damage * ((100.0 + float(outgoing_damage_mult)) / 100.0))
-	print("[Boss] hit base=", base_damage, " mult=", outgoing_damage_mult, " final=", final_damage)
+	var final_damage := int(base_damage * ((100.0 + float(player_damage_boost)) / 100.0))
+	print("[Boss] hit base=", base_damage, " mult=", player_damage_boost, " final=", final_damage)
 
 	var health_compare: int = current_health
 	current_health -= final_damage

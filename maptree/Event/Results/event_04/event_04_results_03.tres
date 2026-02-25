@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://df5tlsr04f3w7"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_j0yoj"]
+
+[resource]
+script = ExtResource("1_j0yoj")
+result_id = "event_04_res3"
+text = "The seemingly calm squid suddenly shifts its color to a threatening red. It darts toward you in a frenzy and severely injures you. You lose health."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

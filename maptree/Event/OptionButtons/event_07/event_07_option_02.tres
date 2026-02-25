@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://dsv8mvsgfurq5"]
+
+[ext_resource type="Resource" uid="uid://bwwtchto5ecbi" path="res://maptree/Event/Results/event_07/event_07_results_02.tres" id="1_8vrnq"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_drbn4"]
+
+[resource]
+script = ExtResource("1_drbn4")
+id = "event_07_opt2"
+text = "Drive the predators away "
+result = ExtResource("1_8vrnq")
+metadata/_custom_type_script = "uid://xshuay8engbm"

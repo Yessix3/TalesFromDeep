@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://6c0xmxq8ugij"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_75wtx"]
+
+[resource]
+script = ExtResource("1_75wtx")
+result_id = "event_09_res2"
+text = "The peaceful glow fills you with energy, restoring your vitality. Your maximal health amount increases."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

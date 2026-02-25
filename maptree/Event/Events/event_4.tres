@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://dkhy5gdpn6v5l"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://dkhy5gdpn6v5l"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_nymqy"]
+[ext_resource type="Resource" uid="uid://wv8bucxqufxo" path="res://maptree/Event/OptionButtons/event_04/event_04_option_01.tres" id="2_4gb41"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_8qo2s"]
+[ext_resource type="Resource" uid="uid://c7638ujoytjp0" path="res://maptree/Event/OptionButtons/event_04/event_04_option_02.tres" id="3_sequx"]
+[ext_resource type="Resource" uid="uid://chqo8100gdedj" path="res://maptree/Event/OptionButtons/event_04/event_04_option_03.tres" id="4_4q37w"]
 
 [resource]
 script = ExtResource("2_8qo2s")
 event_id = "event_04"
+title = "The Red Devil"
+message = "You encounter a pale-looking swarm of squids. One cautiously approaches you, studying your movements, while a slightly larger one sleeps peacefully nearby."
+options = Array[ExtResource("1_nymqy")]([ExtResource("2_4gb41"), ExtResource("3_sequx"), ExtResource("4_4q37w")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

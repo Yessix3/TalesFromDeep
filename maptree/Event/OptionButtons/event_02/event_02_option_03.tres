@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_13ka3")
 id = "event_02_res03"
-text = "Defile the shrine."
+text = "Prepare for battle "
 result = ExtResource("1_owfy4")
 metadata/_custom_type_script = "uid://xshuay8engbm"

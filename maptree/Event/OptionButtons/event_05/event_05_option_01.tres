@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://0p6q6bscnefv"]
+
+[ext_resource type="Resource" uid="uid://dcgri0aaeioj8" path="res://maptree/Event/Results/event_05/event_05_results_01.tres" id="1_skp8f"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_y1m4j"]
+
+[resource]
+script = ExtResource("1_y1m4j")
+id = "event_05_opt1"
+text = "Politely decline "
+result = ExtResource("1_skp8f")
+metadata/_custom_type_script = "uid://xshuay8engbm"

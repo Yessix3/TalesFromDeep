@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://bmmmma8sao6dj"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_e0g5a"]
+[ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_arw2p"]
+[ext_resource type="Resource" uid="uid://c01or463bfy4f" path="res://maptree/Event/OptionButtons/event_17/event_17_opt_1.tres" id="2_wcsyt"]
+[ext_resource type="Resource" uid="uid://c6vxlvfaddaob" path="res://maptree/Event/OptionButtons/event_17/event_17_opt_2.tres" id="3_7wcms"]
+[ext_resource type="Resource" uid="uid://knc6e2baegrk" path="res://maptree/Event/OptionButtons/event_17/event_17_opt_3.tres" id="4_008pc"]
+
+[resource]
+script = ExtResource("2_arw2p")
+event_id = "event_17"
+title = "Light in the Dark"
+message = "Everything is pitch black. Disoriented, you move forward step by step. In the distance, you see a
+light. It is coming closer."
+options = Array[ExtResource("1_e0g5a")]([ExtResource("2_wcsyt"), ExtResource("3_7wcms"), ExtResource("4_008pc")])
+metadata/_custom_type_script = "uid://c8jm80k1iiieg"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://bruhutas8dt8j"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_1ucp5"]
+
+[resource]
+script = ExtResource("1_1ucp5")
+result_id = "event_17_res_2"
+text = "The light glides past you, and you finally see its true monstrous form. Luckily,you remain unharmed. The creature has dropped something."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

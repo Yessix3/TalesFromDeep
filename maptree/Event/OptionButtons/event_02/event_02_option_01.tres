@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_xphvh")
 id = "event_02_opt1"
-text = "Offer 40 shells."
+text = "Walk toward the light "
 result = ExtResource("1_nqbyb")
 metadata/_custom_type_script = "uid://xshuay8engbm"

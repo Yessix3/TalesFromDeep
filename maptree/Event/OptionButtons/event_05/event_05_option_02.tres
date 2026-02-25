@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://b6pxbads3kp1o"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_b57ty"]
+[ext_resource type="Resource" uid="uid://c36b0fhwym8cy" path="res://maptree/Event/Results/event_05/event_05_results_02.tres" id="1_qb15e"]
+
+[resource]
+script = ExtResource("1_b57ty")
+id = "event_05_opt2"
+text = "Gratefully accept "
+result = ExtResource("1_qb15e")
+metadata/_custom_type_script = "uid://xshuay8engbm"

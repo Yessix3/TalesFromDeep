@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://c2dtq3fncv51q"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_xx8to"]
+
+[resource]
+script = ExtResource("1_xx8to")
+result_id = "event_09_res3"
+text = "Your haste disturbs lurking predators. More enemies spawn in the next battle."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

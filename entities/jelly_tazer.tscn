@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://ixhw36v3007v"]
+
+[ext_resource type="Script" uid="uid://c2bfv1fjn1u8f" path="res://entities/jelly_tazer.gd" id="1_3gur7"]
+[ext_resource type="Texture2D" uid="uid://bka1q6twjrp1f" path="res://assets/ProjectileSprites/Enemy2_projectile1.png" id="2_2yd2e"]
+[ext_resource type="Texture2D" uid="uid://b8ymdyvhpj5b0" path="res://assets/ProjectileSprites/Enemy2_projectile2.png" id="3_m014q"]
+[ext_resource type="Texture2D" uid="uid://3726i31go86c" path="res://assets/ProjectileSprites/Enemy2_projectile3.png" id="4_sxvbj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fmj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2yd2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m014q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sxvbj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmr6s"]
+radius = 8.246211
+
+[node name="JellyTazer" type="CharacterBody2D"]
+z_index = 3
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3gur7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.0000005, -3.0000005)
+scale = Vector2(0.484375, 0.484375)
+sprite_frames = SubResource("SpriteFrames_5fmj6")
+frame_progress = 0.031123823
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rmr6s")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_rmr6s")
+
+[node name="HitArea" type="Area2D" parent="."]
+z_index = 3
+collision_layer = 4
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_rmr6s")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="area_shape_entered" from="HitArea" to="." method="_on_hit_area_area_shape_entered"]

@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://cuexyfvgv5bcu"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://cuexyfvgv5bcu"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_cmvlp"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_b62ll"]
+[ext_resource type="Resource" uid="uid://xhvefgihtrqb" path="res://maptree/Event/OptionButtons/event_10/event_10_option_01.tres" id="2_w0bxg"]
+[ext_resource type="Resource" uid="uid://dr20iu212uo04" path="res://maptree/Event/OptionButtons/event_10/event_10_option_02.tres" id="3_shiia"]
+[ext_resource type="Resource" uid="uid://bay2edmwrg71b" path="res://maptree/Event/OptionButtons/event_10/event_10_option_03.tres" id="4_mlini"]
 
 [resource]
 script = ExtResource("2_b62ll")
 event_id = "event_10"
+title = "The Sleeping Leviathan"
+message = "A massive shadow rests on the seafloor. Its breathing causes waves to ripple through the water."
+options = Array[ExtResource("1_cmvlp")]([ExtResource("2_w0bxg"), ExtResource("3_shiia"), ExtResource("4_mlini")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

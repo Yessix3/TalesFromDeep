@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_w50ko")
 result_id = "event_03_res1"
-text = "Gain 60 shells. 50% chance: immediate combat with enhanced enemies (+10% damage)."
+text = "In the depths of the cave, a moray eel ambushes you. Cunning and swift, it steals all of your collected belongings. You lose all of your collected items."
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_m8hn3")
 result_id = "event_02_res02"
-text = "Gain 30–50 shells."
+text = "The light glides past you, and you finally see its true monstrous form. Luckily, you remain unharmed. The creature has dropped something. You receive a protection potion."
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

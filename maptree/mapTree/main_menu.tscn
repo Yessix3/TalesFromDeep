@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg0q7w83yqaxs"]
+[gd_scene load_steps=7 format=3 uid="uid://bg0q7w83yqaxs"]
 
 [ext_resource type="Texture2D" uid="uid://bjell2acpfxo2" path="res://assets/frog_fish_doodle.png" id="1_ih34f"]
 [ext_resource type="Script" uid="uid://dywthcfxbgnpr" path="res://maptree/ui/main_menu.gd" id="1_qhoht"]
+[ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_qg6mh"]
 
 [sub_resource type="Gradient" id="Gradient_qhoht"]
 colors = PackedColorArray(0.19076231, 0.19076234, 0.19076231, 1, 0.21653229, 0.18628958, 0.65018225, 1)
@@ -22,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhoht")
+run_startup = ExtResource("2_qg6mh")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -59,9 +61,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -332.0
-offset_top = -117.0
+offset_top = -132.0
 offset_right = -132.0
-offset_bottom = 83.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -79,6 +81,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "New Run"
 
+[node name="Practise" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Practice
+"
+
 [node name="Exit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
@@ -92,4 +101,5 @@ texture = ExtResource("1_ih34f")
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="VBoxContainer/Practise" to="." method="_on_practise_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

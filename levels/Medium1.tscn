@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bn58l7oqd5u77"]
+[gd_scene load_steps=10 format=4 uid="uid://bn58l7oqd5u77"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_24v6k"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_2dq0o"]
 [ext_resource type="Script" uid="uid://b5wfck42jdeby" path="res://levels/Level_Skripts/medium_1.gd" id="2_fyxib"]
-[ext_resource type="PackedScene" uid="uid://c5kk2phxygmtg" path="res://entities/SeeIgel.tscn" id="2_rfcon"]
+[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_fyxib"]
+[ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="4_crymc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xkyh"]
 texture = ExtResource("2_2dq0o")
@@ -352,9 +353,33 @@ sources/0 = SubResource("TileSetAtlasSource_pwt4q")
 [node name="Level" instance=ExtResource("1_24v6k")]
 script = ExtResource("2_fyxib")
 
-[node name="Enemy_SeeIgel" parent="Main/Entities" index="1" instance=ExtResource("2_rfcon")]
-z_index = 9
-position = Vector2(510, 23)
+[node name="Entities" parent="Main" index="0" groups=["entities"]]
+
+[node name="Player" parent="Main/Entities" index="0" groups=["player"]]
+
+[node name="SpawnPoint" parent="Main/Entities" index="1" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(55, -265)
+
+[node name="SpawnPoint2" parent="Main/Entities" index="2" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(870, -2)
+
+[node name="SpawnPoint3" parent="Main/Entities" index="3" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(733, -76)
+
+[node name="SpawnPoint4" parent="Main/Entities" index="4" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(405, -262)
+
+[node name="SpawnPoint5" parent="Main/Entities" index="5" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(528, 6)
+
+[node name="SpawnPoint6" parent="Main/Entities" index="6" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(330, 7)
+
+[node name="SpawnPoint7" parent="Main/Entities" index="7" groups=["spawnpoints"] instance=ExtResource("3_fyxib")]
+position = Vector2(553, -173)
+
+[node name="EnemyControl" parent="Main" index="1" groups=["enemy_control"] instance=ExtResource("4_crymc")]
+position = Vector2(-27, -27)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

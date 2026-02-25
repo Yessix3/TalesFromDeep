@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://c6lb7tdohvkbj"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_l6ed5"]
+
+[resource]
+script = ExtResource("1_l6ed5")
+result_id = "event_10_res3"
+text = "Studying its movements, you learn how to strike effectively in future fights. You make more damage in the next battle."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"
