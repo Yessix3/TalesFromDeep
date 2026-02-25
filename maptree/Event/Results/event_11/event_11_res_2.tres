@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://upim85h64g01"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_da731"]
+
+[resource]
+script = ExtResource("1_da731")
+result_id = "event_11_res_1"
+text = "You strike at the ancient predator.For a heartbeat, nothing happens.Then the Ice Shark turns.Its movement is not fast — but it is overwhelming. A single sweeping arc of its body collides with you, crushing with immense mass rather than speed. Its teeth rake across your armor before it drifts away again, indifferent.The damage is deep and lasting."
+max_hp_delta = -20
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

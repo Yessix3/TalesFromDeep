@@ -225,9 +225,8 @@ func _on_map_exited(room: Room) -> void:
 
 func _on_result_requested(result: EventResultData) -> void:
 	var view := _change_view(RESULT_SCENE)
-	# ResultScreen sollte eine Methode set_result haben
 	if view.has_method("set_result"):
-		view.call("set_result", result)
+		view.call("set_result", result, status)
 	else:
 		push_error("Result view has no set_result(result).")
 
@@ -301,10 +300,14 @@ func _on_player_health_damage(base_damage: int) -> void:
 	status.apply_health_delta(final_damage)
 	print("[GM] RunStatus curr_health now =", status.curr_health)
 
+	# --- Event-Effekt: “Whenever you are hit, you lose X Shells.” ---
+	if status.shells_lost_on_hit > 0:
+		var new_shells: int = status.shells - status.shells_lost_on_hit
+		if new_shells < 0:
+			new_shells = 0
+		status.shells = new_shells
+
 func _on_player_died() -> void:
-	if not is_in_battle:
-		return
-	
 	print("PLAYER DIED")
 	battle_over_panel.show_screen("Game Over!", BattleOverPanel.Type.LOSE)
 
@@ -497,7 +500,9 @@ func _build_battle_config(floor_1_based: int) -> BattleConfig:
 	cfg.player_damage_boost += status.next_player_damage_boost
 	cfg.number_enemies_spawn += status.next_number_enemies_spawn_delta
 
-	# Variant 
+	cfg.number_enemies_spawn = clamp(cfg.number_enemies_spawn, 0, BattleDefaults.max_enemies_for_diff(diff))
+	print("[GM] cfg.number_enemies_spawn =", cfg.number_enemies_spawn," next_delta =", status.next_number_enemies_spawn_delta)
+
 	if status.next_enemy_variant_override != -1:
 		cfg.enemy_variant = status.next_enemy_variant_override
 

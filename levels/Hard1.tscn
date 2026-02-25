@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_7fuw1"]
 [ext_resource type="Script" uid="uid://cgqt8li85v5dk" path="res://levels/Level_Skripts/hard_1.gd" id="2_k8mh7"]
 [ext_resource type="Texture2D" uid="uid://rw1viu4y54fm" path="res://assets/Level_Sprites/Tileset_BG.png" id="3_k8mh7"]
-[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_lnlp5"]
+[ext_resource type="PackedScene" uid="uid://b3h68wg4ydqy7" path="res://components/spawn_point.tscn" id="3_lnlp5"]
 [ext_resource type="Texture2D" uid="uid://ddkf1k4pkmvj2" path="res://assets/Level_Sprites/Tileset_PF+Floor.png" id="4_lnlp5"]
 [ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="5_0p4p8"]
 [ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="6_0p4p8"]
@@ -258,10 +258,3 @@ position = Vector2(-246, 300)
 
 [node name="MPF3" parent="." index="4" instance=ExtResource("5_0p4p8")]
 position = Vector2(485, 218)
-
-[node name="Difficulty" type="Label" parent="." index="5"]
-offset_left = -52.0
-offset_top = -52.0
-offset_right = 45.0
-offset_bottom = -30.0
-text = "HARD_Level"

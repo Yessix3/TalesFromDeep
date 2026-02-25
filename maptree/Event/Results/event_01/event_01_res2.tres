@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_7cir6")
 result_id = "event_01_res2"
-text = "Gain Abyssal Resilience: survive one lethal hit at 1 HP. Each time you are hit, lose 5 shells."
+text = "The Sea Devil’s lure lowers until it touches your brow.    Your bones thicken. Your scales harden like layered shell. Your life force deepens.    You gain additional 10 maximum HP.    Yet growth in the abyss feeds competition. Other creatures adapt to challenge you.    From now on, enemies have increased health."
+max_hp_delta = 10
+enemy_health_boost_delta = 5
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_14uwb")
 id = "event_01_opt3"
-text = "“I want tides of shells.”"
+text = "“Let wealth follow in my wake.”"
 result = ExtResource("1_gkd46")
 metadata/_custom_type_script = "uid://xshuay8engbm"

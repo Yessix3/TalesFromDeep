@@ -9,8 +9,7 @@
 [resource]
 script = ExtResource("5_8tt03")
 event_id = "event_01"
-title = "The Pact of the Brine Devil"
-message = "In a dim trench, a horned Brine Devil coils around a coral pillar. His lantern-glow eyes study you.
-“I trade in certainty,” he gurgles. “Strength, survival, wealth. But balance must be kept.”"
+title = "The Pact of the Sea Devil"
+message = "You descend into the true abyss — where pressure crushes thought and light has long since surrendered. From the black water ahead, a glow appears. The Sea Devil drifts forward, vast-jawed and crowned with barbed fins. Every instinct urges you to flee. You force yourself to remain. “I offer currents of certainty,” it whispers. “Strength. Survival. Fortune. But the tide always returns.” The abyss waits for your answer."
 options = Array[ExtResource("1_y0vfq")]([ExtResource("2_pneir"), ExtResource("3_oknf0"), ExtResource("4_wa1sf")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

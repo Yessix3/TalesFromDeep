@@ -19,6 +19,7 @@ extends CharacterBody2D
 
 signal enemy_hit(damage: int)
 signal health_change(value: int)
+signal enemy_knockback(Vector2)
 #############################
 signal enemy_died()
 
@@ -42,9 +43,9 @@ func apply_battle_config(cfg: BattleConfig) -> void:
 ###########################################
 
 
-@export var max_health = 50
+@export var max_health = 400
 @onready var current_health = max_health
-@export var phase_change_health = 25
+@export var phase_change_health = 200
 
 var face_right = false
 var is_attacking = false
@@ -55,7 +56,7 @@ var last_decision := "wait"
 
 func _ready():
 	print(player)
-	
+	self.enemy_knockback.connect(Callable(player, "get_knocked_back"))
 
 func _process(delta):
 	apply_gravity(delta)
@@ -99,7 +100,7 @@ func make_decisionP1():
 				last_decision = "ground_poke"
 				current_decision = "ground_poke"
 			else: 
-				if random < 0.2:
+				if random < 0.5:
 					last_decision = "ground_poke"
 					current_decision = "ground_poke"
 				else:
@@ -117,6 +118,9 @@ func make_decisionP1():
 				else:
 					last_decision = "dash"
 					current_decision = "dash" 
+					if random > 0.7:
+						last_decision = "roar"
+						current_decision = "roar"
 			else:
 				last_decision = "dash"
 				current_decision = "dash" 
@@ -129,12 +133,15 @@ func make_decisionP2():
 		last_decision = "dragoon"
 		current_decision = "dragoon"
 	else:
-		if random < 0.5:
+		if random < 0.6:
 			last_decision = "leap"
 			current_decision = "leap"
 		else:
 			last_decision = "throw"
 			current_decision = "throw"
+		if random < 0.2:
+			last_decision = "dragoon"
+			current_decision = "dragoon"
 
 
 
@@ -347,24 +354,29 @@ func on_arm_hit():
 	enemy_hit.emit(10)
 
 
+
 func _on_attack_p_1_dash_body_entered(body: Node2D) -> void:
 	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_1_melee_body_entered(body: Node2D) -> void:
 	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_1_roar_body_entered(body: Node2D) -> void:
 	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_2_dragoon_body_entered(body: Node2D) -> void:
 	enemy_hit.emit(10)
-
+	enemy_knockback.emit(global_position)
 
 func _on_attack_p_2_leap_body_entered(body: Node2D) -> void:
 	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 ##################################################################################
 func _on_player_hit(base_damage: int) -> void:

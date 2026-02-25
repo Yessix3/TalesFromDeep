@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource("1_x8m57")
 id = "extra_heart"
-display_name = "Add Heart"
-description = "Kaufe dir ein zusätzliches Leben."
+display_name = "Add HP"
+description = "Gain 10 additional maximum HP."
 icon = ExtResource("1_poaxs")
 cost_shells = 25
 show_in_topbar = false
 type = 3
 subtype = 3
-power = 1
+power = 10
 metadata/_custom_type_script = "uid://b3itd36620i50"

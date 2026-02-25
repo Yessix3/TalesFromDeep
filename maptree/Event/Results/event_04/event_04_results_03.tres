@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_j0yoj")
 result_id = "event_04_res3"
-text = "The seemingly calm squid suddenly shifts its color to a threatening red. It darts toward you in a frenzy and severely injures you. You lose health."
+text = "3. Wake the larger squidYou reach out and disturb the resting giant.Its skin flashes from pale white to violent crimson. In an instant, the surrounding water explodes with motion. The Bigfin Reef Squid propels itself forward with terrifying speed.A barbed tentacle lashes across your torso before you can react. The swarm scatters into defensive formation, leaving you exposed.The creature retreats as suddenly as it attacked — but the wound remains. You lose health."
+immediate_damage = 50
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

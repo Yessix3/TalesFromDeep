@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_5jwpp")
 id = "frog_poison"
-display_name = "Frog Poison"
-description = "Trage dieses Gift auf deine Waffe auf und mache für 1 Minute 50% mehr Schaden."
+display_name = "Jellyfish Poison"
+description = "Apply poison to your weapon. +50% damage for 30 seconds."
 icon = ExtResource("1_sfkc7")
 cost_shells = 200
 type = 2

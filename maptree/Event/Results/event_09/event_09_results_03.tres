@@ -6,4 +6,5 @@
 script = ExtResource("1_xx8to")
 result_id = "event_09_res3"
 text = "Your haste disturbs lurking predators. More enemies spawn in the next battle."
+next_extra_enemies = 1
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

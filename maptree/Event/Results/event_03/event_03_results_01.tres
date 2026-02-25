@@ -6,4 +6,5 @@
 script = ExtResource("1_w50ko")
 result_id = "event_03_res1"
 text = "In the depths of the cave, a moray eel ambushes you. Cunning and swift, it steals all of your collected belongings. You lose all of your collected items."
+lose_all_items = true
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

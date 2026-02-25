@@ -2,25 +2,23 @@ extends Node
 
 # Alle Events (einmalig definieren)
 const ALL_EVENTS: Array[EventData] = [
-	preload("res://maptree/Event/Events/event_1.tres"),
-	preload("res://maptree/Event/Events/event_2.tres"),
-	preload("res://maptree/Event/Events/event_3.tres"),
-	preload("res://maptree/Event/Events/event_4.tres"),
-	preload("res://maptree/Event/Events/event_5.tres"),
-	preload("res://maptree/Event/Events/event_6.tres"),
-	preload("res://maptree/Event/Events/event_7.tres"),
-	preload("res://maptree/Event/Events/event_8.tres"),
-	preload("res://maptree/Event/Events/event_9.tres"),
-	preload("res://maptree/Event/Events/event_10.tres"),
-	# ...
-	# preload("res://data/Event/Events/event_15.tres"),
+	preload("res://maptree/Event/Events/event_1.tres"), #ja 
+	preload("res://maptree/Event/Events/event_2.tres"), # ja 
+	preload("res://maptree/Event/Events/event_3.tres"), #ja 
+	preload("res://maptree/Event/Events/event_4.tres"), #ja
+	#preload("res://maptree/Event/Events/event_5.tres"),
+	#preload("res://maptree/Event/Events/event_6.tres"),
+	#preload("res://maptree/Event/Events/event_7.tres"),
+	#preload("res://maptree/Event/Events/event_8.tres"),
+	preload("res://maptree/Event/Events/event_9.tres"), #ja
+	preload("res://maptree/Event/Events/event_11.tres"), #ja
 ]
 
 var _bag: Array[EventData] = []
 var rng := RandomNumberGenerator.new()
 
 func reset(s: int = 0) -> void:
-	_bag = ALL_EVENTS.duplicate()
+	_refill_bag()
 	if s != 0:
 		rng.seed = s
 	else:
@@ -31,12 +29,15 @@ func remaining_count() -> int:
 
 func draw_random() -> EventData:
 	if _bag.is_empty():
-		push_error("EventPool empty!")
-		return null
+		_refill_bag()
 	var i := rng.randi_range(0, _bag.size() - 1)
 	var e := _bag[i]
 	_bag.remove_at(i)
 	return e
+
+func _refill_bag() -> void:
+	_bag = ALL_EVENTS.duplicate()
+	_bag.shuffle()
 
 func export_state() -> Array[String]:
 	var paths: Array[String] = []

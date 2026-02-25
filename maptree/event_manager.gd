@@ -17,8 +17,10 @@ signal battle_reward_exited
 
 # Event room-related events
 signal event_room_exited
-
 signal result_requested(result: EventResultData)
 
 func request_result(result: EventResultData) -> void:
     result_requested.emit(result)
+
+func exit_event_room() -> void:
+    event_room_exited.emit()

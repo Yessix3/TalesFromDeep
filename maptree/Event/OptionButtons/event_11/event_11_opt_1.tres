@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://b6mv08pprcp6n"]
+
+[ext_resource type="Resource" uid="uid://ckvvsv0d813sc" path="res://maptree/Event/Results/event_11/event_11_res_1.tres" id="1_einy3"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_gf5rb"]
+
+[resource]
+script = ExtResource("1_gf5rb")
+id = "event_11_opt_1"
+text = "Tiptoe past"
+result = ExtResource("1_einy3")
+metadata/_custom_type_script = "uid://xshuay8engbm"

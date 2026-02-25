@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_8av2u"]
 [ext_resource type="Script" uid="uid://cesupyu06yjcc" path="res://levels/Level_Skripts/hard_4.gd" id="2_hebg1"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_hv827"]
-[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_cg5h1"]
+[ext_resource type="PackedScene" uid="uid://b3h68wg4ydqy7" path="res://components/spawn_point.tscn" id="3_cg5h1"]
 [ext_resource type="PackedScene" uid="uid://mdaaim1qhus6" path="res://levels/Level_Elements/move_brownup.tscn" id="3_hebg1"]
 [ext_resource type="PackedScene" uid="uid://dflpuapgvyhgj" path="res://levels/Level_Elements/move_side_brownpf.tscn" id="4_cg5h1"]
 [ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="4_pi5m2"]
@@ -400,6 +400,7 @@ tile_map_data = PackedByteArray("AAD5/+b/AAASAAAAAAD5/+f/AAASAAEAAAD5/+j/AAARAAA
 tile_set = SubResource("TileSet_3qo2i")
 
 [node name="Difficulty" type="Label" parent="." index="4"]
+visible = false
 z_index = 10
 offset_left = -47.0
 offset_top = -66.0

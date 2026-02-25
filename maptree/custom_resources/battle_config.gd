@@ -6,7 +6,7 @@ extends Resource
 @export var player_damage_boost: int = 0
 
 @export var enemy_variant: int = 1
-@export var number_enemies_spawn: int = 2
+@export var number_enemies_spawn: int = 1
 
 # Reward
 @export var shells_reward: int = 0

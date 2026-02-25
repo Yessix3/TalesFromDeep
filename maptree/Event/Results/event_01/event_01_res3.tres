@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_l65d2")
 result_id = "event_01_res3"
-text = "Gain +50% shells from combat. All future combat nodes spawn +1 additional enemy."
+text = "The Sea Devil opens its cavernous jaws. From between its teeth drifts a small cluster of pale, polished shells — unnaturally pristine.    They settle into your hands.    You immediately gain 50 Shells.    But the Devil’s grin widens. Greed has weight.    Whenever you are hit, you lose 5 Shells."
+gain_shells = 50
+shells_lost_on_hit_add = 5
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

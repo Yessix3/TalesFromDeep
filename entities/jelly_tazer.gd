@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal tazer_hit
+signal enemy_knockback(Vector2)
 
 
 @onready var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
@@ -13,6 +14,7 @@ var spawnPos
 func _ready() -> void:
 	global_position = spawnPos
 	animated_sprite.play("default")
+	self.enemy_knockback.connect(Callable(player, "get_knocked_back"))
 
 
 func _physics_process(delta: float) -> void:
@@ -40,4 +42,5 @@ func _on_hit_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		tazer_hit.emit()
+		enemy_knockback.emit(global_position)
 		queue_free()

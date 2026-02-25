@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal salmon_hit(int)
+signal enemy_knockback(Vector2)
 signal enemy_dead
 
 
@@ -29,6 +30,7 @@ func _ready():
 	print(health)
 	global_position = spawnPos
 	animated_sprite.play("idle")
+	self.enemy_knockback.connect(Callable(player, "get_knocked_back"))
 
 func _physics_process(delta):
 	if status == "idle":
@@ -83,6 +85,7 @@ func face_player():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		salmon_hit.emit(damage)
+		enemy_knockback.emit(global_position)
 		print(damage)
 
 
@@ -91,6 +94,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_2_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	health = health - int(10 * ((100.0 + player_Dmg_Mult)/100))
 	print(health)
+	get_knockback()
 	if health <= 0:
 		enemy_dead.emit()
 		queue_free()
@@ -104,7 +108,9 @@ func get_player_pos() -> Vector2:
 	return (player.global_position - global_position).normalized()
 
 
-
+func get_knockback():
+	velocity.x = get_player_pos().x * -200
+	velocity.y = get_player_pos().y * -200
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

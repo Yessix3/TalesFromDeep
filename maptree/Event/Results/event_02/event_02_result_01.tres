@@ -6,4 +6,5 @@
 script = ExtResource("1_fwdtq")
 result_id = "event_02_res01"
 text = "The light reveals itself as bait. Behind it, a monstrous creature with enormous teeth lunges at you, dealing immense damage. You lose Maximum Health"
+max_hp_delta = -10
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

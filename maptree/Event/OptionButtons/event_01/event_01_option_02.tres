@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_c8emm")
 id = "event_01_opt2"
-text = "“I refuse to drown in death.”"
+text = "“Let my body endure beyond its limits.”"
 result = ExtResource("1_pbasy")
 metadata/_custom_type_script = "uid://xshuay8engbm"

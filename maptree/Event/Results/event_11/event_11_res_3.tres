@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://2hjsqai2iy6t"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_61uw2"]
+
+[resource]
+script = ExtResource("1_61uw2")
+result_id = "event_11_res_1"
+text = "You remain still and watch.The shark moves with patience beyond hunger. It wastes no motion. It survives by endurance, not frenzy.You study the spacing of its turns, the calculated economy of its body. There is no excess. No panic. Only inevitability.When you depart, your own strikes feel more deliberate."
+next_player_damage_boost_add = 20
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

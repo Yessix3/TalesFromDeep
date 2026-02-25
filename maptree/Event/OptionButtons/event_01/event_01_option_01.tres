@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_jrtm3")
 id = "event_01_opt1"
-text = "“I crave overwhelming strength.”"
+text = "“Grant me strength beyond measure.”"
 result = ExtResource("1_babhh")
 metadata/_custom_type_script = "uid://xshuay8engbm"

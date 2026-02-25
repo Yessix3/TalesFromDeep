@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_du75r")
 result_id = "event_04_res2"
-text = "The peaceful Bigfin Reef Squid is fascinated by you and decides to support you on your journey. Your permanent damage increases."
+text = "The Bigfin Reef Squid opens one vast, reflective eye. Instead of fleeing or attacking, it studies you. It extends a long feeding tentacle and briefly presses its tip against your weapon arm. A pulse passes through you . The swarm shifts around you, accepting your presence. From that moment on, your strikes carry greater force. You gain permanent increased damage. "
+permanent_player_damage_boost_add = 10
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_h02cu")
 result_id = "event_04_res1"
-text = "The swarm defends itself against lurking sea creatures. For a while, you remain part of it, learning their coordinated strikes. You deal more damage in the next battle."
+text = "You mirror their rhythm. You move with them, feel their timing, understand their coordinated aggression.When you finally drift away, something of that instinct remains in your muscles.You deal increased damage in the next battle."
+next_player_damage_boost_add = 25
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

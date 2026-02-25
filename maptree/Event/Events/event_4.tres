@@ -10,6 +10,9 @@
 script = ExtResource("2_8qo2s")
 event_id = "event_04"
 title = "The Red Devil"
-message = "You encounter a pale-looking swarm of squids. One cautiously approaches you, studying your movements, while a slightly larger one sleeps peacefully nearby."
+message = "In a corridor of wavering kelp, you drift into a pale, almost translucent swarm of reef squids.
+One smaller squid detaches from the formation and circles you cautiously. It studies your posture and weapon.
+
+A short distance away rests a much larger creature — a Bigfin Reef Squid. It appears calm, but even at rest its mantle pulses with restrained power."
 options = Array[ExtResource("1_nymqy")]([ExtResource("2_4gb41"), ExtResource("3_sequx"), ExtResource("4_4q37w")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

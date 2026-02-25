@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_7amtb")
 id = "protection_potion_big"
-display_name = "Big Protection Potion"
-description = "Schwächt die Angriffe in einem Kampf für 1 Minute um 40% ab."
+display_name = "Strong Protection Potion"
+description = "Reduces incoming damage by 40% for 1 minute."
 icon = ExtResource("1_52vo8")
 cost_shells = 100
 type = 1

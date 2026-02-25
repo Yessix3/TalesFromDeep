@@ -39,6 +39,8 @@ const STARTING_SHELLS := 0
 
 @export var relic_counts: Dictionary = {}
 
+@export var shells_lost_on_hit: int = 0
+
 
 func set_shells(new_amount: int) -> void:
     shells = new_amount
@@ -214,3 +216,39 @@ func clear_next_battle_modifiers() -> void:
     next_player_damage_boost = 0
     next_number_enemies_spawn_delta = 0
     next_enemy_variant_override = -1
+
+func add_shells(amount: int) -> void:
+    if amount == 0:
+        return
+    set_shells(shells + amount)
+
+func add_shells_lost_on_hit(delta: int) -> void:
+    if delta == 0:
+        return
+    shells_lost_on_hit = max(0, shells_lost_on_hit + delta)
+
+func add_max_health_only(delta: int) -> void:
+    if delta == 0:
+        return
+    set_max_health(max_health + delta)
+
+func clear_all_relics() -> void:
+    set_shells(0)
+    relic_counts.clear()
+    relics_changed.emit()
+
+func add_max_health_with_current(delta: int) -> void:
+    if delta == 0:
+        return
+
+    var old_max := max_health
+    var old_curr := curr_health
+
+    # Max ändern
+    set_max_health(max_health + delta)
+
+    # Current um denselben Betrag ändern
+    set_curr_health(curr_health + delta)
+
+    print("[RunStatus] max_health", old_max, "->", max_health,
+        " | curr_health", old_curr, "->", curr_health)

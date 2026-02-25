@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_ajrfv")
 id = "event_04_opt3"
-text = "3.Wake the larger squid "
+text = "Wake the larger squid "
 result = ExtResource("1_5wwf2")
 metadata/_custom_type_script = "uid://xshuay8engbm"

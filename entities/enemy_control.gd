@@ -11,7 +11,8 @@ var player_damage_boost = 20
 var enemy_variant = 1
 
 #unsure where this should be determined
-var number_enemies_spawn = 2
+var number_enemies_spawn = 5
+var spawning = true
 
 @onready var entities: Node = get_tree().get_first_node_in_group("entities")
 @onready var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
@@ -32,14 +33,18 @@ var spawnpoint_list = []
 func _ready() -> void:
 	link_spawn_points()
 	get_spawn_points()
-	for i in number_enemies_spawn:
-		spawnEnemy(enemy_health_boost, enemy_damage_boost)
-	number_enemies_current = number_enemies_spawn
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if spawning:
+		for i in number_enemies_spawn:
+			spawnEnemy(enemy_health_boost, enemy_damage_boost)
+		number_enemies_current = number_enemies_spawn
+		spawning = false
 	checkBoost()
+	
 
 
 func spawnEnemy(health: int,damage: int):

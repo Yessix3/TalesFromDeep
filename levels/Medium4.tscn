@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_y24ao"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_cy5ko"]
 [ext_resource type="Script" uid="uid://2h0ae16qro1o" path="res://levels/Level_Skripts/medium_4.gd" id="2_uo8k4"]
-[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_jyryd"]
+[ext_resource type="PackedScene" uid="uid://b3h68wg4ydqy7" path="res://components/spawn_point.tscn" id="3_jyryd"]
 [ext_resource type="PackedScene" uid="uid://mdaaim1qhus6" path="res://levels/Level_Elements/move_brownup.tscn" id="3_uo8k4"]
 [ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="4_iqh6s"]
 [ext_resource type="PackedScene" uid="uid://dflpuapgvyhgj" path="res://levels/Level_Elements/move_side_brownpf.tscn" id="4_jyryd"]
@@ -574,6 +574,7 @@ tile_map_data = PackedByteArray("AAD4//P/AAAKAAcAAHAOAPD/AAAKAAcAAFAOAPH/AAALAAc
 tile_set = SubResource("TileSet_xp6ec")
 
 [node name="Difficulty" type="Label" parent="." index="5"]
+visible = false
 offset_left = -43.0
 offset_top = -68.0
 offset_right = 50.0

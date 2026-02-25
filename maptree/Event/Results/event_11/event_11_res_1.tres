@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=3 format=3 uid="uid://ckvvsv0d813sc"]
+
+[ext_resource type="Resource" uid="uid://dxhetviru67q3" path="res://maptree/shop/relics/health_potion_small.tres" id="1_p6ilc"]
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_rxnum"]
+
+[resource]
+script = ExtResource("1_rxnum")
+result_id = "event_11_res_1"
+text = "You reduce your movement to the bare minimum. Near a cluster of bioluminescent tube growths nestled between rocks, you discover a dense knot of medicinal deep-sea algae — rare, slow-growing, and potent.You carefully harvest and refine it into a concentrated extract."
+grant_relic = ExtResource("1_p6ilc")
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

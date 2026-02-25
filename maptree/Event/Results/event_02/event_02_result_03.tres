@@ -6,4 +6,5 @@
 script = ExtResource("1_7n8ig")
 result_id = "event_02_res03"
 text = "As the creature charges at you, you are ready. Your determination strengthens you, and you withstand the encounter with renewed vitality. You gain extra health."
+heal_amount = 30
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

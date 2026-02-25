@@ -62,6 +62,7 @@ func drift():
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	health = health - int(10 * ((100.0 + player_Dmg_Mult)/100))
 	print(health)
+	get_knockback()
 	if health <= 0:
 		enemy_dead.emit()
 		queue_free()
@@ -106,3 +107,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack":
 		animated_sprite.play("idle")
 		spawnTazer()
+
+func get_knockback():
+	velocity.x = get_player_pos().x * -80
+	velocity.y = get_player_pos().y * -80

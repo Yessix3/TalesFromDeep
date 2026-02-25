@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dshmh02ktkkab" path="res://levels/Level_Skripts/hard_2.gd" id="2_2erer"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_qxx31"]
 [ext_resource type="PackedScene" uid="uid://rahgsikn4ddi" path="res://levels/Level_Elements/move_side_bpf.tscn" id="3_2erer"]
-[ext_resource type="PackedScene" path="res://components/spawn_point.tscn" id="3_yrs3a"]
+[ext_resource type="PackedScene" uid="uid://b3h68wg4ydqy7" path="res://components/spawn_point.tscn" id="3_yrs3a"]
 [ext_resource type="PackedScene" uid="uid://bh57kmmpgc8wf" path="res://entities/enemy_control.tscn" id="4_me7m7"]
 [ext_resource type="PackedScene" uid="uid://ybbm7u0vps1c" path="res://levels/Level_Elements/move_bUP_Down.tscn" id="4_yrs3a"]
 
@@ -583,12 +583,5 @@ position = Vector2(993, -187)
 [node name="MPF_Up" parent="." index="7" instance=ExtResource("4_yrs3a")]
 position = Vector2(440, -282)
 
-[node name="Difficulty" type="Label" parent="." index="8"]
-offset_left = -43.0
-offset_top = -64.0
-offset_right = 54.0
-offset_bottom = -42.0
-text = "Hard_Level"
-
-[node name="MUP" parent="." index="9" instance=ExtResource("4_yrs3a")]
+[node name="MUP" parent="." index="8" instance=ExtResource("4_yrs3a")]
 position = Vector2(279, 66)

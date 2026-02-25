@@ -130,7 +130,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_dummy_knockback() -> void:
-	
 	velocity.x = ((position - get_parent().get_node("Dummy").position).normalized()*dummy_strength).x
 	velocity.y = -dummy_strength/2
 
@@ -149,3 +148,10 @@ func _on_boss_enemy_hit(damage: int) -> void:
 	health_damage.emit(damage)
 	print("Player Health: ", current_health)
 	
+
+
+func get_knocked_back(enemyPos: Vector2):
+	var knockback = (global_position - enemyPos).normalized() * 300
+	if abs(velocity.x) < abs(knockback.x):
+		velocity.x = knockback.x
+	velocity.y = min(knockback.y, -100, velocity.y + knockback.y, velocity.y - 100)
