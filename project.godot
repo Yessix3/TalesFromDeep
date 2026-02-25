@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 EventManager="*res://maptree/event_manager.gd"
 EventPool="*res://maptree/GameManager/event_pool.gd"
 RelicDatabase="*res://maptree/shop/relics/relic_database.gd"
+BattlePool="*res://maptree/GameManager/battle_pool.gd"
 
 [display]
 

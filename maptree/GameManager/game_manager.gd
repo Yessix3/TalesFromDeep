@@ -1,8 +1,6 @@
 class_name GameManager
 extends Node
 
-const BATTLE_SCENE := preload("res://levels/BossLevel.tscn")
-#const BATTLE_SCENE := preload("res://maptree/dummyFight/dummyFight.tscn")
 const BATTLE_REWARD_SCENE := preload("res://maptree/rewardSzene/battle_reward.tscn")
 const EVENT_SCENE := preload("res://maptree/Event/event_muster.tscn")
 #const MAP_SCENE := preload("res://maptree/mapTree/mapDummy.tscn")
@@ -113,9 +111,15 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.FIGHT:
 			is_in_battle = true
 			relic_desc.set_is_in_battle(is_in_battle)
-			var fight_view := _change_view(BATTLE_SCENE)
+
+			var floor_1_based := room.row + 1  # wichtig, falls row 0-basiert ist
+			var battle_scene := BattlePool.pick_battle_for_floor(floor_1_based)
+
+			var fight_view := _change_view(battle_scene)
 			_bind_player_health(fight_view)
-			_bind_enemy_death(fight_view)
+			_bind_win_condition(fight_view)
+			_bind_enemy_control(fight_view)
+
 		Room.Type.EVENT:
 			is_in_battle = false
 			relic_desc.set_is_in_battle(is_in_battle)
@@ -149,7 +153,10 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.BOSS:
 			is_in_battle = true
 			relic_desc.set_is_in_battle(is_in_battle)
-			_change_view(BATTLE_SCENE) #### change later
+
+			var fight_view := _change_view(BattlePool.pick_boss())
+			_bind_player_health(fight_view)
+			_bind_win_condition(fight_view)
 
 func _on_result_requested(result: EventResultData) -> void:
 	var view := _change_view(RESULT_SCENE)
@@ -174,19 +181,37 @@ func _bind_player_health(_fight_view: Node) -> void:
 		player.health_damage.connect(_on_player_health_damage)
 	#player.run_status = status
 
-func _bind_enemy_death(_fight_view: Node) -> void:
+
+func _bind_win_condition(_fight_view: Node) -> void:
+	# 1) Boss-Level: win kommt vom Boss
 	var boss := get_tree().get_first_node_in_group("boss")
-	if boss == null:
-		push_error("Boss not found (group 'boss').")
+	if boss != null:
+		if boss.has_signal("enemy_died") and not boss.enemy_died.is_connected(_on_enemy_died):
+			boss.enemy_died.connect(_on_enemy_died)
 		return
 
-	if not boss.enemy_died.is_connected(_on_enemy_died):
-		boss.enemy_died.connect(_on_enemy_died)
+	# 2) Normaler Fight: win kommt von EnemyControl
+	var ec := get_tree().get_first_node_in_group("enemy_control")
+	if ec == null:
+		push_error("[GM] WinCondition: neither boss nor enemy_control found.")
+		return
+
+	if ec.has_signal("all_enemies_dead") and not ec.all_enemies_dead.is_connected(_on_enemy_died):
+		ec.all_enemies_dead.connect(_on_enemy_died)
+	
 	if not status.outgoing_damage_mult_changed.is_connected(_on_outgoing_mult_changed):
 		status.outgoing_damage_mult_changed.connect(_on_outgoing_mult_changed)
-
-	# initial push beim Battle-Start
 	_on_outgoing_mult_changed(status.outgoing_damage_mult)
+
+func _bind_enemy_control(_fight_view: Node) -> void:
+	var ec := get_tree().get_first_node_in_group("enemy_control")
+	if ec == null:
+		# Nicht jede Szene muss EnemyControl haben (z.B. reine Boss-Szene ohne Spawner)
+		return
+
+	# Beispiel: EnemyControl -> meldet Schaden am Player an GM/RunStatus
+	if not ec.enemy_damage.is_connected(_on_player_health_damage):
+		ec.enemy_damage.connect(_on_player_health_damage)
 
 func _on_player_health_damage(base_damage: int) -> void:
 	if base_damage <= 0:
@@ -214,7 +239,6 @@ func _on_player_died() -> void:
 	
 	print("PLAYER DIED")
 	battle_over_panel.show_screen("Game Over!", BattleOverPanel.Type.LOSE)
-	#EventManager.fight_lost.emit()
 
 func _on_enemy_died() -> void:
 	if not is_in_battle:
@@ -322,8 +346,13 @@ func _on_outgoing_mult_changed(v: int) -> void:
 	if boss != null and boss.has_method("set_outgoing_damage_mult"):
 		boss.call("set_outgoing_damage_mult", v)
 		print("[GM] pushed outgoing mult to boss:", v)
-	else:
-		print("[GM] boss missing or has no set_outgoing_damage_mult")
+		return
+
+	# Normaler Fight (EnemyControl)
+	var ec := get_tree().get_first_node_in_group("enemy_control")
+	if ec != null and ec.has_method("set_player_damage_boost"):
+		ec.call("set_player_damage_boost", v)
+		print("[GM] pushed outgoing mult to enemy_control:", v)
 
 func _use_frog_poison(relic: RelicData) -> void:
 	if status.get_relic_count(relic.id) <= 0:
