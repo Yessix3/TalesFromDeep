@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-class_name FrogEnemy
-
-const SPEED = 40
+const SPEED = 45
 const GRAVITY = 900
 const KNOCKBACK_FORCE = -30
 const ATTACK_RANGE = 35
@@ -111,11 +109,13 @@ func handle_animation():
 	if dead:
 		if anim_sprite.animation != "death":
 			anim_sprite.play("death")
+			print("Frog died.")
 		return
 
 	if taking_damage:
 		if anim_sprite.animation != "hurt":
 			anim_sprite.play("hurt")
+			print("Frog HP: ", health)
 		return
 
 	if is_dealing_damage:

@@ -1,35 +1,35 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvd618di6h7a1"]
+[gd_scene load_steps=15 format=3 uid="uid://cfp3gnqbaf2xv"]
 
-[ext_resource type="Script" uid="uid://b1m032edmt5xo" path="res://entities/frog.gd" id="1_qcyng"]
-[ext_resource type="Texture2D" uid="uid://cucgvcseewhho" path="res://assets/Frog/FJump1.png" id="2_mq1v1"]
-[ext_resource type="Texture2D" uid="uid://bpjh5uavesh0r" path="res://assets/Frog/FQuak.png" id="3_j003u"]
-[ext_resource type="Texture2D" uid="uid://dcbgvmh3nlx0x" path="res://assets/Frog/FAttack1.png" id="4_64t07"]
-[ext_resource type="Texture2D" uid="uid://du8xxk4ced2k6" path="res://assets/Frog/FJump2.png" id="4_dkrqs"]
-[ext_resource type="Texture2D" uid="uid://bg50ayiesgfcr" path="res://assets/Frog/FJump3.png" id="5_64t07"]
-[ext_resource type="Texture2D" uid="uid://c3r15qv10e03i" path="res://assets/Frog/FAttack2.png" id="5_e7m0o"]
-[ext_resource type="Texture2D" uid="uid://e0er3eiltals" path="res://assets/Frog/FHurt.png" id="6_3mlwh"]
-[ext_resource type="Texture2D" uid="uid://slyvcxl4kbme" path="res://assets/Frog/FJump4.png" id="6_e7m0o"]
+[ext_resource type="Script" uid="uid://b1m032edmt5xo" path="res://entities/frog.gd" id="1_u4qya"]
+[ext_resource type="Texture2D" uid="uid://kil8ptot7jfn" path="res://assets/GiftFrosch/TFJump1.png" id="2_u4qya"]
+[ext_resource type="Texture2D" uid="uid://byx8227fpytco" path="res://assets/GiftFrosch/TFQuark.png" id="3_uykf7"]
+[ext_resource type="Texture2D" uid="uid://rk7ssdqcqvl8" path="res://assets/GiftFrosch/TFAttack1.png" id="4_ktcdv"]
+[ext_resource type="Texture2D" uid="uid://coya3n8daauuh" path="res://assets/GiftFrosch/TFAttack2.png" id="5_ic7j7"]
+[ext_resource type="Texture2D" uid="uid://cuns4kwggwwmc" path="res://assets/GiftFrosch/TFHurt.png" id="6_4nvje"]
+[ext_resource type="Texture2D" uid="uid://s2t86r0kq6jw" path="res://assets/GiftFrosch/TFJump2.png" id="7_467pi"]
+[ext_resource type="Texture2D" uid="uid://cf0oy16kbv2p6" path="res://assets/GiftFrosch/TFJump3.png" id="8_vhwi0"]
+[ext_resource type="Texture2D" uid="uid://dkjxu1jgtidji" path="res://assets/GiftFrosch/TFJump4.png" id="9_fbknk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3mlwh"]
 animations = [{
 "frames": [{
 "duration": 2.21,
-"texture": ExtResource("2_mq1v1")
+"texture": ExtResource("2_u4qya")
 }, {
 "duration": 0.31,
-"texture": ExtResource("3_j003u")
+"texture": ExtResource("3_uykf7")
 }, {
 "duration": 0.21,
-"texture": ExtResource("4_64t07")
+"texture": ExtResource("4_ktcdv")
 }, {
 "duration": 1.31,
-"texture": ExtResource("5_e7m0o")
+"texture": ExtResource("5_ic7j7")
 }, {
 "duration": 0.61,
-"texture": ExtResource("3_j003u")
+"texture": ExtResource("3_uykf7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_mq1v1")
+"texture": ExtResource("2_u4qya")
 }],
 "loop": false,
 "name": &"attack",
@@ -37,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_3mlwh")
+"texture": ExtResource("6_4nvje")
 }],
 "loop": true,
 "name": &"death",
@@ -45,10 +45,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.91,
-"texture": ExtResource("6_3mlwh")
+"texture": ExtResource("6_4nvje")
 }, {
 "duration": 1.01,
-"texture": ExtResource("2_mq1v1")
+"texture": ExtResource("2_u4qya")
 }],
 "loop": false,
 "name": &"hurt",
@@ -56,10 +56,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mq1v1")
+"texture": ExtResource("2_u4qya")
 }, {
 "duration": 0.21,
-"texture": ExtResource("3_j003u")
+"texture": ExtResource("3_uykf7")
 }],
 "loop": true,
 "name": &"idle",
@@ -67,16 +67,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mq1v1")
+"texture": ExtResource("2_u4qya")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dkrqs")
+"texture": ExtResource("7_467pi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_64t07")
+"texture": ExtResource("8_vhwi0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_e7m0o")
+"texture": ExtResource("9_fbknk")
 }],
 "loop": true,
 "name": &"jump",
@@ -97,15 +97,17 @@ height = 176.17427
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkrqs"]
 radius = 235.28706
 
-[node name="Frog" type="CharacterBody2D"]
+[node name="ToxicFrog" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 collision_layer = 4
 collision_mask = 11
-script = ExtResource("1_qcyng")
+script = ExtResource("1_u4qya")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3mlwh")
-animation = &"death"
+animation = &"jump"
+frame = 2
+frame_progress = 0.8799714
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 76)

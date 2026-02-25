@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://birxm61l4a1c3"]
+[gd_scene load_steps=13 format=4 uid="uid://birxm61l4a1c3"]
 
 [ext_resource type="PackedScene" uid="uid://iwd7qulidku3" path="res://levels/level.tscn" id="1_y24ao"]
 [ext_resource type="Texture2D" uid="uid://bouxfsfsh0mqs" path="res://assets/Level_Sprites/Tileset_TalesFromDeep.png" id="2_cy5ko"]
 [ext_resource type="Script" uid="uid://2h0ae16qro1o" path="res://levels/Level_Skripts/medium_4.gd" id="2_uo8k4"]
+[ext_resource type="PackedScene" uid="uid://cfp3gnqbaf2xv" path="res://entities/toxic_frog.tscn" id="3_jyryd"]
 [ext_resource type="PackedScene" uid="uid://mdaaim1qhus6" path="res://levels/Level_Elements/move_brownup.tscn" id="3_uo8k4"]
 [ext_resource type="PackedScene" uid="uid://dflpuapgvyhgj" path="res://levels/Level_Elements/move_side_brownpf.tscn" id="4_jyryd"]
 
@@ -524,6 +525,10 @@ sources/0 = SubResource("TileSetAtlasSource_6lr65")
 
 [node name="Level" instance=ExtResource("1_y24ao")]
 script = ExtResource("2_uo8k4")
+
+[node name="ToxicFrog" parent="Main/Entities" index="1" instance=ExtResource("3_jyryd")]
+z_index = 10
+position = Vector2(0, -60)
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2
