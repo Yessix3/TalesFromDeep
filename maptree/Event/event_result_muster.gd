@@ -1,8 +1,7 @@
 extends Control
 class_name ResultScreen
 
-@onready var icon1: TextureRect = %Icon1
-@onready var icon2: TextureRect = %Icon2
+
 @onready var text_label: RichTextLabel = %ResultText
 @onready var continue_button: Button = %ContinueButton
 
@@ -17,18 +16,10 @@ func set_result(r: EventResultData, rs: RunStatus) -> void:
 	run_status = rs
 	text_label.text = result.text
 
-	var icons := result.icons
-	# Anzeige-Logik: max 2, rest ignorieren
-	icon1.visible = icons.size() >= 1 and icons[0] != null
-	icon1.texture = icons[0] if icons.size() >= 1 else null
-
-	icon2.visible = icons.size() >= 2 and icons[1] != null
-	icon2.texture = icons[1] if icons.size() >= 2 else null
-
 func _on_continue() -> void:
 	if result == null or run_status == null:
 		push_error("[EventResult] Missing result or run_status.")
-		EventManager.exit_event_room() # oder emit, siehe unten
+		EventManager.exit_event_room()
 		return
 
 	_apply_result_effects(result, run_status)
@@ -40,11 +31,11 @@ func _apply_result_effects(r: EventResultData, s: RunStatus) -> void:
 	if r.gain_shells != 0:
 		s.add_shells(r.gain_shells)
 
-	# Max HP + Curr HP mitziehen 
+	# Max HP + Curr HP 
 	if r.max_hp_delta != 0:
 		s.add_max_health_with_current(r.max_hp_delta)
 
-	# dauerhafte Damage/Enemy-Buffs
+	# dauerhafte
 	if r.player_damage_mult_delta != 0:
 		s.add_outgoing_damage_mult(r.player_damage_mult_delta)
 

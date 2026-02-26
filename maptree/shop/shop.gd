@@ -1,10 +1,8 @@
 extends Control
 class_name Shop
 
-# Liste der angebotenen Relikte (z.B. 6 Items im Shop)
 @export var stock: Array[RelicData] = [] : set = set_stock
 
-# Referenzen
 @onready var list_parent: VBoxContainer = %RelictList
 @onready var row1: HBoxContainer = %Row1
 @onready var row2: HBoxContainer = %Row2
@@ -85,7 +83,7 @@ func _on_buy_pressed() -> void:
 		return
 
 	if run_status.shells < selected_relic.cost_shells:
-		return # optional: Fehlermeldung anzeigen
+		return
 
 	# kaufen: Währung abziehen
 	run_status.shells -= selected_relic.cost_shells

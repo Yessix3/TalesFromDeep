@@ -57,32 +57,9 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/RewardContainer/MarginContainer/Results"]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RewardContainer/MarginContainer/Results/CenterContainer"]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-
-[node name="Icon1" type="TextureRect" parent="VBoxContainer/RewardContainer/MarginContainer/Results/CenterContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-expand_mode = 2
-stretch_mode = 5
-
-[node name="Icon2" type="TextureRect" parent="VBoxContainer/RewardContainer/MarginContainer/Results/CenterContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-expand_mode = 2
-stretch_mode = 5
-
 [node name="ResultText" type="RichTextLabel" parent="VBoxContainer/RewardContainer/MarginContainer/Results"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 220)
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_gcrdv")
 theme_override_font_sizes/normal_font_size = 30

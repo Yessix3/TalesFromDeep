@@ -26,7 +26,7 @@ func show_event(data: EventData) -> void:
 	message_label.text = data.message
 	title_lable.text = data.title
 
-	# defensive: sicherstellen, dass es genau 3 Optionen gibt
+	# sicherstellen, dass es genau 3 Optionen gibt
 	if data.options.size() != 3:
 		push_error("Event %s has %d options, expected 3." % [data.event_id, data.options.size()])
 

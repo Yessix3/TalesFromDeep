@@ -3,7 +3,6 @@ extends Resource
 
 @export var result_id: String
 @export var text: String
-@export var icons: Array[Texture2D] = [] 
 
 @export var gain_shells: int = 0              # sofortige Shells
 @export var max_hp_delta: int = 0             # z.B. +10 max HP (und curr HP mitziehen)
