@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_hsxqf")
 id = "event_02_res02"
-text = "Search the shrine’s surroundings."
+text = "Remain unnoticed "
 result = ExtResource("1_4hp1e")
 metadata/_custom_type_script = "uid://xshuay8engbm"

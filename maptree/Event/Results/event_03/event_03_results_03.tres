@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_650fn")
 result_id = "event_03_res3"
-text = "All enemies in next combat deal +10% damage. Gain 20 shells."
+text = "A swarm of sea creatures rushes toward you. The upcoming battle will demand everything you have. More enemies are going to spawn in the next battle."
+next_extra_enemies = 2
 metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg0q7w83yqaxs"]
+[gd_scene load_steps=5 format=3 uid="uid://bg0q7w83yqaxs"]
 
-[ext_resource type="Texture2D" uid="uid://bjell2acpfxo2" path="res://assets/frog_fish_doodle.png" id="1_ih34f"]
 [ext_resource type="Script" uid="uid://dywthcfxbgnpr" path="res://maptree/ui/main_menu.gd" id="1_qhoht"]
-
-[sub_resource type="Gradient" id="Gradient_qhoht"]
-colors = PackedColorArray(0.19076231, 0.19076234, 0.19076231, 1, 0.21653229, 0.18628958, 0.65018225, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qg6mh"]
-gradient = SubResource("Gradient_qhoht")
-width = 50
+[ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_qg6mh"]
+[ext_resource type="Texture2D" uid="uid://b5ncgmha6otcc" path="res://maptree/TestButtons/GameHome.webp" id="3_qg6mh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_64iq2"]
 line_spacing = 10.0
@@ -22,15 +16,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhoht")
+run_startup = ExtResource("2_qg6mh")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_qg6mh")
+texture = ExtResource("3_qg6mh")
+expand_mode = 3
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -58,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -332.0
-offset_top = -117.0
-offset_right = -132.0
-offset_bottom = 83.0
+offset_left = -366.0
+offset_top = -132.0
+offset_right = -166.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -79,17 +75,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "New Run"
 
+[node name="Practise" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Practice
+"
+
 [node name="Exit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="Character" type="Sprite2D" parent="."]
-position = Vector2(850, 320)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_ih34f")
-
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="VBoxContainer/Practise" to="." method="_on_practise_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

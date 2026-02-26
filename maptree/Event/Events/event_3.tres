@@ -9,7 +9,7 @@
 [resource]
 script = ExtResource("2_pwyii")
 event_id = "event_03"
-title = "The Cliffs of the Gullphins"
-message = "At a jagged reef wall nest the shrieking Gullphins (seal-bodied, gull-headed scavengers). Their nests glitter with stolen relics."
+title = "Hide and Seek"
+message = "You are fleeing from a mysterious sound. To your right is a small cave; to your left, a rustling coral reef."
 options = Array[ExtResource("1_hpjkt")]([ExtResource("2_783kg"), ExtResource("3_j7m7j"), ExtResource("4_s74nc")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bq6kofk40uiw2"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_c7hk7"]
+[ext_resource type="Resource" uid="uid://c2dtq3fncv51q" path="res://maptree/Event/Results/event_09/event_09_results_03.tres" id="1_dfmfn"]
+
+[resource]
+script = ExtResource("1_c7hk7")
+id = "event_09_opt3"
+text = "Rush through recklessly "
+result = ExtResource("1_dfmfn")
+metadata/_custom_type_script = "uid://xshuay8engbm"

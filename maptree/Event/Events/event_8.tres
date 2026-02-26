@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://c1nuwhx2m2dgf"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://c1nuwhx2m2dgf"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_j2jii"]
+[ext_resource type="Resource" uid="uid://de3lkm5bg61n2" path="res://maptree/Event/OptionButtons/event_08/event_08_option_01.tres" id="2_75y72"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_iosx7"]
+[ext_resource type="Resource" uid="uid://crm61acgtcbcp" path="res://maptree/Event/OptionButtons/event_08/event_08_option_02.tres" id="3_yw0b8"]
+[ext_resource type="Resource" uid="uid://q2kwdgnlufg0" path="res://maptree/Event/OptionButtons/event_08/event_08_option_03.tres" id="4_355cc"]
 
 [resource]
 script = ExtResource("2_iosx7")
 event_id = "event_08"
+title = "The Hollow Trench"
+message = "Before you opens a vast ocean trench descending into absolute darkness. Cold currents nearly drag you downward."
+options = Array[ExtResource("1_j2jii")]([ExtResource("2_75y72"), ExtResource("3_yw0b8"), ExtResource("4_355cc")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

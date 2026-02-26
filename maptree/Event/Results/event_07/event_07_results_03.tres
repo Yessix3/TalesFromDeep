@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://bstgab41fsqnh"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_nfih0"]
+
+[resource]
+script = ExtResource("1_nfih0")
+result_id = "event_07_res3"
+text = "You study the predators’ movements and patterns. Their tactics will not surprise you again. Your permanent damage increases."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

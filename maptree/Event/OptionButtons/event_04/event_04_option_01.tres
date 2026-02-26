@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://wv8bucxqufxo"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_28efr"]
+[ext_resource type="Resource" uid="uid://c35yfhdsdbt8n" path="res://maptree/Event/Results/event_04/event_04_results_01.tres" id="1_glq74"]
+
+[resource]
+script = ExtResource("1_28efr")
+id = "event_04_opt1"
+text = "Blend in with the swarm "
+result = ExtResource("1_glq74")
+metadata/_custom_type_script = "uid://xshuay8engbm"

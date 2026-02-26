@@ -35,4 +35,3 @@ func _on_shells_reward_taken(amount: int) -> void:
 
 func _on_back_button_pressed() -> void:
 	EventManager.battle_reward_exited.emit()
-

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://dr20iu212uo04"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_3o88c"]
+[ext_resource type="Resource" uid="uid://d0578ywo0pf0j" path="res://maptree/Event/Results/event_10/event_10_results_02.tres" id="1_ky40f"]
+
+[resource]
+script = ExtResource("1_3o88c")
+id = "event_10_opt2"
+text = "Attack it "
+result = ExtResource("1_ky40f")
+metadata/_custom_type_script = "uid://xshuay8engbm"

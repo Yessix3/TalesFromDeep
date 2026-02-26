@@ -9,7 +9,7 @@
 [resource]
 script = ExtResource("2_wylp7")
 event_id = "event_02"
-title = "Shrine of the Three-Finned Barracudon"
-message = "You discover a broken shrine dedicated to the ancient god Barracudon the Three-Finned. The water vibrates with restrained power."
+title = "Light in the Dark"
+message = "Everything is pitch black. Disoriented, you move forward step by step. In the distance, you see a light. It is coming closer."
 options = Array[ExtResource("1_ic85w")]([ExtResource("2_sejv5"), ExtResource("3_rbgbv"), ExtResource("4_8pony")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

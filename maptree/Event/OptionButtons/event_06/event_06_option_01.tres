@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bil7s070iuhxt"]
+
+[ext_resource type="Resource" uid="uid://d073ochrhvmmu" path="res://maptree/Event/Results/event_06/event_06_results_01.tres" id="1_7pxq0"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_bhc1j"]
+
+[resource]
+script = ExtResource("1_bhc1j")
+id = "event_06_opt1"
+text = "Ring the bell "
+result = ExtResource("1_7pxq0")
+metadata/_custom_type_script = "uid://xshuay8engbm"

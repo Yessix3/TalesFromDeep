@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
+button_mask = 2
 script = ExtResource("1_0n7ii")
 relic = ExtResource("2_5ckj3")
 
@@ -16,6 +17,7 @@ custom_minimum_size = Vector2(80, 80)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="RelicIcon" type="TextureRect" parent="Control"]
 unique_name_in_owner = true
@@ -24,6 +26,7 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("1_wthql")
 expand_mode = 5
 stretch_mode = 5

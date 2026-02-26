@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://d073ochrhvmmu"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_lxjig"]
+
+[resource]
+script = ExtResource("1_lxjig")
+result_id = "event_06_res1"
+text = "The sound vibrates through the ocean. For a moment, reality itself seems to shift around you. Your maximum health increases."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

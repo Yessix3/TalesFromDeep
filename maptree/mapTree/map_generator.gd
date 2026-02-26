@@ -7,9 +7,9 @@ const PLACEMENT_RANDOMNESS := 30 # amount of pixels that nodes are allowed to mo
 const FLOORS := 11              # number of rows
 const MAP_WIDTH := 5            # number of columns
 const PATHS := 4                # maximum number of paths
-const FIGHT_ROOM_WEIGHT :=  4.0 #10.0 
-const SHOP_ROOM_WEIGHT := 10.0 # 4.0
-const EVENT_ROOM_WEIGHT := 20.0 #6.5
+const FIGHT_ROOM_WEIGHT := 11.0 
+const SHOP_ROOM_WEIGHT :=  6.5
+const EVENT_ROOM_WEIGHT := 9.0 
 
 var random_room_type_weights = {
     Room.Type.FIGHT: 0.0,

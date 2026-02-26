@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://dsqg00smu4nvi"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_5vg2k"]
+[ext_resource type="Resource" uid="uid://dc5bqi04csl08" path="res://maptree/Event/Results/event_09/event_09_results_01.tres" id="1_fe8hu"]
+
+[resource]
+script = ExtResource("1_5vg2k")
+id = "event_09_opt1"
+text = "Collect some jellyfish "
+result = ExtResource("1_fe8hu")
+metadata/_custom_type_script = "uid://xshuay8engbm"

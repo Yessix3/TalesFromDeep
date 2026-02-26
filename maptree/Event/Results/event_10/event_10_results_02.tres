@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://d0578ywo0pf0j"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_qggai"]
+
+[resource]
+script = ExtResource("1_qggai")
+result_id = "event_10_res2"
+text = "The leviathan awakens violently and strikes, leaving you badly wounded. Your maximal health amount decreases."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

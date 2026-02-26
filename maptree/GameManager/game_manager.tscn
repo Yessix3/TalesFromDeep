@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://brpdfbomvvdcn"]
+[gd_scene load_steps=9 format=3 uid="uid://brpdfbomvvdcn"]
 
 [ext_resource type="Script" uid="uid://brnlao06xwx11" path="res://maptree/GameManager/game_manager.gd" id="1_7v3xg"]
 [ext_resource type="Resource" uid="uid://cdfg7oxc7k6hu" path="res://maptree/GameManager/game_manager_startup.tres" id="2_sq34f"]
 [ext_resource type="PackedScene" uid="uid://bx6ktlnnmxapo" path="res://maptree/mapTree/MapTree.tscn" id="3_sq34f"]
 [ext_resource type="PackedScene" uid="uid://ca3tfouf2ebba" path="res://maptree/ui/shells_ui.tscn" id="4_ff0qb"]
 [ext_resource type="PackedScene" uid="uid://dc10rwmljvay5" path="res://maptree/ui/health_ui.tscn" id="5_wh46v"]
+[ext_resource type="Script" uid="uid://db1ec6ykh1dt0" path="res://maptree/GameManager/relic_bar.gd" id="5_x7pri"]
+[ext_resource type="PackedScene" uid="uid://bepltiqu3n7q7" path="res://maptree/ui/relic_map_description.tscn" id="7_2gfxx"]
+[ext_resource type="PackedScene" uid="uid://dbfdpc8qc0q85" path="res://maptree/ui/battle_over_panel.tscn" id="8_bto88"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_7v3xg")
@@ -37,11 +40,29 @@ layout_mode = 2
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RelicBarUI" type="Control" parent="TopBar/BarItems"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("5_x7pri")
+
+[node name="RelicBar" type="HBoxContainer" parent="TopBar/BarItems/RelicBarUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="Placeholder3" type="Control" parent="TopBar/BarItems"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HealthUI" parent="TopBar/BarItems" instance=ExtResource("5_wh46v")]
 layout_mode = 2
@@ -49,3 +70,33 @@ layout_mode = 2
 [node name="Placeholder2" type="Control" parent="TopBar/BarItems"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 40)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -69.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
+[node name="Overlays" type="CanvasLayer" parent="."]
+
+[node name="RelicMapDescription" parent="Overlays" instance=ExtResource("7_2gfxx")]
+
+[node name="BattleOverPanel" parent="Overlays" instance=ExtResource("8_bto88")]
+
+[node name="ProtectionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="."]
+one_shot = true

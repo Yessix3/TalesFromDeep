@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://0esfubqehri5"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_l2icp"]
+
+[resource]
+script = ExtResource("1_l2icp")
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

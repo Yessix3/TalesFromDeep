@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://cptwcue0gukg0"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://cptwcue0gukg0"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_bwnd3"]
+[ext_resource type="Resource" uid="uid://b6mv08pprcp6n" path="res://maptree/Event/OptionButtons/event_11/event_11_opt_1.tres" id="2_gt2ai"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_xtwfr"]
+[ext_resource type="Resource" uid="uid://djfbhuayf3167" path="res://maptree/Event/OptionButtons/event_11/event_11_opt_2.tres" id="3_lc10a"]
+[ext_resource type="Resource" uid="uid://cv58qqjh1n0wn" path="res://maptree/Event/OptionButtons/event_11/event_11_opt_3.tres" id="4_bxxn3"]
 
 [resource]
 script = ExtResource("2_xtwfr")
 event_id = "event_11"
+title = "The Sleeping Ice Shark"
+message = "In the dim, near-freezing waters of the deep, a massive shape drifts just above the seabed.
+
+An ancient Ice Shark — scarred, pale, and slow-moving — glides in a lethargic circle before settling into stillness.
+The water around it feels older than memory."
+options = Array[ExtResource("1_bwnd3")]([ExtResource("2_gt2ai"), ExtResource("3_lc10a"), ExtResource("4_bxxn3")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://3h2i3ucjxr4r"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://3h2i3ucjxr4r"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_t713a"]
+[ext_resource type="Resource" uid="uid://7d110gwaqrnv" path="res://maptree/Event/OptionButtons/event_07/event_07_option_01.tres" id="2_p0op4"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_tgtmr"]
+[ext_resource type="Resource" uid="uid://dsv8mvsgfurq5" path="res://maptree/Event/OptionButtons/event_07/event_07_option_02.tres" id="3_eoid7"]
+[ext_resource type="Resource" uid="uid://x72p0tdtgrwr" path="res://maptree/Event/OptionButtons/event_07/event_07_option_03.tres" id="4_tr553"]
 
 [resource]
 script = ExtResource("2_tgtmr")
 event_id = "event_07"
+title = "Feast of the Deep"
+message = "You discover the remains of a massive sea creature. Smaller predators circle the carcass, tearing pieces away."
+options = Array[ExtResource("1_t713a")]([ExtResource("2_p0op4"), ExtResource("3_eoid7"), ExtResource("4_tr553")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

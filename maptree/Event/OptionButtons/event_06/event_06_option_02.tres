@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bk13tyt800p83"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_1hpee"]
+[ext_resource type="Resource" uid="uid://bl70fadw3odvl" path="res://maptree/Event/Results/event_06/event_06_results_02.tres" id="1_3250o"]
+
+[resource]
+script = ExtResource("1_1hpee")
+id = "event_06_opt2"
+text = "Inspect it closely "
+result = ExtResource("1_3250o")
+metadata/_custom_type_script = "uid://xshuay8engbm"

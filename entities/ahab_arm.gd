@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 signal on_projectile_hit
+signal enemy_knockback(Vector2)
 
+@onready var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var raycast = $RayCast2D
 
@@ -14,6 +16,8 @@ func _ready():
 	global_position = spawnPos
 	print("ARM")
 	animated_sprite.visible = false
+	self.enemy_knockback.connect(Callable(player, "get_knocked_back"))
+
 
 func _physics_process(delta):
 	if raycast.is_colliding() and raycast_instance == 1:
@@ -27,6 +31,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	on_projectile_hit.emit()
+	enemy_knockback.emit(global_position)
 	print("Arm HIT!")
 
 

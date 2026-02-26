@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://c01or463bfy4f"]
+
+[ext_resource type="Resource" uid="uid://bkw3kkhypjlto" path="res://maptree/Event/Results/event_17/event_17_res_1.tres" id="1_014xm"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_u81tr"]
+
+[resource]
+script = ExtResource("1_u81tr")
+id = "event_17_opt_1"
+text = "Walk toward the light "
+result = ExtResource("1_014xm")
+metadata/_custom_type_script = "uid://xshuay8engbm"

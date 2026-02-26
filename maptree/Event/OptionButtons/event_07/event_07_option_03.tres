@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://x72p0tdtgrwr"]
+
+[ext_resource type="Resource" uid="uid://bstgab41fsqnh" path="res://maptree/Event/Results/event_07/event_07_results_03.tres" id="1_01fxt"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_spjgy"]
+
+[resource]
+script = ExtResource("1_spjgy")
+id = "event_07_opt3"
+text = "Observe from a distance "
+result = ExtResource("1_01fxt")
+metadata/_custom_type_script = "uid://xshuay8engbm"

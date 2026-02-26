@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://7d110gwaqrnv"]
+
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_b63l0"]
+[ext_resource type="Resource" uid="uid://c06u0psuhwa6v" path="res://maptree/Event/Results/event_07/event_07_results_01.tres" id="1_o2p6f"]
+
+[resource]
+script = ExtResource("1_b63l0")
+id = "event_07_opt1"
+text = "Join the feast "
+result = ExtResource("1_o2p6f")
+metadata/_custom_type_script = "uid://xshuay8engbm"

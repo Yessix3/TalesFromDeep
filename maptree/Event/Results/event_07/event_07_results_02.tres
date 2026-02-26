@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://bwwtchto5ecbi"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_8dco2"]
+
+[resource]
+script = ExtResource("1_8dco2")
+result_id = "event_07_res2"
+text = "With force and determination, you scatter the scavengers. The remains hold valuable crafting materials. You gain a protection potion and 100 Shells."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

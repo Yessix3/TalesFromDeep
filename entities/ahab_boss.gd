@@ -2,20 +2,50 @@ extends CharacterBody2D
 
 @export var friction := 800
 @export var gravity := 400
-@onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
+
+###################################
+@export var player_path: NodePath
+@export var entities_path: NodePath
+
+@onready var player: Node2D = get_node(player_path) as Node2D
+@onready var entities: Node = get_node(entities_path)
+#########################################
+#@onready var player := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities").get_node("Player")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var spear = load("res://entities/ahab_spear.tscn")
 @onready var arm = load("res://entities/ahab_arm.tscn")
-@onready var entities := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities")
+#@onready var entities := get_tree().get_root().get_node("Level").get_node("Main").get_node("Entities")
 
 
 signal enemy_hit(damage: int)
 signal health_change(value: int)
+signal enemy_knockback(Vector2)
+#############################
+signal enemy_died()
+
+var boss_health_boost: int = 1
+var boss_damage_boost: int = 1
+var player_damage_boost: int = 1
+
+func apply_battle_config(cfg: BattleConfig) -> void:
+
+	boss_health_boost = cfg.enemy_health_boost
+	print("[Boss] health boost:", boss_health_boost)
+	boss_damage_boost = cfg.enemy_damage_boost
+	print("[Boss] damage boost:", boss_health_boost)
+	player_damage_boost = cfg.player_damage_boost
+	print("[Boss] player damage boost:", boss_health_boost)
 
 
-@export var max_health = 24
+	max_health = int(max_health * ((100.0 + boss_health_boost)/100.0))
+
+
+###########################################
+
+
+@export var max_health = 400
 @onready var current_health = max_health
-@export var phase_change_health = 20
+@export var phase_change_health = 200
 
 var face_right = false
 var is_attacking = false
@@ -26,7 +56,7 @@ var last_decision := "wait"
 
 func _ready():
 	print(player)
-	
+	self.enemy_knockback.connect(Callable(player, "get_knocked_back"))
 
 func _process(delta):
 	apply_gravity(delta)
@@ -70,7 +100,7 @@ func make_decisionP1():
 				last_decision = "ground_poke"
 				current_decision = "ground_poke"
 			else: 
-				if random < 0.2:
+				if random < 0.5:
 					last_decision = "ground_poke"
 					current_decision = "ground_poke"
 				else:
@@ -88,6 +118,9 @@ func make_decisionP1():
 				else:
 					last_decision = "dash"
 					current_decision = "dash" 
+					if random > 0.7:
+						last_decision = "roar"
+						current_decision = "roar"
 			else:
 				last_decision = "dash"
 				current_decision = "dash" 
@@ -100,12 +133,15 @@ func make_decisionP2():
 		last_decision = "dragoon"
 		current_decision = "dragoon"
 	else:
-		if random < 0.5:
+		if random < 0.6:
 			last_decision = "leap"
 			current_decision = "leap"
 		else:
 			last_decision = "throw"
 			current_decision = "throw"
+		if random < 0.2:
+			last_decision = "dragoon"
+			current_decision = "dragoon"
 
 
 
@@ -312,34 +348,48 @@ func throwSpear():
 	
 
 func on_throw_hit():
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
 
 func on_arm_hit():
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
+
 
 
 func _on_attack_p_1_dash_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_1_melee_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_1_roar_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 
 func _on_attack_p_2_dragoon_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
-
+	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
 func _on_attack_p_2_leap_body_entered(body: Node2D) -> void:
-	enemy_hit.emit(1)
+	enemy_hit.emit(10)
+	enemy_knockback.emit(global_position)
 
+##################################################################################
+func _on_player_hit(base_damage: int) -> void:
+	var final_damage := int(base_damage * ((100.0 + float(player_damage_boost)) / 100.0))
+	print("[Boss] hit base=", base_damage, " mult=", player_damage_boost, " final=", final_damage)
 
-func _on_player_hit(damage: int) -> void:
 	var health_compare: int = current_health
-	current_health = current_health - damage
+	current_health -= final_damage
 	health_change.emit(current_health - health_compare)
-	print("Boss Health: ", current_health)
+	print("[Boss] Health:", current_health)
+
+	var _dead := false
+	if current_health <= 0 and not _dead:
+		_dead = true
+		enemy_died.emit()
+########################################################################################

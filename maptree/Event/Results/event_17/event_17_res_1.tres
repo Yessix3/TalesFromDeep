@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://bkw3kkhypjlto"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_ipeow"]
+
+[resource]
+script = ExtResource("1_ipeow")
+result_id = "event_17_res_1"
+text = "The light reveals itself as bait. Behind it, a monstrous creature with enormousteeth lunges at you, dealing immense damage."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

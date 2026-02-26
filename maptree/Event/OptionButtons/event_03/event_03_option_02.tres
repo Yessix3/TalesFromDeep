@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_3qc4m")
 id = "event_03_opt2"
-text = "Search below for fallen eggs."
+text = "Hide in the coral reef "
 result = ExtResource("1_gtqwh")
 metadata/_custom_type_script = "uid://xshuay8engbm"

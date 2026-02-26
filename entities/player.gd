@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 signal player_hit
 signal hit(damage: int)
-signal health_change(value: int)
+####################
+signal health_damage(value: int)
 
 @export_group('move')
 @export var speed: int = 200
@@ -13,8 +14,9 @@ var can_move := true
 var isAttacking := false
 var dummy_strength := 500
 
-@export var max_health: int = 100
-@export var current_health: int = 100
+# beide Variablen werden nicht
+@export var max_health: int = 5
+@export var current_health: int = 5
 
 
 @export_group('jump')
@@ -128,7 +130,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_dummy_knockback() -> void:
-	
 	velocity.x = ((position - get_parent().get_node("Dummy").position).normalized()*dummy_strength).x
 	velocity.y = -dummy_strength/2
 
@@ -136,13 +137,21 @@ func _on_dummy_knockback() -> void:
 
 func _on_attack_hitbox_body_entered(_body: Node2D) -> void:
 		emit_signal("player_hit")
-		hit.emit(1)
+		hit.emit(10)
 
 
-
+#####################################
 func _on_boss_enemy_hit(damage: int) -> void:
-	var health_compare: int = current_health
-	current_health = current_health - damage
-	health_change.emit(current_health - health_compare)
+	#var health_compare: int = current_health
+	#current_health = current_health - damage
+	#
+	health_damage.emit(damage)
 	print("Player Health: ", current_health)
 	
+
+
+func get_knocked_back(enemyPos: Vector2):
+	var knockback = (global_position - enemyPos).normalized() * 300
+	if abs(velocity.x) < abs(knockback.x):
+		velocity.x = knockback.x
+	velocity.y = min(knockback.y, -100, velocity.y + knockback.y, velocity.y - 100)

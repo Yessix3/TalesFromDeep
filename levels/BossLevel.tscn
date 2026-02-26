@@ -356,8 +356,12 @@ size = Vector2(20, 487)
 
 [node name="Level" instance=ExtResource("1_16ye3")]
 
-[node name="Boss" parent="Main/Entities" index="1" instance=ExtResource("2_851o2")]
-position = Vector2(47, -7)
+[node name="Player" parent="Main/Entities" index="0" groups=["player"]]
+
+[node name="Boss" parent="Main/Entities" index="1" groups=["boss"] instance=ExtResource("2_851o2")]
+position = Vector2(342, -4)
+player_path = NodePath("../Player")
+entities_path = NodePath("..")
 
 [node name="TileMapLayer" parent="." index="1"]
 z_index = 2

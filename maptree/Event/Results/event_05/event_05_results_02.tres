@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://c36b0fhwym8cy"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_kr0xr"]
+
+[resource]
+script = ExtResource("1_kr0xr")
+result_id = "event_05_res2"
+text = "Inside the shell, you find a rare pearl. Once refined, it becomes a precious material with healing properties. You receive a few weak healing potions."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -120,6 +120,8 @@ func _spawn_room(room:Room) -> void:
 	var new_map_room := MAP_ROOM.instantiate() as MapRoom
 	rooms.add_child(new_map_room)
 	new_map_room.room = room
+	new_map_room.current_floor = floors_climbed
+	new_map_room.available = false 
 	new_map_room.selected.connect(_on_map_room_selected)
 	_connect_lines(room)
 
@@ -144,6 +146,9 @@ func _on_map_room_selected(room: Room) -> void:
 	
 	last_room = room
 	floors_climbed += 1
+
+	refresh_room_states()
+
 	EventManager.map_exited.emit(room)
 
 #######################
@@ -155,3 +160,39 @@ func disable_scroll() -> void:
 	set_process_input(false)
 	camera_2d.enabled = false
 
+
+func clear_map() -> void:
+	for c in rooms.get_children():
+		c.queue_free()
+	for c in lines.get_children():
+		c.queue_free()
+
+func load_map(saved_map_data: Array[Array], saved_floors_climbed: int, saved_last_room: Room) -> void:
+	floors_climbed = saved_floors_climbed
+	last_room = saved_last_room
+
+	map_data = saved_map_data.duplicate(true)
+
+	clear_map()
+	create_map()
+
+	refresh_room_states()
+
+
+func refresh_room_states() -> void:
+	for mr: MapRoom in rooms.get_children():
+		mr.current_floor = floors_climbed
+		mr.available = false
+
+		if mr.room != null and mr.room.selected:
+			mr.show_selected()
+
+	if last_room == null:
+		# Run-Start: Floor 0 freigeben
+		for mr: MapRoom in rooms.get_children():
+			if mr.room.row == 0:
+				mr.available = true
+	else:
+		for mr: MapRoom in rooms.get_children():
+			if last_room.next_rooms.has(mr.room):
+				mr.available = true

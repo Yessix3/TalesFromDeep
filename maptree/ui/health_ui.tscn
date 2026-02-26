@@ -14,6 +14,7 @@ texture = ExtResource("1_140fc")
 expand_mode = 3
 
 [node name="CurrentHealth" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "10.0"
@@ -24,6 +25,7 @@ theme_override_font_sizes/font_size = 35
 text = "/"
 
 [node name="MaxHealth" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "10.0"

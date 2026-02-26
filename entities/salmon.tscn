@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://y5232p3nxse6"]
+
+[ext_resource type="Script" uid="uid://gwaun721gj85" path="res://entities/salmon.gd" id="1_5bpj2"]
+[ext_resource type="Texture2D" uid="uid://dtweedmhgmn1v" path="res://assets/Enemies/Salmon/Enemy1_idle_1.png" id="1_jjpuq"]
+[ext_resource type="Texture2D" uid="uid://df65cc5qxddm2" path="res://assets/Enemies/Salmon/Enemy1_attack_1.png" id="2_amxs2"]
+[ext_resource type="Texture2D" uid="uid://dkj6c0ykwgo33" path="res://assets/Enemies/Salmon/Enemy1_attack_3.png" id="2_vmgjh"]
+[ext_resource type="Texture2D" uid="uid://cxeoucgajacb2" path="res://assets/Enemies/Salmon/Enemy1_idle_2.png" id="3_bfa22"]
+[ext_resource type="Texture2D" uid="uid://f358bu1hq7se" path="res://assets/Enemies/Salmon/Enemy1_attack_4.png" id="3_lsr5q"]
+[ext_resource type="Texture2D" uid="uid://7yeyi1ghkmql" path="res://assets/Enemies/Salmon/Enemy1_attack_2.png" id="3_q01r6"]
+[ext_resource type="Texture2D" uid="uid://phcr81vjwl52" path="res://assets/Enemies/Salmon/Enemy1_idle_3.png" id="4_4m0c6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bpj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vmgjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsr5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vmgjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsr5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vmgjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsr5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vmgjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsr5q")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_amxs2")
+}, {
+"duration": 1.81,
+"texture": ExtResource("3_q01r6")
+}],
+"loop": false,
+"name": &"attack_windup",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jjpuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bfa22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jjpuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4m0c6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w82my"]
+radius = 7.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bfa22"]
+radius = 9.0
+
+[node name="Salmon" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_5bpj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+scale = Vector2(0.51953125, 0.51953125)
+sprite_frames = SubResource("SpriteFrames_5bpj2")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_w82my")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-27, 1)
+shape = SubResource("CircleShape2D_bfa22")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(27, 1)
+shape = SubResource("CircleShape2D_bfa22")
+disabled = true
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_w82my")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_shape_entered" from="Area2D2" to="." method="_on_area_2d_2_area_shape_entered"]

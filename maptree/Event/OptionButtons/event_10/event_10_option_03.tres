@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OptionButtonData" load_steps=3 format=3 uid="uid://bay2edmwrg71b"]
+
+[ext_resource type="Resource" uid="uid://c6lb7tdohvkbj" path="res://maptree/Event/Results/event_10/event_10_results_03.tres" id="1_afn3o"]
+[ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_r7r50"]
+
+[resource]
+script = ExtResource("1_r7r50")
+id = "event_10_opt3"
+text = "Observe silently "
+result = ExtResource("1_afn3o")
+metadata/_custom_type_script = "uid://xshuay8engbm"

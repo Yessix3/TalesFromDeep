@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=3 format=3 uid="uid://c5i62xa1n40qj"]
+[gd_resource type="Resource" script_class="EventData" load_steps=6 format=3 uid="uid://c5i62xa1n40qj"]
 
 [ext_resource type="Script" uid="uid://xshuay8engbm" path="res://maptree/Event/option_button_data.gd" id="1_3voi8"]
+[ext_resource type="Resource" uid="uid://0p6q6bscnefv" path="res://maptree/Event/OptionButtons/event_05/event_05_option_01.tres" id="2_8a1lp"]
 [ext_resource type="Script" uid="uid://c8jm80k1iiieg" path="res://maptree/Event/event_szene_data.gd" id="2_ippom"]
+[ext_resource type="Resource" uid="uid://b6pxbads3kp1o" path="res://maptree/Event/OptionButtons/event_05/event_05_option_02.tres" id="3_bbb2p"]
+[ext_resource type="Resource" uid="uid://bgghh30aagpw2" path="res://maptree/Event/OptionButtons/event_05/event_05_option_03.tres" id="4_fw3fd"]
 
 [resource]
 script = ExtResource("2_ippom")
 event_id = "event_05"
+title = "Echoes of a Lonely Guardian"
+message = "You meet a peaceful creature that has been alone for a long time. Delighted by your company, it offers you one of its valuable shells."
+options = Array[ExtResource("1_3voi8")]([ExtResource("2_8a1lp"), ExtResource("3_bbb2p"), ExtResource("4_fw3fd")])
 metadata/_custom_type_script = "uid://c8jm80k1iiieg"

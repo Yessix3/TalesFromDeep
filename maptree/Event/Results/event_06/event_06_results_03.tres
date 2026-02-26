@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventResultData" load_steps=2 format=3 uid="uid://cycnumtdfda5t"]
+
+[ext_resource type="Script" uid="uid://bxjtkfklddmt2" path="res://maptree/Event/event_result_data.gd" id="1_45v8a"]
+
+[resource]
+script = ExtResource("1_45v8a")
+result_id = "event_06_res3"
+text = "The impact triggers a violent shockwave that hits you hard, draining part of your life for  You lose health."
+metadata/_custom_type_script = "uid://bxjtkfklddmt2"

@@ -23,6 +23,9 @@ const RELIC_BUTTON_SCENE: PackedScene = preload("res://maptree/shop/shop_relict_
 
 func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_pressed)
+	buy_button.disabled = true
+	detail_shell_icon.visible = false
+
 	_build_list()
 	_show_details(null)
 
@@ -65,14 +68,16 @@ func _show_details(relic: RelicData) -> void:
 		detail_name.text = ""
 		detail_desc.text = ""
 		detail_cost.text = ""
+		detail_shell_icon.visible = false
 		buy_button.disabled = true
 		return
 
 	detail_icon.texture = relic.icon
 	detail_name.text = relic.display_name
 	detail_desc.text = relic.description
-	detail_cost.text = str(relic.cost_shells) + " Shells"
+	detail_cost.text = str(relic.cost_shells)
 
+	detail_shell_icon.visible = true
 	buy_button.disabled = (run_status == null) or (run_status.shells < relic.cost_shells)
 
 func _on_buy_pressed() -> void:
@@ -85,12 +90,50 @@ func _on_buy_pressed() -> void:
 	# kaufen: Währung abziehen
 	run_status.shells -= selected_relic.cost_shells
 
-	# Item dem Inventar hinzufügen (Methode musst du in RunStatus anbieten)
-	run_status.add_relic(selected_relic)
+	if selected_relic.type == RelicData.Type.WEAPON:
+	# schon gekauft? -> nix tun
+		if run_status.get_relic_count(selected_relic.id) > 0:
+			print("[Shop] weapon already owned -> ignore:", selected_relic.id)
+			return
 
-	# optional: aus Shop entfernen, damit es nicht doppelt gekauft wird
-	stock.erase(selected_relic)
+		# ins Inventar, damit es in TopBar angezeigt wird
+		run_status.add_relic(selected_relic, 1)
+
+		# Effekt additiv anwenden (25%)
+		var bonus := int(selected_relic.power)
+		if bonus == 0:
+			bonus = 25
+			print("[Shop] WARNING weapon power=0, fallback 25")
+		run_status.add_outgoing_damage_mult(bonus)
+
+		# komplett aus dem Shop entfernen
+		stock.erase(selected_relic)
+		print("[Shop] removed weapon from shop:", selected_relic.id)
+
+		# UI zurücksetzen
+		selected_relic = null
+		_build_list()
+		_show_details(null)
+		return
+
+	var is_extra_heart := (selected_relic.type == RelicData.Type.HEART) \
+		or (selected_relic.subtype == RelicData.Subtype.HEART)
+
+	if is_extra_heart:
+		var amount := 1
+		if selected_relic.power > 0:
+			amount = int(selected_relic.power)
+		run_status.add_extra_heart(amount)
+		print("[Shop] applied extra heart amount=", amount)
+	else:
+		# Standard: Item dem Inventar hinzufügen
+		run_status.add_relic(selected_relic)
+		print("[Shop] added to inventory id=", selected_relic.id)
+
+	
+	
 	selected_relic = null
+	detail_shell_icon.visible = true
 	_build_list()
 	_show_details(null)
 
