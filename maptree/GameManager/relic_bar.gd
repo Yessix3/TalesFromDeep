@@ -5,13 +5,12 @@ signal relic_ui_requested(relic: RelicData)
 
 @export var run_status: RunStatus : set = set_run_status
 
-# Parent Container für die Relikt-Buttons (z.B. HBoxContainer)
 @onready var bar: Container = %RelicBar
 
-const RELIC_UI_SCENE: PackedScene = preload("res://maptree/ui/relic_ui.tscn") # deine RelicUI-Szene
+const RELIC_UI_SCENE: PackedScene = preload("res://maptree/ui/relic_ui.tscn")
 
-# id -> RelicUI Instanz
-var _widgets: Dictionary = {} # Dictionary[String, RelicUI]
+
+var _widgets: Dictionary = {}
 
 func set_run_status(rs: RunStatus) -> void:
 	run_status = rs
@@ -46,7 +45,6 @@ func _rebuild_from_status() -> void:
 	if run_status == null:
 		return
 
-	# 1) Entferne Widgets, die nicht mehr existieren
 	var existing_ids := _widgets.keys()
 	for id in existing_ids:
 		var count := run_status.get_relic_count(id)
@@ -56,7 +54,6 @@ func _rebuild_from_status() -> void:
 				w.queue_free()
 			_widgets.erase(id)
 
-	# 2) Update/Erzeuge Widgets für alle vorhandenen Relikte
 	for id in run_status.relic_counts.keys():
 		var count: int = run_status.get_relic_count(id)
 		if count <= 0:

@@ -26,7 +26,7 @@ animations = [{
 radius = 8.246211
 
 [node name="JellyTazer" type="CharacterBody2D"]
-z_index = 3
+z_index = 5
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_3gur7")

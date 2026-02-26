@@ -47,7 +47,7 @@ animations = [{
 radius = 20.0
 
 [node name="Jellyfish" type="CharacterBody2D"]
-z_index = 4
+z_index = 6
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_27g2w")

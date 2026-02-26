@@ -314,7 +314,7 @@ func _on_player_died() -> void:
 func _on_enemy_died() -> void:
 	if not is_in_battle:
 		return
-	battle_over_panel.show_screen("Victorious", BattleOverPanel.Type.WIN)
+	battle_over_panel.show_screen("Victorious!", BattleOverPanel.Type.WIN)
 
 
 func _on_battle_over_closed(type: int) -> void:
